@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0ml1b3sof4po"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bmyar"]
+size = Vector3(1, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pv74w"]
+size = Vector3(1, 0.3, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n7t06"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwhyw"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.41
+initial_velocity_max = 1.41
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l5atq"]
+radius = 0.125
+height = 0.25
+
+[node name="SampleBuilding" type="Node3D"]
+
+[node name="Base1" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bmyar")
+
+[node name="Base3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = SubResource("BoxMesh_pv74w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.630671, 0)
+mesh = SubResource("CylinderMesh_n7t06")
+
+[node name="Particles" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.4, 0.35)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_lwhyw")
+draw_pass_1 = SubResource("SphereMesh_l5atq")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.4, -0.35)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_lwhyw")
+draw_pass_1 = SubResource("SphereMesh_l5atq")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.4, -0.35)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_lwhyw")
+draw_pass_1 = SubResource("SphereMesh_l5atq")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.4, 0.35)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_lwhyw")
+draw_pass_1 = SubResource("SphereMesh_l5atq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 6, 0)
+projection = 1
+size = 10.0

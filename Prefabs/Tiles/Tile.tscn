@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqfwf1r5xq6kx"]
+
+[ext_resource type="Script" path="res://Prefabs/Tiles/Tile.gd" id="1_p2dkl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s8627"]
+size = Vector3(1.5, 0.25, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fia4"]
+size = Vector3(2.6123, 1, 2.60938)
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_p2dkl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_s8627")
+
+[node name="TileArea" type="Area3D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TileArea"]
+shape = SubResource("BoxShape3D_6fia4")

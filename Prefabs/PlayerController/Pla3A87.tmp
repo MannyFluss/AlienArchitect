@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmi76x3hc2fqj"]
+
+[ext_resource type="Script" path="res://Prefabs/PlayerController/PlayerController.gd" id="1_7nk14"]
+[ext_resource type="PackedScene" uid="uid://cpkfhoxxqggns" path="res://components/InputComponent/InputComponent.tscn" id="2_6g0i7"]
+
+[node name="PlayerController" type="Node3D"]
+script = ExtResource("1_7nk14")
+
+[node name="IsometricCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -20, 30, 20)
+projection = 1
+size = 40.0
+
+[node name="SelectorCast" type="RayCast3D" parent="."]
+collision_mask = 9
+
+[node name="InputComponent" parent="." instance=ExtResource("2_6g0i7")]
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="PlayerUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="InputPressed" from="InputComponent" to="." method="_on_input_component_input_pressed"]

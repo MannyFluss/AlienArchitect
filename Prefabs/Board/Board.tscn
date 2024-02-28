@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmmvuexkrbkr"]
+
+[ext_resource type="Script" path="res://Prefabs/Board/Board.gd" id="1_aowqy"]
+
+[node name="Board" type="Node3D"]
+script = ExtResource("1_aowqy")
+
+[node name="Tile" parent="." instance_placeholder="res://Prefabs/Tiles/Tile.tscn"]
