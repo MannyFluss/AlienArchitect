@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5yxhsujeibu3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_00inl"]
+viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewport")
+
+[node name="Card" type="Node3D"]
+
+[node name="CardRender" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_00inl")
+
+[node name="PlaceHolderCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.42672, 36.387, 20)
+projection = 1
+size = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CardGraphics" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/CardGraphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/CardGraphics/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(648, 1152)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
+custom_minimum_size = Vector2(102.905, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

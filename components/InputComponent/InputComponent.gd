@@ -7,9 +7,15 @@ signal InputReleased(location : Vector2, timeHeld : float)
 
 var heldTime := 0.0
 
+
+#swiping variables
+
+
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("MainTap"):
 		emit_signal("InputPressed",get_viewport().get_mouse_position())
+		
 		heldTime = 0.0
 	if Input.is_action_pressed("MainTap"):
 		emit_signal("InputHeld",get_viewport().get_mouse_position(), delta)

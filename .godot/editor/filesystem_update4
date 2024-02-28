@@ -1,9 +1,10 @@
-res://Prefabs/Tiles/Tile.tscn
-res://main.tscn
 res://Prefabs/PlayerController/PlayerController.tscn
 res://Temp/Building.tscn
-res://Temp/tiletest.tscn
-res://Prefabs/Board/Board.tscn
 res://Prefabs/PlayerController/PlayerController.gd
 res://components/InputComponent/InputComponent.tscn
 res://components/InputComponent/InputComponent.gd
+res://main.tscn
+res://Temp/tiletest.tscn
+res://Prefabs/Tiles/Tile.tscn
+res://Prefabs/Board/Board.tscn
+res://Prefabs/Card/Card.tscn

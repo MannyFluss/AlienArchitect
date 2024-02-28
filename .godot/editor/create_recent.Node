@@ -1,5 +1,9 @@
 Control
+SubViewport
+SubViewportContainer
+ColorRect
 CanvasLayer
+Sprite3D
 RayCast3D
 CollisionShape3D
 Area3D
@@ -8,4 +12,3 @@ MeshInstance3D
 Node3D
 GPUParticles3D
 DirectionalLight3D
-AnimationPlayer

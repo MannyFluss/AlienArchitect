@@ -2,6 +2,9 @@ extends Node3D
 
 
 # Called when the node enters the scene tree for the first time.
+
+
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -13,8 +16,6 @@ func _process(delta: float) -> void:
 
 
 func _on_input_component_input_pressed(location: Vector2) -> void:
-	
-	
 	var space_state : PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	
 	var rayOrigin : Vector3 = $IsometricCamera.project_ray_origin(location)
