@@ -1,10 +1,13 @@
 res://Prefabs/PlayerController/PlayerController.tscn
-res://Temp/Building.tscn
 res://Prefabs/PlayerController/PlayerController.gd
-res://components/InputComponent/InputComponent.tscn
-res://components/InputComponent/InputComponent.gd
 res://main.tscn
+res://Temp/Building.tscn
 res://Temp/tiletest.tscn
 res://Prefabs/Tiles/Tile.tscn
 res://Prefabs/Board/Board.tscn
+res://components/InputComponent/InputComponent.tscn
 res://Prefabs/Card/Card.tscn
+res://Prefabs/Card/Card.gd
+res://Prefabs/PlayerHand/PlayerHand.tscn
+res://components/3DHbox/3DHbox.gd
+res://Prefabs/PlayerHand/PlayerHand.gd

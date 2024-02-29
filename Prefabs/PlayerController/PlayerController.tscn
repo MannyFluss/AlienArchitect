@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmi76x3hc2fqj"]
+[gd_scene load_steps=4 format=3 uid="uid://dmi76x3hc2fqj"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerController/PlayerController.gd" id="1_7nk14"]
 [ext_resource type="PackedScene" uid="uid://cpkfhoxxqggns" path="res://components/InputComponent/InputComponent.tscn" id="2_6g0i7"]
+[ext_resource type="PackedScene" uid="uid://brs5wo4pjx4ae" path="res://Prefabs/PlayerHand/PlayerHand.tscn" id="2_6mrj6"]
 
 [node name="PlayerController" type="Node3D"]
 script = ExtResource("1_7nk14")
@@ -27,4 +28,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SelectedCard" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -2.98023e-08, -2.98023e-08, 1, 2.98023e-08, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="PlayerHand" parent="." instance=ExtResource("2_6mrj6")]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, -5, 10)
+
+[connection signal="InputHeld" from="InputComponent" to="." method="_on_input_component_input_held"]
 [connection signal="InputPressed" from="InputComponent" to="." method="_on_input_component_input_pressed"]
+[connection signal="InputReleased" from="InputComponent" to="." method="_on_input_component_input_released"]
+
+[editable path="PlayerHand"]
