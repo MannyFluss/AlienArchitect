@@ -18,16 +18,6 @@ debug_shape_thickness = 5
 
 [node name="InputComponent" parent="." instance=ExtResource("2_6g0i7")]
 
-[node name="PlayerUI" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="PlayerUI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="SelectedCard" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, -2.98023e-08, -2.98023e-08, 1, 2.98023e-08, -2.98023e-08, 0, 1, 0, 0, 0)

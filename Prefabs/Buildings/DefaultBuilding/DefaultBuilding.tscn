@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5a5cek0cgqp"]
+
+[ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_lmcaj"]
+[ext_resource type="PackedScene" uid="uid://cwq8d3hh6hvoh" path="res://Misc/PlaceHolderLight.tscn" id="2_b2f8m"]
+
+[node name="DefaultBuilding" instance=ExtResource("1_lmcaj")]
+
+[node name="Tile" parent="PlaceHolders" index="0" instance_placeholder="res://Prefabs/Tiles/Tile.tscn"]
+
+[node name="PlaceHolderLight" parent="PlaceHolders" index="1" instance=ExtResource("2_b2f8m")]

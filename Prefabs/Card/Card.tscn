@@ -38,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/CardGraphics/SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(648, 1152)
 render_target_update_mode = 4
@@ -51,16 +52,32 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
-custom_minimum_size = Vector2(102.905, 0)
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/MarginContainer"]
+custom_minimum_size = Vector2(102.905, 0)
+layout_mode = 2
 color = Color(0.301961, 1, 1, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/MarginContainer/ColorRect"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
@@ -70,3 +87,6 @@ color = Color(1, 0, 1, 1)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.835107, 0.550087, 0, -0.550087, 0.835107, 0, 9.33272, 10.8202)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

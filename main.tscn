@@ -15,5 +15,17 @@ transform = Transform3D(-0.962574, -0.237017, 0.131433, -0.0960498, 0.751817, 0.
 [node name="IsometricCamera" parent="PlayerController" index="0"]
 current = true
 
+[node name="LevelUI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="LevelUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]

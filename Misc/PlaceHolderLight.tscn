@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cwq8d3hh6hvoh"]
+
+[node name="PlaceHolderLight" type="DirectionalLight3D"]
+transform = Transform3D(0.672405, 0.53372, -0.51285, 0.0561698, 0.654077, 0.75434, 0.738049, -0.536028, 0.409825, 0, 0, 0)
