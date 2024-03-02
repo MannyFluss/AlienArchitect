@@ -1,6 +1,9 @@
+res://Prefabs/Card
+M:/ExternalGitFolder/AlienArchitect/Scripts/AutoLoads/CommandLine
+res://Scripts/AutoLoads
+res://Prefabs/Buildings/DefaultBuilding
 res://Scripts
 res://Temp
-res://Prefabs/Buildings/DefaultBuilding
 res://Prefabs/AbstractBuilding
 res://Prefabs/PlayerHand
 res://

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=5 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_nqvc6"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_5tk2g"]
-[ext_resource type="PackedScene" uid="uid://b5yxhsujeibu3" path="res://Prefabs/Card/Card.tscn" id="3_grpf4"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="4_pnmwi"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="5_ajpj8"]
 
@@ -19,16 +18,12 @@ gameState = NodePath("../GameState")
 [node name="IsometricCamera" parent="PlayerController" index="0"]
 current = true
 
-[node name="Card" parent="PlayerController/PlayerHand/Spacer" index="0" instance=ExtResource("3_grpf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
-[node name="Card2" parent="PlayerController/PlayerHand/Spacer" index="1" instance=ExtResource("3_grpf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("4_pnmwi")
 
-[node name="Deck" parent="." instance=ExtResource("5_ajpj8")]
+[node name="Deck" parent="." node_paths=PackedStringArray("myHand") instance=ExtResource("5_ajpj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3255, 24.6964, 82.0176)
+myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" type="CanvasLayer" parent="."]
 layer = -1

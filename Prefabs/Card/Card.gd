@@ -6,6 +6,7 @@ enum cardStatus{
 	IN_HAND,
 	CURRENTLY_SELECTED,
 	DELETING,
+	IN_DECK,
 }
 
 var myStatus : cardStatus = cardStatus.UNKNOWN
@@ -14,14 +15,24 @@ var myStatus : cardStatus = cardStatus.UNKNOWN
 @export
 var myBuildingScene : PackedScene
 
+
+
+
+
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	if myBuildingInstance is Building:
 		myBuildingInstance.queue_free()
+		
 	else:
 		push_error("myBuildingScene is not set properly.")
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
+
+
+func setCardGraphics()->void:
+	
+	pass
 
 #implement animation here for destruction
 func destroy()->void:
@@ -53,8 +64,14 @@ func SelectCard(selectorNode : Node3D)->void:
 	unhighlight()
 	myStatus = cardStatus.CURRENTLY_SELECTED
 
-func addCardToHand(hand : Hbox3D)->void:
-	reparent(hand)
+
+#this is moving the card
+func addToHand(hand : Hbox3D)->void:
+	if is_inside_tree():
+		reparent(hand)
+	else:
+		hand.add_child(self)
+		#hand.addCardToHand(self)
 	myStatus = cardStatus.IN_HAND
 	unhighlight()
 

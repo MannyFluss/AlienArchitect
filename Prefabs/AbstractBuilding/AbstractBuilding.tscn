@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyil3yiwnphow"]
+[gd_scene load_steps=5 format=3 uid="uid://dyil3yiwnphow"]
 
 [ext_resource type="Script" path="res://Prefabs/AbstractBuilding/AbstractBuilding.gd" id="1_q0j8q"]
 [ext_resource type="PackedScene" uid="uid://cwq8d3hh6hvoh" path="res://Misc/PlaceHolderLight.tscn" id="2_84gun"]
+[ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="2_tm6hc"]
+
+[sub_resource type="Resource" id="Resource_3loj2"]
+script = ExtResource("2_tm6hc")
+name = "default name"
+description = "default description"
+bluePrintCost = 0
 
 [node name="AbstractBuilding" type="Node3D"]
 script = ExtResource("1_q0j8q")
+myResource = SubResource("Resource_3loj2")
 
 [node name="Models" type="Node3D" parent="."]
 

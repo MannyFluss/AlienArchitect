@@ -11,7 +11,5 @@ var description : String = "default description"
 @export
 var bluePrintCost : int = 0
 
-
-
 @export
 var Model : PackedScene

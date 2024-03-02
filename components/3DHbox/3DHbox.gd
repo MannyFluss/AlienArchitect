@@ -26,3 +26,4 @@ func update_positions()->void:
 		if child is Node3D:  # Make sure the child is a 3D node
 			child.position = lerp(child.position,offset + spacing * i,.3)
 
+

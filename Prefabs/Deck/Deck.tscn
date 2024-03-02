@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://Prefabs/Deck/Deck.gd" id="1_56lyh"]
 
-[node name="Deck" type="Node"]
+[node name="Deck" type="Node3D"]
 script = ExtResource("1_56lyh")
+
+[node name="Cards" type="Node3D" parent="."]

@@ -6,8 +6,9 @@ signal cardAddedToHand(card:Card)
 
 
 
+
 func addCardToHand(card : Card)->void:
-	card.addCardToHand($Spacer)
+	card.addToHand($Spacer)
 	emit_signal("cardAddedToHand",card)
 
 

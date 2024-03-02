@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl2dyjq4v2viq"]
+
+[ext_resource type="Script" path="res://Scripts/AutoLoads/CardUtility/CardUtility.gd" id="1_kqyuw"]
+
+[node name="CardUtility" type="Node"]
+script = ExtResource("1_kqyuw")

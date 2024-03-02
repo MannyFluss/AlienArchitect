@@ -1,0 +1,5 @@
+here is where I will add a comand line
+useful comands
+- add card to hand
+- modify x card to do x
+- something else 
