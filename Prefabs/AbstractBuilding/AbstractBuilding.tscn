@@ -1,16 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyil3yiwnphow"]
 
 [ext_resource type="Script" path="res://Prefabs/AbstractBuilding/AbstractBuilding.gd" id="1_q0j8q"]
-[ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="2_6bfov"]
+[ext_resource type="PackedScene" uid="uid://cwq8d3hh6hvoh" path="res://Misc/PlaceHolderLight.tscn" id="2_84gun"]
 
 [node name="AbstractBuilding" type="Node3D"]
 script = ExtResource("1_q0j8q")
-test = ExtResource("2_6bfov")
 
 [node name="Models" type="Node3D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.757993, 0.615873, -0.214819, -0.205027, 0.53762, 0.817881, 0.619201, -0.575904, 0.533783, 0, 0, 0)
-editor_only = true
-
 [node name="PlaceHolders" type="Node3D" parent="."]
+
+[node name="PlaceHolderLight" parent="PlaceHolders" instance=ExtResource("2_84gun")]

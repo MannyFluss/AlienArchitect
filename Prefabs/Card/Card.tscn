@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5yxhsujeibu3"]
+[gd_scene load_steps=5 format=3 uid="uid://b5yxhsujeibu3"]
 
 [ext_resource type="Script" path="res://Prefabs/Card/Card.gd" id="1_20rij"]
+[ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_qxxl1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n37pt"]
 size = Vector3(6, 12, 1)
@@ -10,6 +11,7 @@ viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewp
 
 [node name="Card" type="Area3D"]
 script = ExtResource("1_20rij")
+myBuildingScene = ExtResource("2_qxxl1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_n37pt")

@@ -10,9 +10,14 @@ var distanceHeldFromCamera :float=25
 
 var myState : InteractionState = InteractionState.NONE
 
+@export
+var gameState : GameState
 
 @onready
 var myHand : PlayerHand = $PlayerHand as PlayerHand
+
+func _ready() -> void:
+	if gameState==null:push_error("gameState not configured. Will cause issues.")
 #shoots ray from camera to select first thing, basically mouse pick.
 
 func getSelectorCastFromScreen(location : Vector2,ignoreList:Array[RID]=[])->Dictionary:
@@ -28,14 +33,19 @@ func getSelectorCastFromScreen(location : Vector2,ignoreList:Array[RID]=[])->Dic
 
 func attemptToPlaceCard(mouseLocation: Vector2)->void:
 	if cardSelected():
-		var intersects :Dictionary = getSelectorCastFromScreen(mouseLocation,[getSelectedCard()])
-		if intersects:
-			#place that shit
-			print("implement placement here")
+		##force intersection to only check for type tile
+		var intersects : Dictionary = getSelectorCastFromScreen(mouseLocation,[getSelectedCard()])
+		
+		var targetTile : Tile
+		if intersects.has("collider"): targetTile=intersects["collider"] as Tile
+		
+		if targetTile and getSelectedCard().ableToBePlayed(targetTile,gameState):
+				
+			getSelectedCard().playCard(targetTile,gameState)
+			cardPlayed()
 			pass
 		else:
-			myHand.addCardToHand(getSelectedCard())
-	pass
+			deselectCard()
 
 
 
@@ -45,30 +55,29 @@ func _on_input_component_input_pressed(location: Vector2) -> void:
 	if myState == InteractionState.NONE and intersection:
 		var pickedCard : Card = intersection["collider"]  as Card
 		if pickedCard is Card:
-			pickUpCard(pickedCard)
-
-
-
+			selectCard(pickedCard)
 
 func _on_input_component_input_released(location: Vector2, timeHeld: float) -> void:
 	attemptToPlaceCard(location)
 
-	pass # Replace with function body.
+func selectCard(card : Card)->void:
+	if not cardSelected():card.SelectCard(%SelectedCard)
 
-
-func pickUpCard(card : Card)->void:
-	if not cardSelected():
-		card.SelectCard(%SelectedCard)
-		
-
-
+func deselectCard()->void:
+	if cardSelected():myHand.addCardToHand(getSelectedCard())
 
 func cardSelected()->bool:
 	return not %SelectedCard.get_child_count()==0 
+	
+func cardPlayed()->void:
+	var toDiscard:Card = getSelectedCard()
+	gameState.emit_signal("cardPlayed",toDiscard)
+	toDiscard.destroy()
+	
+	
 
 func getSelectedCard()->Card:
 	return %SelectedCard.get_child(0)
-
 
 func _on_input_component_input_held(location: Vector2, delta: float) -> void:
 	var rayOrigin : Vector3 = $IsometricCamera.project_ray_origin(location)

@@ -1,10 +1,14 @@
 extends Node3D
+class_name Board
 
 var tileInstance : PackedScene = preload("res://Prefabs/Tiles/Tile.tscn")
+
+signal buildingCreated(_building : Building, _tile : Tile)
 
 @export
 var distanceBetweenTiles := 2.0
 
+#hashmap <vector2,tile>
 var myTiles : Dictionary = {}
 
 func _ready()->void:
@@ -20,16 +24,17 @@ func addTile(coordinate : Vector2)->void:
 		printerr("warning " + str(coordinate) + " already has tile. No tile being added")
 		return
 	var newTile : Tile = tileInstance.instantiate()
-	newTile.placeTile(coordinate,distanceBetweenTiles)
+	newTile.placeTile(coordinate,distanceBetweenTiles,self)
 	add_child(newTile)
 	myTiles[coordinate] = newTile
 	
 
+func canBuildingBePlaced(coordinate : Vector2)->bool:
+	if (myTiles.has(coordinate)==false):
+		return false
+	if myTiles[coordinate].hasBuilding():
+		return false
+	else:
+		return false
 
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta:float)->void:
-	
-	pass
+		

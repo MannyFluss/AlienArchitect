@@ -1,12 +1,10 @@
 extends Node3D
 class_name Tile
 
+#assume that a board has always created a tile
+var myParentBoard : Board
 
 var myCoordinates : Vector2
-
-signal buildingPlaced(_building : Building)
-
-signal buildingPlacedFail(_building : Building)
 
 
 func _ready() -> void:
@@ -17,19 +15,31 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func placeTile(location : Vector2, offset := 2.0)->void:
+func placeTile(location : Vector2, offset := 2.0, _board : Board=null)->void:
+	
 	position.x = location.x * offset
 	position.z = location.y * offset
 	myCoordinates = location
+	myParentBoard = _board
 	
 	
-func AttemptToPlaceBuilding(toPlace : Building)->void:
-	if $MyBuilding.get_child_count()==0:
+func placeBuilding(toPlace : Building)->void:
+	if hasBuilding()==false:
 		toPlace.placeMe($MyBuilding)
-		emit_signal("buildingPlaced")
+		if checkSignalSafety("buildingCreated"): myParentBoard.emit_signal("buildingCreated",toPlace,self)
 	else:
-		emit_signal("buildingPlacedFail")
+		printerr("building failed to place, something likely went very wrong")
+		pass
+
+
+func hasBuilding()->bool:
+	return not $MyBuilding.get_child_count()==0
 	
-	pass
-	
-	
+func checkSignalSafety(signalName : StringName)->bool:
+	if myParentBoard==null:
+		return false
+	if myParentBoard.has_signal(signalName)==false:
+		push_warning("board does not have " +signalName+" as a signal... aborting")
+		return false
+	return true
+		
