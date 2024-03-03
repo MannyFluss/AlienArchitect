@@ -1,3 +1,4 @@
+Node3D
 RichTextLabel
 HBoxContainer
 MarginContainer
@@ -6,7 +7,6 @@ CenterContainer
 ColorRect
 TextureRect
 Control
-Node3D
 Node
 Area3D
 DirectionalLight3D

@@ -18,3 +18,5 @@ myResource = SubResource("Resource_3loj2")
 [node name="PlaceHolders" type="Node3D" parent="."]
 
 [node name="PlaceHolderLight" parent="PlaceHolders" instance_placeholder="res://Misc/PlaceHolderLight.tscn"]
+
+[node name="Modules" type="Node3D" parent="."]
