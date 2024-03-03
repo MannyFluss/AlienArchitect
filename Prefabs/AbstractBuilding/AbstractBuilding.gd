@@ -28,7 +28,9 @@ func loadModule(module : BuildingModuleResource)->void:
 	var moduleName :String = module.moduleName
 	var options :Dictionary = module.options
 	var path : String = modulePath+moduleName+"/"+moduleName+".tscn"
+	
 	if FileAccess.file_exists(path)==false:return
-		
+	
+	
 	
 
