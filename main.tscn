@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=6 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_nqvc6"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_5tk2g"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="4_pnmwi"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="5_ajpj8"]
+[ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_po281"]
 
 [node name="Main" type="Node3D"]
 
@@ -28,17 +29,10 @@ script = ExtResource("4_pnmwi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3255, 24.6964, 82.0176)
 myHand = NodePath("../PlayerController/PlayerHand")
 
-[node name="LevelUI" type="CanvasLayer" parent="."]
-layer = -1
+[node name="LevelUI" parent="." instance=ExtResource("5_po281")]
 
-[node name="Control" type="Control" parent="LevelUI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]
+[connection signal="quotaSet" from="GameState" to="LevelUI" method="_on_game_state_quota_set"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]

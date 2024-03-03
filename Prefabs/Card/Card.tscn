@@ -191,6 +191,7 @@ color = Color(1, 0, 1, 1)
 [node name="DescriptorLabel" type="RichTextLabel" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/DescriptorContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+bbcode_enabled = true
 text = "this is some text that is a test lalalalalala"
 
 [node name="CostContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
