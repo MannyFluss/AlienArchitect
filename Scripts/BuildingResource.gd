@@ -13,3 +13,6 @@ var bluePrintCost : int = 0
 
 @export
 var Model : PackedScene
+
+@export
+var myModules : BuildingModuleContainer

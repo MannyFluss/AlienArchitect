@@ -1,2 +1,5 @@
+BuildingModuleContainer
+Resource
+JSON
 Theme
 BuildingResource
