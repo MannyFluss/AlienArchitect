@@ -142,6 +142,7 @@ layout_mode = 2
 color = Color(1, 0, 1, 1)
 
 [node name="TitleLabel" type="RichTextLabel" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/TitleContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_5dngo")
 bbcode_enabled = true
@@ -169,12 +170,13 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/ArtContainer/TextureContainer"]
+[node name="ArtTexture" type="TextureRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/ArtContainer/TextureContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 136.61)
 layout_mode = 2
 texture = ExtResource("4_yuo5t")
 
-[node name="TextContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer"]
+[node name="DescriptorContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
@@ -182,27 +184,38 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DebugColor" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/TextContainer"]
+[node name="DebugColor" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/DescriptorContainer"]
 layout_mode = 2
 color = Color(1, 0, 1, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/TextContainer"]
+[node name="DescriptorLabel" type="RichTextLabel" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer/DescriptorContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "this is some text that is a test lalalalalala"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
+[node name="CostContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -608.0
-offset_bottom = 1112.0
+offset_left = -150.0
+offset_bottom = 150.0
 grow_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/MarginContainer"]
-visible = false
-custom_minimum_size = Vector2(0.235, 0)
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/CostContainer"]
 layout_mode = 2
+color = Color(0, 0, 1, 1)
+
+[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/CostContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(95, 90)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]cost"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.835107, 0.550087, 0, -0.550087, 0.835107, 0, 9.33272, 10.8202)

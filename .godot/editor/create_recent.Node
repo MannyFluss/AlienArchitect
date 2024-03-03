@@ -1,8 +1,9 @@
+VBoxContainer
+CenterContainer
+RichTextLabel
 ColorRect
 MarginContainer
-RichTextLabel
 TextureRect
-VBoxContainer
 Control
 Node3D
 Node
@@ -11,4 +12,3 @@ DirectionalLight3D
 CanvasLayer
 MeshInstance3D
 Hbox3D
-CollisionShape3D

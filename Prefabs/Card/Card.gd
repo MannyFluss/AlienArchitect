@@ -16,24 +16,22 @@ var myStatus : cardStatus = cardStatus.UNKNOWN
 var myBuildingScene : PackedScene
 
 
-
-
-
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	if myBuildingInstance is Building:
+		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInstance.queue_free()
-		
 	else:
 		push_error("myBuildingScene is not set properly.")
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
 
 
-func setCardGraphics()->void:
-	
-	pass
-
+func setCardGraphics(res : BuildingResource)->void:
+	%CostLabel.text = "[center]"+str(res.bluePrintCost)
+	%DescriptorLabel.text = "[center]"+res.description
+	#%ArtTexture to be implemented
+	%TitleLabel.text = "[center]"+res.name
 #implement animation here for destruction
 func destroy()->void:
 	myStatus = cardStatus.DELETING

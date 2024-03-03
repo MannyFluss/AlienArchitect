@@ -4,5 +4,6 @@
 
 [node name="Board" type="Node3D"]
 script = ExtResource("1_aowqy")
+distanceBetweenTiles = 3.5
 
 [node name="Tile" parent="." instance_placeholder="res://Prefabs/Tiles/Tile.tscn"]

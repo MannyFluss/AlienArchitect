@@ -18,6 +18,9 @@ gameState = NodePath("../GameState")
 [node name="IsometricCamera" parent="PlayerController" index="0"]
 current = true
 
+[node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
+spacing = Vector3(6, 0.1, 0.1)
+
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("4_pnmwi")
 
