@@ -16,3 +16,4 @@ res://Scripts/AutoLoads/CardUtility/CardUtility.tscn
 res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tscn
 res://Prefabs/LevelUI/LevelUI.tscn
 res://components/BuildingModules/test/test.tscn
+res://Scripts/BuildingModuleResource.gd
