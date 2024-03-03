@@ -24,3 +24,6 @@ res://Scripts/AutoLoads/CardUtility/CardUtility.gd
 res://Prefabs/AbstractBuilding/AbstractBuilding.gd
 res://Scripts/BuildingResource.gd
 res://Prefabs/Card/CardTheme.tres
+res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tscn
+res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.gd
+res://Prefabs/LevelUI/LevelUI.tscn
