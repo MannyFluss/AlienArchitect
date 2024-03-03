@@ -18,4 +18,8 @@ func placeMe(newParent:Node3D)->void:
 	position=Vector3.ZERO
 	newParent.add_child(self)
 	
+func loadModule(module : BuildingModuleResource)->void:
 	
+	pass
+	
+
