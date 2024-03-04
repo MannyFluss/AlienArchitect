@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=7 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_nqvc6"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_5tk2g"]
+[ext_resource type="PackedScene" uid="uid://b5yxhsujeibu3" path="res://Prefabs/Card/Card.tscn" id="3_8q6uc"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="4_pnmwi"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="5_ajpj8"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_po281"]
@@ -21,6 +22,9 @@ current = true
 
 [node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
 spacing = Vector3(6, 0.1, 0.1)
+
+[node name="Card" parent="PlayerController/PlayerHand/Spacer" index="0" instance=ExtResource("3_8q6uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4013e-45, -1.4013e-45, -1.4013e-45)
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("4_pnmwi")

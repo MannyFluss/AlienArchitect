@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cndopfwgx0cj3"]
+
+[ext_resource type="Script" path="res://components/BuildingModules/OnPlacePoints/OnPlacePoints.gd" id="1_5mhp8"]
+
+[node name="OnPlacePoints" type="Node3D"]
+script = ExtResource("1_5mhp8")

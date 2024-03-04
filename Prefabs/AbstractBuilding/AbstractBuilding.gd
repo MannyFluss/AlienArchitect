@@ -2,10 +2,14 @@ extends Node3D
 class_name Building
 
 
-var modulePath : String = "res://components/BuildingModules/"
+const modulePath : String = "res://components/BuildingModules/"
 
 @export
 var myResource : BuildingResource
+
+#so here there will be a lot of signals that need to be implemented
+#modules will listen to signals and react accordingly.
+signal buildingPlaced
 
 func _enter_tree() -> void:
 	if myResource == null:
@@ -18,6 +22,9 @@ func _enter_tree() -> void:
 func placeMe(newParent:Node3D)->void:
 	position=Vector3.ZERO
 	newParent.add_child(self)
+	emit_signal("buildingPlaced")
+	
+	
 	
 func loadModulePackage(moduleContainer : BuildingModuleContainer)->void:
 	for module : BuildingModuleResource in moduleContainer.buildingModules:
@@ -28,8 +35,22 @@ func loadModule(module : BuildingModuleResource)->void:
 	var moduleName :String = module.moduleName
 	var options :Dictionary = module.options
 	var path : String = modulePath+moduleName+"/"+moduleName+".tscn"
+	#
+	if FileAccess.file_exists(path)==false:
+		push_warning(str(path)+" does not exist. aborting")
+		return
+	#attempt to create the module
+	var newModule:BuildingModule = load(path).instatiate() as BuildingModule
+	#invalid scene type loaded
+	if newModule==null:
+		push_warning(str(path)+" is not of type BuildingModule. Aborting")
+		return
+	$Modules.add_child(newModule)
 	
-	if FileAccess.file_exists(path)==false:return
+	
+	
+	#var moduleToAdd 
+	
 	
 	
 	
