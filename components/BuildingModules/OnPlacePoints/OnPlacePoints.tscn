@@ -4,3 +4,6 @@
 
 [node name="OnPlacePoints" type="Node3D"]
 script = ExtResource("1_5mhp8")
+myOptions = {
+"money": 1
+}

@@ -1,5 +1,5 @@
-res://Prefabs/AbstractBuilding
 res://Prefabs/Buildings/DefaultBuilding
+res://Prefabs/AbstractBuilding
 res://Scripts/AutoLoads/GameStateUtility
 res://Prefabs/LevelUI
 res://Prefabs/Card

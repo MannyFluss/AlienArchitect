@@ -15,14 +15,16 @@ var myStatus : cardStatus = cardStatus.UNKNOWN
 @export
 var myBuildingScene : PackedScene
 
+var myBuildingInformation : BuildingResource
 
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	if myBuildingInstance is Building:
 		setCardGraphics(myBuildingInstance.myResource)
+		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
 		myBuildingInstance.queue_free()
 	else:
-		push_error("myBuildingScene is not set properly.")
+		assert(false,"myBuildingScene is not set properly.")
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
 
@@ -39,6 +41,8 @@ func destroy()->void:
 
 func ableToBePlayed(_tile : Tile, _gameState : GameState)->bool:
 	if _tile.hasBuilding()==true: return false
+	if GameState!=null:
+		return _gameState.checkCardPlayability(myBuildingInformation)
 	#add game state stuff here, basically take away money
 	return true
 
@@ -46,6 +50,7 @@ func playCard(_tile : Tile, _gameState : GameState)->void:
 	#place building, update game state
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	_tile.placeBuilding(myBuildingInstance)
+	
 	pass
 
 func highlight()->void:

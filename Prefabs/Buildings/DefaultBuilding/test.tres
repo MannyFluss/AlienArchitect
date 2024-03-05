@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildingModuleResource" load_steps=2 format=3 uid="uid://dv5s2vtabo7jp"]
+
+[ext_resource type="Script" path="res://Scripts/BuildingModuleResource.gd" id="1_3fw5k"]
+
+[resource]
+script = ExtResource("1_3fw5k")
+moduleName = "OnPlacePoints"
+options = {
+"money": 3
+}

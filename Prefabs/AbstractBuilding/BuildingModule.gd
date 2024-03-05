@@ -13,9 +13,4 @@ func registerBuilding(_myBuilding : Building, opts:Dictionary)->void:
 	myBuilding = _myBuilding
 	for key:String in opts.keys():
 		if myOptions.has(key):
-			myOptions[key] = myOptions[key]
-			
-			
-	
-	
-	
+			myOptions[key] = opts[key]

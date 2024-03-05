@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BuildingModuleContainer" load_steps=2 format=3 uid="uid://bej72hplsdjf8"]
+[gd_resource type="Resource" script_class="BuildingModuleContainer" load_steps=3 format=3 uid="uid://bej72hplsdjf8"]
 
+[ext_resource type="Resource" uid="uid://dv5s2vtabo7jp" path="res://Prefabs/Buildings/DefaultBuilding/test.tres" id="1_eoi4v"]
 [ext_resource type="Script" path="res://Scripts/BuildingModuleContainer.gd" id="1_si31h"]
 
 [resource]
 script = ExtResource("1_si31h")
-buildingModules = Array[Resource("res://Scripts/BuildingModuleResource.gd")]([])
+buildingModules = Array[Resource("res://Scripts/BuildingModuleResource.gd")]([ExtResource("1_eoi4v")])

@@ -1,7 +1,7 @@
-Node3D
 RichTextLabel
-HBoxContainer
 MarginContainer
+Node3D
+HBoxContainer
 VBoxContainer
 CenterContainer
 ColorRect

@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn5a5cek0cgqp"]
+[gd_scene load_steps=6 format=3 uid="uid://bn5a5cek0cgqp"]
 
 [ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_lmcaj"]
 [ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="2_mb8lu"]
 [ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="2_yc0k2"]
+[ext_resource type="Resource" uid="uid://bej72hplsdjf8" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuildingModuleContainer.tres" id="3_8r6nn"]
 
 [sub_resource type="Resource" id="Resource_2jesa"]
 script = ExtResource("2_mb8lu")
 name = "default name"
 description = "on construction, gain 1 point"
-bluePrintCost = 0
+bluePrintCost = 7
 Model = ExtResource("2_yc0k2")
+myModules = ExtResource("3_8r6nn")
 
 [node name="DefaultBuilding" instance=ExtResource("1_lmcaj")]
 myResource = SubResource("Resource_2jesa")

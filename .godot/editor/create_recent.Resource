@@ -1,3 +1,4 @@
+BuildingModuleResource
 BuildingModuleContainer
 Resource
 JSON

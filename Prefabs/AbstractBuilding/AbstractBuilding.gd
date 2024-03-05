@@ -17,6 +17,8 @@ func _enter_tree() -> void:
 	if myResource.Model!= null:
 		var to_add : Node3D = myResource.Model.instantiate()
 		$Models.add_child(to_add)
+	
+	loadModulePackage(myResource.myModules)
 		
 		
 func placeMe(newParent:Node3D)->void:
@@ -27,6 +29,9 @@ func placeMe(newParent:Node3D)->void:
 	
 	
 func loadModulePackage(moduleContainer : BuildingModuleContainer)->void:
+	if moduleContainer==null:
+		push_error("no modules configured for building "+ str(self))
+		return
 	for module : BuildingModuleResource in moduleContainer.buildingModules:
 		loadModule(module)
 	
@@ -40,11 +45,12 @@ func loadModule(module : BuildingModuleResource)->void:
 		push_warning(str(path)+" does not exist. aborting")
 		return
 	#attempt to create the module
-	var newModule:BuildingModule = load(path).instatiate() as BuildingModule
+	var newModule:BuildingModule = load(path).instantiate() as BuildingModule
 	#invalid scene type loaded
 	if newModule==null:
 		push_warning(str(path)+" is not of type BuildingModule. Aborting")
 		return
+	newModule.registerBuilding(self,options)
 	$Modules.add_child(newModule)
 	
 	

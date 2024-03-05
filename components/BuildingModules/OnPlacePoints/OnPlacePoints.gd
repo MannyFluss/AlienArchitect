@@ -3,7 +3,6 @@ extends BuildingModule
 
 
 func _ready()->void:
-	myOptions["money"] = 1
 	myBuilding.connect("buildingPlaced",OnBuildingPlaced)
 	
 func OnBuildingPlaced()->void:

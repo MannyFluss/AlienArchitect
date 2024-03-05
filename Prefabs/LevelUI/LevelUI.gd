@@ -11,11 +11,15 @@ func updateMunicipalityPoints(points:int)->void:
 func updateQuotaLabel(quotaAmount:int)->void:
 	%QuotaLabel.text = "Quota: "+str(quotaAmount) 
 
+func updateBluePrintLabel(amount:int)->void:
+	%BlueprintLabel.text = "BluePrints: "+str(amount)
+	
 func _on_game_state_new_municipality_score(amount: int) -> void:
 	updateMunicipalityPoints(amount)
-	pass # Replace with function body.
-
 
 func _on_game_state_quota_set(amount: int) -> void:
 	updateQuotaLabel(amount)
+
+func _on_game_state_blue_print_count_set(amount: int) -> void:
+	updateBluePrintLabel(amount)
 	pass # Replace with function body.

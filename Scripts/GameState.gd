@@ -8,6 +8,7 @@ signal levelCompleted
 
 signal quotaSet(amount:int)
 signal newMunicipalityScore(amount:int)
+signal bluePrintCountSet(amount:int)
 
 
 @export
@@ -17,19 +18,20 @@ var quota:int=0
 
 var currentMunicipalityScore:int=0
 
-
-
-
 var levelCompleteFlag := false
 
 func _ready() -> void:
 	GameStateUtility.connect("generatedScore",onGeneratedScore)
+	connect("cardPlayed",onCardPlayed)
+
 	emit_signal("quotaSet",quota)
+	emit_signal("bluePrintCountSet",bluePrintCount)
 	
 	
 	
-func onGeneratedScore(amount:int,building:Building)->void:
+func onGeneratedScore(amount:int,_building:Building)->void:
 	increaseScore(amount)
+	
 	
 func increaseScore(amount:int)->void:
 	currentMunicipalityScore += amount
@@ -37,3 +39,18 @@ func increaseScore(amount:int)->void:
 	if currentMunicipalityScore >= quota && levelCompleteFlag==false:
 		levelCompleteFlag=true
 		emit_signal("levelCompleted")
+
+func checkCardPlayability(cardInformation:BuildingResource)->bool:
+	if cardInformation.bluePrintCost <= bluePrintCount: return true
+	return false
+
+
+
+func cardPlayedUpdate(cardInformation:BuildingResource)->void:
+	bluePrintCount -= cardInformation.bluePrintCost
+	emit_signal("bluePrintCountSet",bluePrintCount)
+
+	pass
+
+func onCardPlayed(_card:Card)->void:
+	cardPlayedUpdate(_card.myBuildingInformation)
