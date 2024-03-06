@@ -19,6 +19,9 @@ var myBuildingInformation : BuildingResource
 
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
+	$cardArtRendering.own_world_3d = true
+	
+	
 	if myBuildingInstance is Building:
 		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
@@ -34,6 +37,11 @@ func setCardGraphics(res : BuildingResource)->void:
 	%DescriptorLabel.text = "[center]"+res.description
 	#%ArtTexture to be implemented
 	%TitleLabel.text = "[center]"+res.name
+	var modelDuplicate : Node3D = res.Model.duplicate().instantiate() as Node3D
+	print("duplicate time")
+	
+	%ModelMarker.add_child(modelDuplicate)
+	
 #implement animation here for destruction
 func destroy()->void:
 	myStatus = cardStatus.DELETING
@@ -55,11 +63,17 @@ func playCard(_tile : Tile, _gameState : GameState)->void:
 
 func highlight()->void:
 	var myTween : Tween = get_tree().create_tween()
+	myTween.set_parallel()
 	myTween.tween_property($CardRender,"scale",Vector3(1.2,1.2,1.2),.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property($CardRender,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	
 
 func unhighlight()->void:
 	var myTween : Tween = get_tree().create_tween()
+	myTween.set_parallel()
 	myTween.tween_property($CardRender,"scale",Vector3(1.0,1.0,1.0),.05).set_ease(Tween.EASE_OUT)
+	myTween.tween_property($CardRender,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+
 
 func SelectCard(selectorNode : Node3D)->void:
 	reparent(selectorNode)

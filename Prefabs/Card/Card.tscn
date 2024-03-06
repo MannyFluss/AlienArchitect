@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5yxhsujeibu3"]
+[gd_scene load_steps=8 format=3 uid="uid://b5yxhsujeibu3"]
 
 [ext_resource type="Script" path="res://Prefabs/Card/Card.gd" id="1_20rij"]
 [ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_qxxl1"]
@@ -10,6 +10,9 @@ size = Vector3(6, 12, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_00inl"]
 viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6k4ni"]
+viewport_path = NodePath("cardArtRendering")
 
 [node name="Card" type="Area3D"]
 script = ExtResource("1_20rij")
@@ -174,7 +177,7 @@ theme_override_constants/margin_bottom = 20
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 136.61)
 layout_mode = 2
-texture = ExtResource("4_yuo5t")
+texture = SubResource("ViewportTexture_6k4ni")
 
 [node name="DescriptorContainer" type="MarginContainer" parent="CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -220,6 +223,28 @@ text = "[center]cost"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.835107, 0.550087, 0, -0.550087, 0.835107, 0, 9.33272, 10.8202)
+
+[node name="cardArtRendering" type="SubViewport" parent="."]
+
+[node name="CardArtScene" type="Node3D" parent="cardArtRendering"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="ArtCamera" type="Camera3D" parent="cardArtRendering/CardArtScene"]
+transform = Transform3D(1, 0, 0, 0, 0.899878, 0.436142, 0, -0.436142, 0.899878, -0.190479, 2.89845, 2.78909)
+size = 5.979
+
+[node name="Sprite3D" type="Sprite3D" parent="cardArtRendering/CardArtScene"]
+transform = Transform3D(14.8068, 0, 0, 0, 11.5689, 9.24127, 0, -9.24127, 11.5689, 0, 0, -7.203)
+texture = ExtResource("4_yuo5t")
+
+[node name="ModelMarker" type="Marker3D" parent="cardArtRendering/CardArtScene"]
+unique_name_in_owner = true
+gizmo_extents = 1.0
+
+[node name="DefaultBuilding" parent="cardArtRendering/CardArtScene/ModelMarker" instance_placeholder="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="cardArtRendering/CardArtScene"]
+transform = Transform3D(-0.531085, -0.795375, -0.292108, 0.486616, -0.568528, 0.66331, -0.693652, 0.21013, 0.688979, -4.09387, 2.64787, 2.38112)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -16,10 +16,17 @@ func _ready() -> void:
 	addCardToDeck(generateCard(debugBuilding))
 	addCardToDeck(generateCard(debugBuilding))
 	addCardToDeck(generateCard(debugBuilding))
+	addCardToDeck(generateCard(debugBuilding))
+	addCardToDeck(generateCard(debugBuilding))
+	addCardToDeck(generateCard(debugBuilding))
 	
+
 	drawRandomCardToHand()
 	drawRandomCardToHand()
 	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	
 	
 func drawRandomCardToHand()->void:
 	if emptyDeck(): return

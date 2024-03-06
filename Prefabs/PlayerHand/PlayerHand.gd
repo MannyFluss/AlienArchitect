@@ -7,5 +7,4 @@ signal cardAddedToHand(card:Card)
 func addCardToHand(card : Card)->void:
 	card.addToHand($Spacer)
 	emit_signal("cardAddedToHand",card)
-
-
+	

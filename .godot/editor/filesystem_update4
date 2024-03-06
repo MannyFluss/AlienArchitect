@@ -1,3 +1,4 @@
+res://Scripts/GameState.gd
 res://main.tscn
 res://Temp/Building.tscn
 res://Temp/tiletest.tscn
@@ -15,14 +16,7 @@ res://Scripts/AutoLoads/CardUtility/CardUtility.tscn
 res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tscn
 res://Prefabs/LevelUI/LevelUI.tscn
 res://components/BuildingModules/test/test.tscn
-res://Prefabs/Buildings/DefaultBuilding/DefaultBuildingModuleContainer.tres
-res://Prefabs/Buildings/DefaultBuilding/test.tres
-res://Scripts/GameState.gd
-res://Prefabs/AbstractBuilding/AbstractBuilding.gd
-res://Prefabs/Tiles/Tile.gd
-res://components/BuildingModules/OnPlacePoints/OnPlacePoints.gd
 res://components/BuildingModules/OnPlacePoints/OnPlacePoints.tscn
-res://Prefabs/AbstractBuilding/BuildingModule.gd
-res://Prefabs/LevelUI/LevelUI.gd
 res://Prefabs/Card/Card.gd
-res://Scripts/BuildingResource.gd
+res://Prefabs/PlayerHand/PlayerHand.gd
+res://Prefabs/Deck/Deck.gd

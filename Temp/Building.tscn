@@ -66,8 +66,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.4, 0.35)
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_lwhyw")
 draw_pass_1 = SubResource("SphereMesh_l5atq")
-
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 6, 0)
-projection = 1
-size = 10.0

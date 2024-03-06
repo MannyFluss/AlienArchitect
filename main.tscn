@@ -20,7 +20,8 @@ gameState = NodePath("../GameState")
 current = true
 
 [node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
-spacing = Vector3(6, 0.1, 0.1)
+spacing = Vector3(3.225, 0, -1.57)
+rotation_angle = -1.0
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("4_pnmwi")
