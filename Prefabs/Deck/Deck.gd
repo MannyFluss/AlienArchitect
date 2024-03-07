@@ -8,22 +8,23 @@ var baseCard : PackedScene= preload("res://Prefabs/Card/Card.tscn")
 var myHand : PlayerHand
 
 var debugBuilding : PackedScene = preload("res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn")
+var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBuilding/DestroyerBuilding.tscn")
 
 #make a resource/json for large amounts of cards to save
 
 
 func _ready() -> void:
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
+	addCardToDeck(generateCard(destroyBuilding))
+	addCardToDeck(generateCard(destroyBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
 	
 
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
+	#drawRandomCardToHand()
+	#drawRandomCardToHand()
+	#drawRandomCardToHand()
 	drawRandomCardToHand()
 	drawRandomCardToHand()
 	

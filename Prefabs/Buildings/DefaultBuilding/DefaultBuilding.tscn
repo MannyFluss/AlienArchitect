@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn5a5cek0cgqp"]
+[gd_scene load_steps=7 format=3 uid="uid://bn5a5cek0cgqp"]
 
 [ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_lmcaj"]
 [ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="2_mb8lu"]
 [ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="2_yc0k2"]
 [ext_resource type="Resource" uid="uid://bej72hplsdjf8" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuildingModuleContainer.tres" id="3_8r6nn"]
+[ext_resource type="PackedScene" uid="uid://cndopfwgx0cj3" path="res://components/BuildingModules/OnPlacePoints/OnPlacePoints.tscn" id="5_xlrg2"]
 
 [sub_resource type="Resource" id="Resource_2jesa"]
 script = ExtResource("2_mb8lu")
 name = "default name"
 description = "on construction, gain 1 point"
-bluePrintCost = 7
+bluePrintCost = 1
 Model = ExtResource("2_yc0k2")
 myModules = ExtResource("3_8r6nn")
 
@@ -22,3 +23,5 @@ myResource = SubResource("Resource_2jesa")
 
 [node name="PlaceHolderLight" parent="PlaceHolders" index="2"]
 transform = Transform3D(0.672405, 0.53372, -0.51285, 0.0561698, 0.654077, 0.75434, 0.738049, -0.536028, 0.409826, 0, 0, 0)
+
+[node name="OnPlacePoints" parent="Modules" index="0" instance=ExtResource("5_xlrg2")]

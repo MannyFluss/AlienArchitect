@@ -14,6 +14,12 @@ var myTiles : Dictionary = {}
 func _ready()->void:
 	generateBoard([Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(1,1)])
 	
+func getBuilding(target : Vector2)->Building:
+	if myTiles.has(target):
+		var targetTile : Tile = myTiles[target]
+		return targetTile.getBuilding()
+
+	return null
 
 func generateBoard(tiles : Array[Vector2])->void:
 	for coordinate : Vector2 in tiles:

@@ -9,8 +9,19 @@ var myOptions:Dictionary={}
 
 var myBuilding : Building
 
-func registerBuilding(_myBuilding : Building, opts:Dictionary)->void:
+func registerBuilding(_myBuilding : Building, opts:Dictionary={})->void:
 	myBuilding = _myBuilding
 	for key:String in opts.keys():
 		if myOptions.has(key):
 			myOptions[key] = opts[key]
+
+func _enter_tree() -> void:
+	if myBuilding == null:
+		#automatically search for building
+		var currNode : Node = get_parent()
+		while currNode != get_tree().current_scene:
+			if currNode is Building:
+				registerBuilding(currNode)
+				return
+			currNode = currNode.get_parent()
+		push_error("myBuilding was not registered")

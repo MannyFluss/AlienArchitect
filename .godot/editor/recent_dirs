@@ -1,11 +1,12 @@
-res://Prefabs/Buildings/DefaultBuilding
+res://Temp
+res://Prefabs/Buildings/DestroyerBuilding
 res://Prefabs/AbstractBuilding
+res://Prefabs/Buildings/DefaultBuilding
 res://Scripts/AutoLoads/GameStateUtility
 res://Prefabs/LevelUI
 res://Prefabs/Card
 M:/ExternalGitFolder/AlienArchitect/Scripts/AutoLoads/CommandLine
 res://Scripts/AutoLoads
 res://Scripts
-res://Temp
 res://Prefabs/PlayerHand
 res://

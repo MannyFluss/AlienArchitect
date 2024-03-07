@@ -27,6 +27,12 @@ func placeBuilding(toPlace : Building)->void:
 func hasBuilding()->bool:
 	return not $MyBuilding.get_child_count()==0
 	
+	
+func getBuilding()->Building:
+	if hasBuilding() == false: return null
+	
+	return $MyBuilding.get_child(0)
+
 func checkSignalSafety(signalName : StringName)->bool:
 	if myParentBoard==null:
 		return false

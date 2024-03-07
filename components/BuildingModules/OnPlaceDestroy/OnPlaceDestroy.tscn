@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lpyx4h4wh275"]
+
+[ext_resource type="Script" path="res://components/BuildingModules/OnPlaceDestroy/OnPlaceDestroy.gd" id="1_t14ns"]
+
+[node name="OnPlaceDestroy" type="Node3D"]
+script = ExtResource("1_t14ns")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingResource" load_steps=3 format=3 uid="uid://2hw20cj0scct"]
+
+[ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="1_chgi5"]
+[ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="1_pp6u7"]
+
+[resource]
+script = ExtResource("1_pp6u7")
+name = "DestroyerBuilding"
+description = "Destroys adjacent buildings gain +1 point for each one destroyed"
+bluePrintCost = 2
+Model = ExtResource("1_chgi5")

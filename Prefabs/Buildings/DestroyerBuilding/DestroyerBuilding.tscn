@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ryssnm0tx6m"]
+
+[ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_u0upf"]
+[ext_resource type="Resource" uid="uid://2hw20cj0scct" path="res://Prefabs/Buildings/DestroyerBuilding/DefaultBuildingResource.tres" id="2_fynf1"]
+[ext_resource type="PackedScene" uid="uid://lpyx4h4wh275" path="res://components/BuildingModules/OnPlaceDestroy/OnPlaceDestroy.tscn" id="2_npu1x"]
+[ext_resource type="PackedScene" uid="uid://lvwenkmt71t8" path="res://components/BuildingModules/DestroyBuildings/DestoryBuildings.tscn" id="3_7ha4f"]
+
+[node name="AbstractBuilding" instance=ExtResource("1_u0upf")]
+myResource = ExtResource("2_fynf1")
+
+[node name="OnPlaceDestroy" parent="Modules" index="0" node_paths=PackedStringArray("destructionComponent") instance=ExtResource("2_npu1x")]
+destructionComponent = NodePath("../DestoryBuildings")
+
+[node name="DestoryBuildings" parent="Modules" index="1" instance=ExtResource("3_7ha4f")]
+myOptions = {
+"Targets": PackedVector2Array(1, 0, -1, 0, 0, 1, 0, -1)
+}

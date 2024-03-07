@@ -11,6 +11,19 @@ var myResource : BuildingResource
 #modules will listen to signals and react accordingly.
 signal buildingPlaced
 
+signal buildingDestroyed
+
+func getNeighboringBuilding(target : Vector2)->Building:
+	var myBoard:Board = getMyBoard()
+	if myBoard:
+		pass
+		var myTile : Tile = getMyTile()
+		if myTile == null:
+			push_warning("building has no tile")
+			return null
+		return myBoard.getBuilding(myTile.myCoordinates + target)
+	return null
+
 func _enter_tree() -> void:
 	if myResource == null:
 		push_error("error myResource is null")
@@ -26,11 +39,17 @@ func placeMe(newParent:Node3D)->void:
 	newParent.add_child(self)
 	emit_signal("buildingPlaced")
 	
-	
+func getMyTile()->Tile:
+	var curr :Node = get_parent()
+	while curr!= get_tree().current_scene:
+		if curr is Tile:
+			return curr
+		curr = curr.get_parent()
+	return null
 	
 func loadModulePackage(moduleContainer : BuildingModuleContainer)->void:
 	if moduleContainer==null:
-		push_error("no modules configured for building "+ str(self))
+		#push_error("no modules configured for building "+ str(self))
 		return
 	for module : BuildingModuleResource in moduleContainer.buildingModules:
 		loadModule(module)
@@ -53,10 +72,23 @@ func loadModule(module : BuildingModuleResource)->void:
 	newModule.registerBuilding(self,options)
 	$Modules.add_child(newModule)
 	
+func attemptDestroy()->bool:
+	destroy()
+	return true
+
+func destroy()->void:
+	emit_signal("buildingDestroyed")
+	queue_free()
+	pass
 	
+func getMyBoard()->Board:
+	var curr : Node = get_parent()
+	while curr != get_tree().current_scene:
+		if curr is Board:
+			return curr
+		curr=curr.get_parent()
 	
-	#var moduleToAdd 
-	
+	return null
 	
 	
 	

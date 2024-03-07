@@ -37,8 +37,8 @@ func setCardGraphics(res : BuildingResource)->void:
 	%DescriptorLabel.text = "[center]"+res.description
 	#%ArtTexture to be implemented
 	%TitleLabel.text = "[center]"+res.name
+	#if this crashes here, buildingResource needs to be assigned a model
 	var modelDuplicate : Node3D = res.Model.duplicate().instantiate() as Node3D
-	print("duplicate time")
 	
 	%ModelMarker.add_child(modelDuplicate)
 	
@@ -64,15 +64,15 @@ func playCard(_tile : Tile, _gameState : GameState)->void:
 func highlight()->void:
 	var myTween : Tween = get_tree().create_tween()
 	myTween.set_parallel()
-	myTween.tween_property($CardRender,"scale",Vector3(1.2,1.2,1.2),.05).set_ease(Tween.EASE_IN)
-	myTween.tween_property($CardRender,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property(self,"scale",Vector3(1.2,1.2,1.2),.05).set_ease(Tween.EASE_IN)
+	#myTween.tween_property(self,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
 	
 
 func unhighlight()->void:
 	var myTween : Tween = get_tree().create_tween()
 	myTween.set_parallel()
-	myTween.tween_property($CardRender,"scale",Vector3(1.0,1.0,1.0),.05).set_ease(Tween.EASE_OUT)
-	myTween.tween_property($CardRender,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property(self,"scale",Vector3(1.0,1.0,1.0),.05).set_ease(Tween.EASE_OUT)
+	#myTween.tween_property(self,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
 
 
 func SelectCard(selectorNode : Node3D)->void:
