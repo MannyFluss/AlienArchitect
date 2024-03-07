@@ -12,4 +12,5 @@ func destroyBuildings()->int:
 		#attempt destroy has side effect of destroying
 		if targetBuilding.attemptDestroy()==true:
 			countDestroyed+=1
+			
 	return countDestroyed
