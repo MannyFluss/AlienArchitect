@@ -234,7 +234,7 @@ transform = Transform3D(1, 0, 0, 0, 0.899878, 0.436142, 0, -0.436142, 0.899878, 
 size = 5.979
 
 [node name="Sprite3D" type="Sprite3D" parent="cardArtRendering/CardArtScene"]
-transform = Transform3D(14.8068, 0, 0, 0, 11.5689, 9.24127, 0, -9.24127, 11.5689, 0, 0, -7.203)
+transform = Transform3D(14.8068, 0, 0, 0, 11.5689, 9.24127, 0, -9.24127, 11.5689, 0, 0.616852, -7.94735)
 texture = ExtResource("4_yuo5t")
 
 [node name="ModelMarker" type="Marker3D" parent="cardArtRendering/CardArtScene"]
