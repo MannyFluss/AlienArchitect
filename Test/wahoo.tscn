@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bahf8s65h64ps"]
+
+[ext_resource type="PackedScene" uid="uid://b4147lk5vlp5s" path="res://Test/insane.blend" id="1_2j57g"]
+
+[node name="Wahoo" type="Node3D"]
+
+[node name="insane" parent="." instance=ExtResource("1_2j57g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59094, 0, -0.364197)
