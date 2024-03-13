@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch1b117uhat04"]
+
+[ext_resource type="PackedScene" uid="uid://cofo2ohu33shg" path="res://Test/MannyBuilding_Grid.glb" id="2_6w0a1"]
+[ext_resource type="PackedScene" uid="uid://bqripevn7amsq" path="res://Test/MannyBuilding.glb" id="2_dq7hh"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MannyBuilding_Grid" parent="." instance=ExtResource("2_dq7hh")]
+transform = Transform3D(1.96205, 0, 0, 0, 1.96205, 0, 0, 0, 1.96205, 0, 0, 0)
+
+[node name="MannyBuilding_Grid2" parent="." instance=ExtResource("2_6w0a1")]
+transform = Transform3D(3.915, 0, 0, 0, 3.915, 0, 0, 0, 3.915, 0, 0, 0)

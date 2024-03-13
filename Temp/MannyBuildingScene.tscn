@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch1b117uhat04"]
+
+[ext_resource type="PackedScene" uid="uid://c0635kevk4bh3" path="res://MannyBuilding_Grid.glb" id="1_64g7s"]
+[ext_resource type="PackedScene" uid="uid://p3bg1vrm5u1" path="res://MannyBuilding.glb" id="2_dq7hh"]
+
+[sub_resource type="Animation" id="Animation_c1lfc"]
+resource_name = "Floating"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0.1, 1, 0, 0, 0, 0.5, 1, 0, -0.750768, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_3b4d2"]
+resource_name = "RotatingInCard"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wiym8"]
+_data = {
+"Floating": SubResource("Animation_c1lfc"),
+"RotatingInCard": SubResource("Animation_3b4d2")
+}
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MannyBuilding_Grid" parent="." instance=ExtResource("1_64g7s")]
+transform = Transform3D(1.96205, 0, 0, 0, 1.96205, 0, 0, 0, 1.96205, 0, 0, 0)
+
+[node name="MannyBuilding" parent="MannyBuilding_Grid" instance=ExtResource("2_dq7hh")]
+transform = Transform3D(0.509672, 0, 0, 0, 0.509672, 0, 0, 0, 0.509672, 0.0125454, 0, 0.00362164)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MannyBuilding_Grid"]
+root_node = NodePath("../MannyBuilding")
+libraries = {
+"": SubResource("AnimationLibrary_wiym8")
+}
