@@ -15,17 +15,18 @@ var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBu
 
 func _ready() -> void:
 	addCardToDeck(generateCard(destroyBuilding))
+	addCardToDeck(generateCard(destroyBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	addCardToDeck(generateCard(debugBuilding))
-	#
-	#
-	saveDeck("tester")
-	
-	var test := SaveSystem.loadDeck("tester")
+	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(debugBuilding))
 	
 
-
+	#drawRandomCardToHand()
+	#drawRandomCardToHand()
+	#drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
 	
 	
 func drawRandomCardToHand()->void:
@@ -42,26 +43,13 @@ func drawRandomCardToHand()->void:
 func drawCard()->Card:
 	assert(not emptyDeck(),"deck is empty cannot draw card")
 	var child_count:int = $Cards.get_child_count() # Get the total number of child nodes
+	
 	var random_index:int = randi() % child_count # Generate a random index
 	var random_child:Card = $Cards.get_child(random_index)
 	$Cards.remove_child(random_child)
 	
 	return random_child
 	
-#get the global and save the deck
-func serializeMyCards()-> Array[BuildingSerailizeResource]:
-	var toReturn : Array[BuildingSerailizeResource] = []
-	for child in $Cards.get_children():
-		if child is Card:
-			toReturn.append(child.serailizeCard())
-	return toReturn
-	
-
-func saveDeck(savePath:String)->void: 
-	var toSave : Array[BuildingSerailizeResource] = serializeMyCards()
-	SaveSystem.writeDeckToSave(toSave,savePath)
-
-
 func generateDeckDebug()->void:
 	clearDeck()
 	

@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 CardUtility="*res://Scripts/AutoLoads/CardUtility/CardUtility.tscn"
 GameStateUtility="*res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tscn"
-SaveSystem="*res://Scripts/AutoLoads/SaveSystem/SaveSystem.tscn"
 
 [debug]
 

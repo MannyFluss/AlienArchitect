@@ -31,11 +31,6 @@ func _ready() -> void:
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
 
-func serailizeCard()->BuildingSerailizeResource:
-	var newSerializeResource : BuildingSerailizeResource = BuildingSerailizeResource.new()
-	newSerializeResource.registerCard(self)
-	return newSerializeResource
-
 
 func setCardGraphics(res : BuildingResource)->void:
 	%CostLabel.text = "[center]"+str(res.bluePrintCost)
