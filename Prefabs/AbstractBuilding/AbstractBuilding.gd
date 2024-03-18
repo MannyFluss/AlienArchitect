@@ -72,6 +72,9 @@ func loadModule(module : BuildingModuleResource)->void:
 	newModule.registerBuilding(self,options)
 	$Modules.add_child(newModule)
 	
+func loadModuleInstance(module : BuildingModule)->void:
+	$Modules.add_child(module)
+	
 func attemptDestroy()->bool:
 	destroy()
 	return true
@@ -90,6 +93,13 @@ func getMyBoard()->Board:
 	
 	return null
 	
+func getMyModules()->Array[Node]:
+	return $Modules.get_children()
 	
+func getMyModelPath()->String:
+	return myResource.Model.scene_file_path
 	
-
+func serializeMe()->BuildingSaveResource:
+	var toReturn : BuildingSaveResource = BuildingSaveResource.new()
+	toReturn.registerBuilding(self)
+	return toReturn

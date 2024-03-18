@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name Deck
 #gotta rethink this too tired atm
 var baseCard : PackedScene= preload("res://Prefabs/Card/Card.tscn")
 
@@ -14,20 +14,20 @@ var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBu
 
 
 func _ready() -> void:
-	addCardToDeck(generateCard(destroyBuilding))
-	addCardToDeck(generateCard(destroyBuilding))
-	#addCardToDeck(generateCard(debugBuilding))
+	#addCardToDeck(generateCard(destroyBuilding))
+	#addCardToDeck(generateCard(destroyBuilding))
+	###addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	
+	var test : DeckSaveResource = loadDeck("freak")
+	deckResourceToCards(test)
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
 
-	#drawRandomCardToHand()
-	#drawRandomCardToHand()
-	#drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	
+	pass
 	
 func drawRandomCardToHand()->void:
 	if emptyDeck(): return
@@ -63,7 +63,29 @@ func emptyDeck()->bool:
 func addCardToDeck(toAdd : Card)->void:
 	$Cards.add_child(toAdd)
 
-#it might be bad to do this checking performance wise, can smoothen later
 func generateCard(buildingScene:PackedScene)->Card:
-	
 	return CardUtility.generateCard(buildingScene)
+	
+func getCards()->Array[Node]:
+	return $Cards.get_children()
+
+func serializeMe()->DeckSaveResource:
+	var newResource : DeckSaveResource = DeckSaveResource.new()
+	newResource.registerDeck(self)
+	return newResource
+	
+func saveDeck(saveName:String)->void:
+	SaveSystem.writeDeckToSave(serializeMe(),saveName)
+	
+func loadDeck(saveName:String)->DeckSaveResource:
+	return SaveSystem.loadDeck(saveName)
+	
+func deckResourceToCards(res: DeckSaveResource)->void:
+	for building : BuildingSaveResource in res.myBuildings:
+		var newBuilding : PackedScene = building.regenerateBuilding(building)
+		if building != null:
+			addCardToDeck(CardUtility.generateCard(newBuilding))
+		else:
+			push_error("building failed to regenerate")
+	
+

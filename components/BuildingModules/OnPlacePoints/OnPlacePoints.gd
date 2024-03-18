@@ -4,6 +4,7 @@ extends BuildingModule
 
 func _ready()->void:
 	myBuilding.connect("buildingPlaced",OnBuildingPlaced)
+
 	
 func OnBuildingPlaced()->void:
 	GameStateUtility.emit_signal("generatedScore",myOptions["money"],myBuilding)

@@ -16,3 +16,15 @@ func generateCard(buildingScene:PackedScene)->Card:
 	
 	newCard.myBuildingScene = buildingScene
 	return newCard
+
+# func generateCardFromBuilding(newBuilding:Building)->Card:
+	
+	
+# 	var newBuilding : Building = buildingScene.instantiate() as Building
+# 	assert(newBuilding!=null,"buildingScene is not building")
+# 	newBuilding.queue_free()
+# 	var newCard : Card = baseCard.instantiate() as Card
+# 	assert(newCard!=null,"cardScene is not card")
+	
+# 	newCard.myBuildingScene = buildingScene
+# 	return newCard
