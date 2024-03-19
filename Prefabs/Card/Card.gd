@@ -17,6 +17,11 @@ var myBuildingScene : PackedScene
 
 var myBuildingInformation : BuildingResource
 
+#goes off right before building is placed
+signal preBuildingPlaced(newBuilding : Building)
+
+signal postBuildingPlaced(newBuilding : Building)
+
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	$cardArtRendering.own_world_3d = true
@@ -57,7 +62,13 @@ func ableToBePlayed(_tile : Tile, _gameState : GameState)->bool:
 func playCard(_tile : Tile, _gameState : GameState)->void:
 	#place building, update game state
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
+	emit_signal("preBuildingPlaced",myBuildingInstance)
+	#this is where we need to edit that building, before its placed
 	_tile.placeBuilding(myBuildingInstance)
+	
+	emit_signal("postBuildingPlaced",myBuildingInstance)
+	
+	
 	
 	pass
 
