@@ -225,7 +225,6 @@ text = "[center]cost"
 transform = Transform3D(1, 0, 0, 0, 0.835107, 0.550087, 0, -0.550087, 0.835107, 0, 9.33272, 10.8202)
 
 [node name="cardArtRendering" type="SubViewport" parent="."]
-unique_name_in_owner = true
 
 [node name="CardArtScene" type="Node3D" parent="cardArtRendering"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)

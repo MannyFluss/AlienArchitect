@@ -5,8 +5,7 @@ var destructionComponent : DestroyBuildings
 
 func _ready() -> void:
 	myBuilding.connect("buildingPlaced",destroyTime)
-	
-	
+
 func destroyTime()->void:
 	if destructionComponent:
 		var numberDestroyed : int = destructionComponent.destroyBuildings()

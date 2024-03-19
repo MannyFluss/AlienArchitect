@@ -16,8 +16,6 @@ func registerBuilding(_myBuilding : Building, opts:Dictionary={})->void:
 			myOptions[key] = opts[key]
 
 func _enter_tree() -> void:
-	serializeMe()
-
 	if myBuilding == null:
 		#automatically search for building
 		var currNode : Node = get_parent()
@@ -27,11 +25,3 @@ func _enter_tree() -> void:
 				return
 			currNode = currNode.get_parent()
 		push_error("myBuilding was not registered")
-
-	
-
-func serializeMe()->ModuleSaveResource:
-	var toReturn : ModuleSaveResource = ModuleSaveResource.new()
-	toReturn.registerModule(self)
-
-	return toReturn

@@ -21,13 +21,13 @@ func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	$cardArtRendering.own_world_3d = true
 	
+	
 	if myBuildingInstance is Building:
 		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
 		myBuildingInstance.queue_free()
 	else:
 		assert(false,"myBuildingScene is not set properly.")
-	
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
 	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
 
