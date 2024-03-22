@@ -14,19 +14,25 @@ var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBu
 
 
 func _ready() -> void:
-	addCardToDeck(generateCard(destroyBuilding))
-	addCardToDeck(generateCard(destroyBuilding))
+	#addCardToDeck(generateCard(destroyBuilding))
+	#addCardToDeck(generateCard(destroyBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
 	#addCardToDeck(generateCard(debugBuilding))
+	#
+	#SaveSystem.writeSave(createSaveResource(),"pee")
+	createDeckFromSave("pee")
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
+	drawRandomCardToHand()
 	
-
-	#drawRandomCardToHand()
-	#drawRandomCardToHand()
-	#drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
+	
 	
 	
 func drawRandomCardToHand()->void:
@@ -50,6 +56,24 @@ func drawCard()->Card:
 	
 	return random_child
 	
+#this does too much for now will change later
+func createSaveResource()->GeneralSaveResource:
+	var toReturn : GeneralSaveResource = GeneralSaveResource.new()
+	var cardResourceArray : Array[CardSaveResource] = []
+	for child in $Cards.get_children():
+		if child is Card:
+			cardResourceArray.append(CardSaveResource.registerCard(child))
+	toReturn.registerCards(cardResourceArray)
+	return toReturn
+	
+
+func createDeckFromSave(loadName:String)->void:
+	var save : GeneralSaveResource = SaveSystem.loadSave(loadName)
+	if save==null:return
+	for card in save.myCards:
+		var newCard : Card = CardSaveResource.regenerateCard(card)
+		addCardToDeck(newCard)
+
 func generateDeckDebug()->void:
 	clearDeck()
 	
@@ -65,5 +89,6 @@ func addCardToDeck(toAdd : Card)->void:
 
 #it might be bad to do this checking performance wise, can smoothen later
 func generateCard(buildingScene:PackedScene)->Card:
-	
 	return CardUtility.generateCard(buildingScene)
+
+

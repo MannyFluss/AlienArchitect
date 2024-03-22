@@ -23,6 +23,9 @@ signal preBuildingPlaced(newBuilding : Building)
 signal postBuildingPlaced(newBuilding : Building)
 
 func _ready() -> void:
+	
+	
+	
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	$cardArtRendering.own_world_3d = true
 	
@@ -102,6 +105,13 @@ func addToHand(hand : Hbox3D)->void:
 		#hand.addCardToHand(self)
 	myStatus = cardStatus.IN_HAND
 	unhighlight()
+
+func loadModule(_module : CardModuleResource)->void:
+	var newModule : CardModule = load(_module.modulePath).instantiate() as CardModule
+	if newModule==null:return
+	$Modules.add_child(newModule)
+	
+
 
 func _on_mouse_entered() -> void:
 	if myStatus == cardStatus.IN_HAND:

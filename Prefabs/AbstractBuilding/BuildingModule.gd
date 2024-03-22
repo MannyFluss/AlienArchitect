@@ -25,3 +25,4 @@ func _enter_tree() -> void:
 				return
 			currNode = currNode.get_parent()
 		push_error("myBuilding was not registered")
+		queue_free()
