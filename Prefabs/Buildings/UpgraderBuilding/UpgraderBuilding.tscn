@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1qxqlh5456tb"]
+
+[ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_wnfs2"]
+
+[node name="UpgraderBuilding" instance=ExtResource("1_wnfs2")]

@@ -1,0 +1,10 @@
+what am i doing rn.
+
+
+
+- finish the save system, test that modules can be added and modified.
+	- create a test building that adds modules to neighboring buildings
+
+- start designing the singleton signal system
+
+- create a command line system for debug and other stuff

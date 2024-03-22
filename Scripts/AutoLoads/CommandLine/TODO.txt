@@ -3,3 +3,6 @@ useful comands
 - add card to hand
 - modify x card to do x
 - something else 
+- save deck
+- unload deck
+- add card based off text command
