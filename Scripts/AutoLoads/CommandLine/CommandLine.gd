@@ -1,7 +1,9 @@
 extends Control
 #list of commands
 var commands : Dictionary = {
-	"echo" : "test"
+	"echo" : "test",
+	"drawCard" : "",
+	"clear" : ""
 }
 
 
@@ -33,26 +35,27 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("open_console"):
 		visible = true
 		#on open
-		%CommandLine.grab_focus()
-		%CommandLine.text = "/"
-		%CommandLine.set_caret_column(1)
-		
+		clearCommandLine()
 	if Input.is_action_just_released("close_console"):
 		visible = false
-		
+	if Input.is_action_just_pressed("submit_console"):
+		submitCommand()
+
 func _on_button_pressed() -> void:
 	submitCommand()
 
-#parse the command, check if it exists
+
+func clearCommandLine()->void:
+	%CommandLine.grab_focus()
+	%CommandLine.text = "/"
+	%CommandLine.set_caret_column(1)
+
 func submitCommand()->void:
 	var words : Array = parse_command(%CommandLine.text)
-	%CommandLine.clear()
 	if words.is_empty():return
-	
-	if commands.has(words[0]):
-		matchStringToFunction(words[0],words)
-	else:
-		pass
+	clearCommandLine()
+	matchStringToFunction(words[0],words)
+
 
 func outputMessage(message : String)->void:
 	%OutputText.append_text("\n" + message)
@@ -61,13 +64,65 @@ func matchStringToFunction(commandName : String, parsedCommands : Array)->void:
 	match commandName:
 		"echo":
 			echoCommand(parsedCommands)
+		"drawCard":
+			drawCardCommand()
+		"clear":
+			%OutputText.clear()
+		"loadDeck":
+			loadDeck(parsedCommands)
+		"saveDeck":
+			saveDeck(parsedCommands)
 		_: 
 			outputMessage(commandName +" command is not implemented yet")
+			
+func saveDeck(parsedCommands : Array)->void:
+	if parsedCommands.size()<2:
+		outputMessage("saveDeck command requires save path as second argument")
+		return
+	var myDeck : Deck = get_tree().get_first_node_in_group("Decks") as Deck
+	if Deck==null:
+		outputMessage("Deck not found ... Aborting Command")
+		return
+	myDeck.saveDeck(parsedCommands[1])
+	
+func loadDeck(parsedCommands : Array)->void:
+	if parsedCommands.size()<2:
+		outputMessage("loadDeck command requires save path as second argument")
+		return
+	var myDeck : Deck = get_tree().get_first_node_in_group("Decks") as Deck
+	if Deck==null:
+		outputMessage("Deck not found ... Aborting Command")
+		return
+	outputMessage("loading Deck")
+	
+	myDeck.createDeckFromSave(parsedCommands[1])
+	pass
+
+func drawCardCommand()->void:
+	var myDeck : Deck = get_tree().get_first_node_in_group("Decks") as Deck
+	if Deck==null:
+		outputMessage("Deck not found ... Aborting Command")
+		return
+	myDeck.drawRandomCardToHand()
+	outputMessage("Drawing card...")
 	
 	
+
+func findFirstNodeOfType(root: Node, type : String ) -> Node:
+	if root.get_class() == type:
+		return root
+	for child in root.get_children():
+		var found: = findFirstNodeOfType(child, type)
+		if found:
+			return found
+			
+	
+	return null
 
 func echoCommand(parsedCommands : Array)->void:
 	var constructMessage : String = ""
 	for com : String in parsedCommands:
 		constructMessage += com + " "
 	outputMessage(constructMessage)
+
+

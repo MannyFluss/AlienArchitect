@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name Deck
 #gotta rethink this too tired atm
 var baseCard : PackedScene= preload("res://Prefabs/Card/Card.tscn")
 
@@ -11,7 +11,8 @@ var debugBuilding : PackedScene = preload("res://Prefabs/Buildings/DefaultBuildi
 var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBuilding/DestroyerBuilding.tscn")
 
 #make a resource/json for large amounts of cards to save
-
+func _enter_tree() -> void:
+	add_to_group("Decks")
 
 func _ready() -> void:
 	#addCardToDeck(generateCard(destroyBuilding))
@@ -22,15 +23,7 @@ func _ready() -> void:
 	#addCardToDeck(generateCard(debugBuilding))
 	#
 	#SaveSystem.writeSave(createSaveResource(),"pee")
-	createDeckFromSave("pee")
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
-	drawRandomCardToHand()
+	pass
 	
 	
 	
@@ -66,6 +59,9 @@ func createSaveResource()->GeneralSaveResource:
 	toReturn.registerCards(cardResourceArray)
 	return toReturn
 	
+func saveDeck(saveName:String)->void:
+	SaveSystem.writeSave(createSaveResource(),saveName)
+
 
 func createDeckFromSave(loadName:String)->void:
 	var save : GeneralSaveResource = SaveSystem.loadSave(loadName)

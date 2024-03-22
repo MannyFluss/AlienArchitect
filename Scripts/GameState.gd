@@ -20,6 +20,9 @@ var currentMunicipalityScore:int=0
 
 var levelCompleteFlag := false
 
+func _enter_tree() -> void:
+	add_to_group("GameState")
+
 func _ready() -> void:
 	GameStateUtility.connect("generatedScore",onGeneratedScore)
 	connect("cardPlayed",onCardPlayed)
