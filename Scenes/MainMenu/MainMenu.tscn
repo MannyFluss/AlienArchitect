@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://clmdradjcp8lh"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_gkpmw"]
+[ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="1_sx4px"]
+[ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="1_tj8jm"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/BuildingConveyor.gd" id="2_0xq4u"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s5air"]
+viewport_path = NodePath("BackGround/SubViewport")
+
+[sub_resource type="Environment" id="Environment_fftdn"]
+background_mode = 1
+background_color = Color(0.670588, 0.780392, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkpmw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_s5air")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainMenuLogo" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_sx4px")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 100
+theme_override_constants/shadow_offset_y = 100
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/normal_font_size = 87
+bbcode_enabled = true
+text = "[center] Alien Architect [/center]"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="BackGround" type="Node" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="BackGround"]
+size = Vector2i(648, 1152)
+
+[node name="Node3D" type="Node3D" parent="BackGround/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09456, 0)
+
+[node name="Camera3D" type="Camera3D" parent="BackGround/SubViewport/Node3D"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 3.82, 3)
+projection = 1
+size = 5.839
+
+[node name="Animator" type="Node3D" parent="BackGround/SubViewport/Node3D"]
+script = ExtResource("2_0xq4u")
+
+[node name="Conveyor" type="Node3D" parent="BackGround/SubViewport/Node3D/Animator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="DefaultBuilding" parent="BackGround/SubViewport/Node3D/Animator/Conveyor" instance=ExtResource("1_tj8jm")]
+
+[node name="DefaultBuilding2" parent="BackGround/SubViewport/Node3D/Animator/Conveyor" instance=ExtResource("1_tj8jm")]
+
+[node name="DefaultBuilding3" parent="BackGround/SubViewport/Node3D/Animator/Conveyor" instance=ExtResource("1_tj8jm")]
+
+[node name="DefaultBuilding4" parent="BackGround/SubViewport/Node3D/Animator/Conveyor" instance=ExtResource("1_tj8jm")]
+
+[node name="Timer" type="Timer" parent="BackGround/SubViewport/Node3D/Animator"]
+wait_time = 5.0
+autostart = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BackGround/SubViewport/Node3D/Animator"]
+transform = Transform3D(0.860742, 0.509041, 1.78736e-07, -0.498284, 0.842552, 0.204496, 0.104097, -0.176018, 0.978867, 0, 3.17529, -4.12736)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="BackGround/SubViewport/Node3D"]
+environment = SubResource("Environment_fftdn")
+
+[connection signal="timeout" from="BackGround/SubViewport/Node3D/Animator/Timer" to="BackGround/SubViewport/Node3D/Animator" method="_on_timer_timeout"]

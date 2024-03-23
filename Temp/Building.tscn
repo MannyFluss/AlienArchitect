@@ -46,23 +46,27 @@ skeleton = NodePath("../..")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D/Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.4, 0.35)
 amount = 1
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lwhyw")
 draw_pass_1 = SubResource("SphereMesh_l5atq")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Node3D/Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.4, -0.35)
 amount = 1
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lwhyw")
 draw_pass_1 = SubResource("SphereMesh_l5atq")
 
 [node name="GPUParticles3D3" type="GPUParticles3D" parent="Node3D/Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.4, -0.35)
 amount = 1
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lwhyw")
 draw_pass_1 = SubResource("SphereMesh_l5atq")
 
 [node name="GPUParticles3D4" type="GPUParticles3D" parent="Node3D/Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.4, 0.35)
 amount = 1
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lwhyw")
 draw_pass_1 = SubResource("SphereMesh_l5atq")

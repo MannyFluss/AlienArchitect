@@ -21,7 +21,4 @@ myResource = SubResource("Resource_2jesa")
 
 [node name="SampleBuilding" parent="PlaceHolders" index="1" instance_placeholder="res://Temp/Building.tscn"]
 
-[node name="PlaceHolderLight" parent="PlaceHolders" index="2"]
-transform = Transform3D(0.672405, 0.53372, -0.51285, 0.0561698, 0.654077, 0.75434, 0.738049, -0.536028, 0.409826, 0, 0, 0)
-
 [node name="OnPlacePoints" parent="Modules" index="0" instance=ExtResource("5_xlrg2")]
