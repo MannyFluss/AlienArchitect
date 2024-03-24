@@ -9,10 +9,22 @@ var myDeck : Deck
 @export
 var myGameState : GameState
 
+
+
 func createSaveData()->void:
+	
+	
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.destroyBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.destroyBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.destroyBuilding))
+	
 	var newSaveData : GeneralSaveResource = GeneralSaveResource.new()
 	newSaveData.randomSeed = randf()
 	newSaveData.registerBoardModules(myBoard.serializeModules())
+	
 	newSaveData.registerCards(myDeck.createCardSaveArray())
 	newSaveData.myGameStateResource = myGameState.myGameStateResource.duplicate(true)
 	var key : String = str(hash(newSaveData.randomSeed))

@@ -26,5 +26,28 @@ func loadSave(saveName:String)->GeneralSaveResource:
 	
 	return null
 
+func getAllSaveKeys()->Array[String]:
+	var toReturn:Array[String] = []
+	var dir : DirAccess = DirAccess.open(SAVE_PATH_BASE)
+	if not dir:
+		push_error("no save file directory exists")
+		return []
+	if dir:
+		dir.list_dir_begin()
+		var file_name : String = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				pass
+			else:
+				#print("Found file: " + file_name)
+				toReturn.append(file_name.substr(0,file_name.length()-5))
+			file_name = dir.get_next()
+	
+	
+	return toReturn
+	
+
+
+
 func getPathFromSaveName(saveName:String)->String:
 	return SAVE_PATH_BASE + saveName + ".tres"

@@ -12,6 +12,7 @@ func _on_button_pressed() -> void:
 	goToNextScene("res://Scenes/ShopScene/ShopScene.tscn")
 	
 func _ready() -> void:
+	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
 	pass
 	
 func _enter_tree() -> void:

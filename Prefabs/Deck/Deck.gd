@@ -48,6 +48,10 @@ func drawCard()->Card:
 	$Cards.remove_child(random_child)
 	
 	return random_child
+
+func drawCards(count : int)->void:
+	for i in range(count):
+		drawRandomCardToHand()
 	
 #this does too much for now will change later
 func createSaveResource()->GeneralSaveResource:
@@ -94,6 +98,9 @@ func emptyDeck()->bool:
 
 func addCardToDeck(toAdd : Card)->void:
 	$Cards.add_child(toAdd)
+
+func printCards()->void:
+	print($Cards.get_children())
 
 #it might be bad to do this checking performance wise, can smoothen later
 func generateCard(buildingScene:PackedScene)->Card:

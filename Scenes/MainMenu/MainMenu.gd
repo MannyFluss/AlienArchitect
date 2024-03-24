@@ -24,8 +24,8 @@ func _on_option_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	var loadMenu : LoadGameMenu = load("res://Scenes/MainMenu/LoadGameMenu/LoadGameMenu.tscn").instantiate()
-	get_tree().current_scene.add_child(loadMenu)
+	var loadMenu : LoadGameMenu = load("res://Scenes/MainMenu/LoadGameMenu/LoadGameMenu.tscn").instantiate() as LoadGameMenu
+	$Thing.add_child(loadMenu)
 	#SaveSystem.currentKey = chosenKey
 	#get_tree().change_scene_to_file("res://Scenes/GamePlayScene/main.tscn")
 	
@@ -34,7 +34,9 @@ func _on_play_button_pressed() -> void:
 func _on_collection_button_pressed() -> void:
 	var newSaveScene : DefaultSaveScene = load("res://Scenes/StarterScenes/SaveScene.tscn").instantiate() as DefaultSaveScene
 	$TempNode.add_child(newSaveScene)
+	
 	newSaveScene.createSaveData()
+	
 	newSaveScene.queue_free()
 	
 	
