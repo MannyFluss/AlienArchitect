@@ -12,12 +12,10 @@ func _on_button_pressed() -> void:
 
 
 func interpretSave(_save : GeneralSaveResource)->void:
-	
 	myDeck.createDeckFromSaveResource(_save)
-	pass
 
 func _ready() -> void:
-	super._ready()
+	#super._ready()
 	interpretSave(myCurrentSave)
 
 

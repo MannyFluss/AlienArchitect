@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GeneralSaveResource" load_steps=2 format=3 uid="uid://cffo3w7ucfkf5"]
+
+[ext_resource type="Script" path="res://Scripts/GeneralSaveResource.gd" id="1_8ucd3"]
+
+[resource]
+script = ExtResource("1_8ucd3")
+myCards = Array[Resource("res://Scripts/CardSaveResource.gd")]([])

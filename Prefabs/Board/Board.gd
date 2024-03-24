@@ -5,6 +5,8 @@ var tileInstance : PackedScene = preload("res://Prefabs/Tiles/Tile.tscn")
 
 signal buildingCreated(_building : Building, _tile : Tile)
 
+signal boardReady
+
 @export
 var distanceBetweenTiles := 2.0
 
@@ -12,7 +14,10 @@ var distanceBetweenTiles := 2.0
 var myTiles : Dictionary = {}
 
 func _ready()->void:
-	generateBoard([Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(1,1)])
+	
+	pass
+	emit_signal("boardReady")
+	#generateBoard([Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(1,1)])
 	
 func getBuilding(target : Vector2)->Building:
 	if myTiles.has(target):
@@ -22,7 +27,9 @@ func getBuilding(target : Vector2)->Building:
 
 func generateBoard(tiles : Array[Vector2])->void:
 	for coordinate : Vector2 in tiles:
-		addTile(coordinate)
+		#no tiles on top of eachother
+		if myTiles.has(coordinate)==false:
+			addTile(coordinate)
 
 func addTile(coordinate : Vector2)->void:
 	if (myTiles.has(coordinate)):
@@ -33,6 +40,19 @@ func addTile(coordinate : Vector2)->void:
 	$Tiles.add_child(newTile)
 	myTiles[coordinate] = newTile
 	
+func serializeModules()->Array[BoardModuleSaveResource]:
+	var toReturn : Array[BoardModuleSaveResource] = []
+	for module in $Modules.get_children():
+		if module is BoardModule:
+			toReturn.append(BoardModuleSaveResource.registerModule(module))
+	return toReturn
+	
+func regenerateModules(_res : Array[BoardModuleSaveResource])->void:
+
+	for module in _res:
+		var toAdd : BoardModule = BoardModuleSaveResource.regenerateModule(module)
+		
+		$Modules.add_child(toAdd)
 
 func canBuildingBePlaced(coordinate : Vector2)->bool:
 	if (myTiles.has(coordinate)==false):

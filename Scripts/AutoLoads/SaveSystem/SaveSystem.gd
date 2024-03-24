@@ -13,6 +13,7 @@ func writeSave(toSave : GeneralSaveResource, saveName : String )->void:
 		DirAccess.make_dir_absolute(SAVE_PATH_BASE)
 	ResourceSaver.save(toSave,getPathFromSaveName(saveName),ResourceSaver.FLAG_NONE)
 	print_debug("successfully saved file at " + getPathFromSaveName(saveName))
+	
 
 func loadSave(saveName:String)->GeneralSaveResource:
 	if ResourceLoader.exists(getPathFromSaveName(saveName)):

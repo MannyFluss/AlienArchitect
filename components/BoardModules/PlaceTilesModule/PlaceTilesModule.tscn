@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7t5715aptmil"]
+
+[ext_resource type="Script" path="res://components/BoardModules/PlaceTilesModule/PlaceTilesModule.gd" id="1_0rhuv"]
+
+[node name="PlaceTilesModule" type="Node3D"]
+script = ExtResource("1_0rhuv")
+myOptions = {
+"tiles": PackedVector2Array(0, 0, 1, 0, 0, 1, 1, 1)
+}
