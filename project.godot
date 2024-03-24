@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Alien Architect"
-run/main_scene="res://Scenes/GamePlayScene/main.tscn"
+run/main_scene="res://Scenes/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ CardUtility="*res://Scripts/AutoLoads/CardUtility/CardUtility.tscn"
 GameStateUtility="*res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tscn"
 SaveSystem="*res://Scripts/AutoLoads/SaveSystem/SaveSystem.tscn"
 CommandLine="*res://Scripts/AutoLoads/CommandLine/CommandLine.tscn"
+GlobalEventBus="*res://Scripts/AutoLoads/GlobalEventBus/GlobalEventBus.tscn"
 
 [debug]
 

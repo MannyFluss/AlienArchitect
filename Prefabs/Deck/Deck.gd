@@ -58,7 +58,13 @@ func createSaveResource()->GeneralSaveResource:
 			cardResourceArray.append(CardSaveResource.registerCard(child))
 	toReturn.registerCards(cardResourceArray)
 	return toReturn
-	
+
+func createCardSaveArray()->Array[CardSaveResource]:
+	var cardResourceArray : Array[CardSaveResource] = []
+	for child in $Cards.get_children():
+		if child is Card:
+			cardResourceArray.append(CardSaveResource.registerCard(child))
+	return cardResourceArray
 func saveDeck(saveName:String)->void:
 	SaveSystem.writeSave(createSaveResource(),saveName)
 
@@ -69,7 +75,13 @@ func createDeckFromSave(loadName:String)->void:
 	for card in save.myCards:
 		var newCard : Card = CardSaveResource.regenerateCard(card)
 		addCardToDeck(newCard)
-
+		
+func createDeckFromSaveResource(save:GeneralSaveResource)->void:
+	if save==null:return
+	for card in save.myCards:
+		var newCard : Card = CardSaveResource.regenerateCard(card)
+		addCardToDeck(newCard)
+		
 func generateDeckDebug()->void:
 	clearDeck()
 	

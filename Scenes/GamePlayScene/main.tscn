@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=7 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
+[ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_sifjh"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="3_wi52g"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck")]
+script = ExtResource("1_qlp48")
+myDeck = NodePath("Deck")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.962574, -0.237017, 0.131433, -0.0960498, 0.751817, 0.652339, -0.253429, 0.6153, -0.746445, 9.5351, 3.38961, 0)
@@ -32,9 +35,16 @@ myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" parent="." instance=ExtResource("5_blp7f")]
 
+[node name="Button" type="Button" parent="."]
+offset_left = 430.0
+offset_top = 1083.0
+offset_right = 646.0
+offset_bottom = 1148.0
+
 [connection signal="bluePrintCountSet" from="GameState" to="LevelUI" method="_on_game_state_blue_print_count_set"]
 [connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]
 [connection signal="quotaSet" from="GameState" to="LevelUI" method="_on_game_state_quota_set"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]

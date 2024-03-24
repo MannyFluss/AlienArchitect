@@ -1,5 +1,8 @@
 extends Node
 
+#I dont like this but it will do for now
+var currentKey : String = ""
+
 const SAVE_PATH_BASE := "user://DeckSaves/"
 
 func writeSave(toSave : GeneralSaveResource, saveName : String )->void:

@@ -70,9 +70,38 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.44
+color = Color(1, 1, 1, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play"
+
+[node name="CollectionButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Collection"
 
 [node name="BackGround" type="Node" parent="."]
 
@@ -111,4 +140,6 @@ transform = Transform3D(0.860742, 0.509041, 1.78736e-07, -0.498284, 0.842552, 0.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="BackGround/SubViewport/Node3D"]
 environment = SubResource("Environment_fftdn")
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="timeout" from="BackGround/SubViewport/Node3D/Animator/Timer" to="BackGround/SubViewport/Node3D/Animator" method="_on_timer_timeout"]

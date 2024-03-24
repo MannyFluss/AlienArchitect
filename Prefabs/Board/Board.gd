@@ -18,7 +18,6 @@ func getBuilding(target : Vector2)->Building:
 	if myTiles.has(target):
 		var targetTile : Tile = myTiles[target]
 		return targetTile.getBuilding()
-
 	return null
 
 func generateBoard(tiles : Array[Vector2])->void:
@@ -31,7 +30,7 @@ func addTile(coordinate : Vector2)->void:
 		return
 	var newTile : Tile = tileInstance.instantiate()
 	newTile.placeTile(coordinate,distanceBetweenTiles,self)
-	add_child(newTile)
+	$Tiles.add_child(newTile)
 	myTiles[coordinate] = newTile
 	
 

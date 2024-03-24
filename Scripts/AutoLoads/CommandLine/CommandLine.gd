@@ -4,6 +4,7 @@ var commands : Dictionary = {
 	"echo" : "test",
 	"drawCard" : "",
 	"clear" : ""
+	
 }
 
 
@@ -31,7 +32,7 @@ func parse_command(text: String) -> Array:
 	return results
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_released("open_console"):
 		visible = true
 		#on open
@@ -55,6 +56,12 @@ func submitCommand()->void:
 	if words.is_empty():return
 	clearCommandLine()
 	matchStringToFunction(words[0],words)
+	
+func submitRemoteCommand(input : String)->void:
+	var words : Array = parse_command(%CommandLine.text)
+	if words.is_empty():return
+	clearCommandLine()
+	matchStringToFunction(words[0],words)
 
 
 func outputMessage(message : String)->void:
@@ -72,6 +79,8 @@ func matchStringToFunction(commandName : String, parsedCommands : Array)->void:
 			loadDeck(parsedCommands)
 		"saveDeck":
 			saveDeck(parsedCommands)
+		"signal":
+			forceEmitSignal(parsedCommands)
 		_: 
 			outputMessage(commandName +" command is not implemented yet")
 			
@@ -115,9 +124,20 @@ func findFirstNodeOfType(root: Node, type : String ) -> Node:
 		var found: = findFirstNodeOfType(child, type)
 		if found:
 			return found
-			
-	
 	return null
+
+func forceEmitSignal(parsedCommands : Array)->void:
+	
+	if parsedCommands.size()<2:
+		outputMessage("signal command requires signal name as second argument")
+		return
+	var _signal : String = parsedCommands[1]
+	if GlobalEventBus.has_signal(_signal):
+		GlobalEventBus.emit_signal(_signal)
+		outputMessage("emitting " + _signal)
+	else:
+		outputMessage(_signal + " signal does not exist")
+
 
 func echoCommand(parsedCommands : Array)->void:
 	var constructMessage : String = ""

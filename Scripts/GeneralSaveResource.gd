@@ -10,3 +10,6 @@ var myCards : Array[CardSaveResource]=[]
 func registerCards(_cards : Array[CardSaveResource])->void:
 	myCards = _cards.duplicate(true)
 	
+func printCards()->void:
+	for card : CardSaveResource in myCards:
+		print(card)
