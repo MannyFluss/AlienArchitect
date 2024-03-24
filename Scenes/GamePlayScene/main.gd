@@ -13,7 +13,6 @@ func _on_button_pressed() -> void:
 	
 func _ready() -> void:
 	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
-	pass
 	
 func _enter_tree() -> void:
 	super._enter_tree()
