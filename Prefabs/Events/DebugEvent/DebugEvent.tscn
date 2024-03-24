@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://31wnbs6c3dre"]
+
+[ext_resource type="PackedScene" uid="uid://dbql2vqd8t4us" path="res://Prefabs/BaseEvent/Event.tscn" id="1_syxoj"]
+[ext_resource type="Script" path="res://Prefabs/Events/DebugEvent/DebugEvent.gd" id="2_hmm85"]
+
+[node name="Event1" instance=ExtResource("1_syxoj")]
+script = ExtResource("2_hmm85")
+
+[node name="ConfirmEvent" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "end event"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/ConfirmEvent" to="." method="_on_confirm_event_pressed"]

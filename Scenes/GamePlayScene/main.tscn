@@ -12,6 +12,7 @@
 script = ExtResource("5_vegi4")
 BluePrintCount = 5
 startingDrawCardCount = 3
+roundCount = 1
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard", "myGameState")]
 script = ExtResource("1_qlp48")

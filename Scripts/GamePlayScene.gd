@@ -14,17 +14,16 @@ func _enter_tree() -> void:
 	if currentSave == null:
 		push_error("save key"+ SaveSystem.currentKey +"failed to load.")
 	setSaveData(currentSave)
-	
-	#myCurrentSave.printCards()
-	# print("my modules in new scene")
-	# print(myCurrentSave.myBoardModules)
+
 	
 	
 
+func writeChanges()->void:
+	SaveSystem.writeSave(myCurrentSave,SaveSystem.currentKey)
 
 #target scene, save beforeHand
 func goToNextScene(filePath : StringName)->void:
-	# print("my modulues")
-	# print(myCurrentSave.myBoardModules)
-	SaveSystem.writeSave(myCurrentSave,SaveSystem.currentKey)
+
+	#change this later
+	writeChanges()
 	get_tree().change_scene_to_file(filePath)
