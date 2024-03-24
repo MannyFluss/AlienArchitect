@@ -5,7 +5,7 @@ class_name GenericGameScene
 
 var myCurrentSave : GeneralSaveResource
 
-func interpretSaveData(_saveData : GeneralSaveResource)->void:
+func setSaveData(_saveData : GeneralSaveResource)->void:
 	myCurrentSave = _saveData
 	
 func _enter_tree() -> void:
@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 	
 	if currentSave == null:
 		push_error("save key"+ SaveSystem.currentKey +"failed to load.")
-	interpretSaveData(currentSave)
+	setSaveData(currentSave)
 	
 	#myCurrentSave.printCards()
 	# print("my modules in new scene")

@@ -10,9 +10,10 @@ signal quotaSet(amount:int)
 signal newMunicipalityScore(amount:int)
 signal bluePrintCountSet(amount:int)
 
-
 @export
-var bluePrintCount:int = 10
+var myGameStateResource : GameStateResource
+
+var bluePrintCount:int = 0
 @export
 var quota:int=0
 
@@ -22,8 +23,11 @@ var levelCompleteFlag := false
 
 func _enter_tree() -> void:
 	add_to_group("GameState")
+	
 
 func _ready() -> void:
+	bluePrintCount = myGameStateResource.BluePrintCount
+	
 	GameStateUtility.connect("generatedScore",onGeneratedScore)
 	connect("cardPlayed",onCardPlayed)
 

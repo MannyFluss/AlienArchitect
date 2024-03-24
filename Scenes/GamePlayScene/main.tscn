@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=9 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
 [ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_sifjh"]
-[ext_resource type="Script" path="res://Scripts/GameState.gd" id="3_wi52g"]
+[ext_resource type="Script" path="res://Scripts/GameState/GameState.gd" id="3_wi52g"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
+[ext_resource type="Script" path="res://Scripts/GameState/GameStateResource.gd" id="5_vegi4"]
+
+[sub_resource type="Resource" id="Resource_yftu7"]
+script = ExtResource("5_vegi4")
+BluePrintCount = 5
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard")]
 script = ExtResource("1_qlp48")
@@ -29,6 +34,7 @@ rotation_angle = -1.0
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("3_wi52g")
+myGameStateResource = SubResource("Resource_yftu7")
 
 [node name="Deck" parent="." node_paths=PackedStringArray("myHand") instance=ExtResource("4_i8gmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3255, 24.6964, 82.0176)

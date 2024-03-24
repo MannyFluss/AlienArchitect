@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://s88db567yn8m"]
+
+[ext_resource type="PackedScene" uid="uid://dxhmnt6o3jvqy" path="res://Scenes/GamePlayScene/main.tscn" id="1_qxpfq"]
+[ext_resource type="Script" path="res://Scenes/StarterScenes/SaveScene.gd" id="2_qj2fg"]
+[ext_resource type="PackedScene" uid="uid://7t5715aptmil" path="res://components/BoardModules/PlaceTilesModule/PlaceTilesModule.tscn" id="3_pi4rx"]
+[ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="4_vrxx7"]
+[ext_resource type="PackedScene" uid="uid://b5ryssnm0tx6m" path="res://Prefabs/Buildings/DestroyerBuilding/DestroyerBuilding.tscn" id="5_oqcay"]
+
+[node name="SaveScene" node_paths=PackedStringArray("myGameState") instance=ExtResource("1_qxpfq")]
+script = ExtResource("2_qj2fg")
+myGameState = NodePath("GameState")
+
+[node name="PlaceTilesModule" parent="Board" index="2" instance=ExtResource("3_pi4rx")]
+
+[node name="DefaultBuilding" parent="Deck" index="1" instance=ExtResource("4_vrxx7")]
+
+[node name="DefaultBuilding2" parent="Deck" index="2" instance=ExtResource("4_vrxx7")]
+
+[node name="DefaultBuilding3" parent="Deck" index="3" instance=ExtResource("4_vrxx7")]
+
+[node name="AbstractBuilding" parent="Deck" index="4" instance=ExtResource("5_oqcay")]
+
+[node name="AbstractBuilding2" parent="Deck" index="5" instance=ExtResource("5_oqcay")]
+
+[editable path="PlayerController"]
+[editable path="PlayerController/PlayerHand"]
