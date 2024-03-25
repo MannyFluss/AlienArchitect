@@ -7,6 +7,8 @@ var myDeck : Deck
 var myBoard : Board
 @export 
 var myGameState : GameState
+@export
+var myPlayerController : PlayerController
 
 func _on_button_pressed() -> void:
 	endRound()
@@ -25,8 +27,13 @@ func setupEvent()->void:
 	var newEvent : Event = Event.getRandomEvent(self)
 	newEvent.registerScene(self)
 	add_child(newEvent)
+	myPlayerController.disableInteraction()
 	await newEvent.tree_exited
-	print("event over")
+	endEvent()
+	
+func endEvent()->void:
+	myPlayerController.enableInteraction()
+	
 	
 func _enter_tree() -> void:
 	super._enter_tree()

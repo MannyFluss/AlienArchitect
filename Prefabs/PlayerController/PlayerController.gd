@@ -1,20 +1,34 @@
 extends Node3D
+class_name PlayerController
 #this is going to be a bit dirty of a script but thats ok maybe clean up later
 enum InteractionState  {
-	NONE,
+	ACTIVE,
 	CARDHELD,
+	DISABLED,
 }
+
+
+
 
 @onready
 var distanceHeldFromCamera :float=25
 
-var myState : InteractionState = InteractionState.NONE
+var myState : InteractionState = InteractionState.ACTIVE
 
 @export
 var gameState : GameState
 
 @onready
 var myHand : PlayerHand = $PlayerHand as PlayerHand
+
+
+
+
+func disableInteraction()->void:
+	myState = InteractionState.DISABLED
+	
+func enableInteraction()->void:
+	myState = InteractionState.ACTIVE
 
 func _ready() -> void:
 	if gameState==null:push_error("gameState not configured. Will cause issues.")
@@ -52,7 +66,7 @@ func attemptToPlaceCard(mouseLocation: Vector2)->void:
 
 func _on_input_component_input_pressed(location: Vector2) -> void:
 	var intersection := getSelectorCastFromScreen(location)
-	if myState == InteractionState.NONE and intersection:
+	if myState == InteractionState.ACTIVE and intersection:
 		var pickedCard : Card = intersection["collider"]  as Card
 		if pickedCard is Card:
 			selectCard(pickedCard)

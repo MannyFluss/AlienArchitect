@@ -14,11 +14,12 @@ BluePrintCount = 5
 startingDrawCardCount = 3
 roundCount = 1
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard", "myGameState")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard", "myGameState", "myPlayerController")]
 script = ExtResource("1_qlp48")
 myDeck = NodePath("Deck")
 myBoard = NodePath("Board")
 myGameState = NodePath("GameState")
+myPlayerController = NodePath("PlayerController")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.962574, -0.237017, 0.131433, -0.0960498, 0.751817, 0.652339, -0.253429, 0.6153, -0.746445, 9.5351, 3.38961, 0)

@@ -6,6 +6,8 @@ var myParentBoard : Board
 
 var myCoordinates : Vector2
 
+func _ready() -> void:
+	add_to_group("tiles")
 
 func placeTile(location : Vector2, offset := 2.0, _board : Board=null)->void:
 	

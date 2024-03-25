@@ -10,4 +10,3 @@ script = ExtResource("1_a37x2")
 script = ExtResource("1_e2gib")
 spacing = Vector3(10, 0, 0)
 center_align = true
-rotation_angle = -16.905

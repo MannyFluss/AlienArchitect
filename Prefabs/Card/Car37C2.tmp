@@ -15,11 +15,10 @@ viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewp
 [sub_resource type="ViewportTexture" id="ViewportTexture_6k4ni"]
 viewport_path = NodePath("cardArtRendering")
 
-[node name="Card" type="Area3D" node_paths=PackedStringArray("myArtCamera", "my3DSprite")]
+[node name="Card" type="Area3D" node_paths=PackedStringArray("myArtCamera")]
 script = ExtResource("1_20rij")
 myBuildingScene = ExtResource("2_qxxl1")
 myArtCamera = NodePath("cardArtRendering/CardArtScene/Node3D/ArtCamera")
-my3DSprite = NodePath("CardRender")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_n37pt")

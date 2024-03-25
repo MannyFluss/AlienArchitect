@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwoive5hk3m53"]
+
+[ext_resource type="Script" path="res://components/CardModules/CardAnimation/CardAnimation.gd" id="1_bjbva"]
+
+[node name="CardAnimation" type="Node3D"]
+script = ExtResource("1_bjbva")

@@ -14,8 +14,13 @@ var myStatus : cardStatus = cardStatus.UNKNOWN
 #this contains all of the information we need to create this card dynamically
 @export
 var myBuildingScene : PackedScene
+@export
+var myArtCamera : Camera3D
+@export
+var my3DSprite : Sprite3D
 
 var myBuildingInformation : BuildingResource
+
 
 #goes off right before building is placed
 signal preBuildingPlaced(newBuilding : Building)
@@ -23,12 +28,8 @@ signal preBuildingPlaced(newBuilding : Building)
 signal postBuildingPlaced(newBuilding : Building)
 
 func _ready() -> void:
-	
-	
-	
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	$cardArtRendering.own_world_3d = true
-	
 	
 	if myBuildingInstance is Building:
 		setCardGraphics(myBuildingInstance.myResource)
@@ -36,14 +37,11 @@ func _ready() -> void:
 		myBuildingInstance.queue_free()
 	else:
 		assert(false,"myBuildingScene is not set properly.")
-	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect.color = Color(randf(),randf(),randf())
-	#$CanvasLayer/CardGraphics/SubViewportContainer/SubViewport/Control/ColorRect/ColorRect.color = Color(randf(),randf(),randf())
 
 
 func setCardGraphics(res : BuildingResource)->void:
 	%CostLabel.text = "[center]"+str(res.bluePrintCost)
 	%DescriptorLabel.text = "[center]"+res.description
-	#%ArtTexture to be implemented
 	%TitleLabel.text = "[center]"+res.name
 	#if this crashes here, buildingResource needs to be assigned a model
 	var modelDuplicate : Node3D = res.Model.duplicate().instantiate() as Node3D
@@ -71,22 +69,21 @@ func playCard(_tile : Tile, _gameState : GameState)->void:
 	
 	emit_signal("postBuildingPlaced",myBuildingInstance)
 	
-	
-	
-	pass
+
+
 
 func highlight()->void:
 	var myTween : Tween = get_tree().create_tween()
 	myTween.set_parallel()
 	myTween.tween_property(self,"scale",Vector3(1.2,1.2,1.2),.05).set_ease(Tween.EASE_IN)
-	#myTween.tween_property(self,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property($CardRender,"rotation_degrees",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
 	
 
 func unhighlight()->void:
 	var myTween : Tween = get_tree().create_tween()
 	myTween.set_parallel()
 	myTween.tween_property(self,"scale",Vector3(1.0,1.0,1.0),.05).set_ease(Tween.EASE_OUT)
-	#myTween.tween_property(self,"rotation",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property($CardRender,"rotation_degrees",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
 
 
 func SelectCard(selectorNode : Node3D)->void:
@@ -94,6 +91,8 @@ func SelectCard(selectorNode : Node3D)->void:
 	position = Vector3.ZERO
 	unhighlight()
 	myStatus = cardStatus.CURRENTLY_SELECTED
+	
+
 
 
 #this is moving the card
