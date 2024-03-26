@@ -42,4 +42,14 @@ func checkSignalSafety(signalName : StringName)->bool:
 		push_warning("board does not have " +signalName+" as a signal... aborting")
 		return false
 	return true
-		
+	
+
+
+func _on_mouse_entered() -> void:
+	pass
+
+
+
+func _on_mouse_exited() -> void:
+	pass
+	

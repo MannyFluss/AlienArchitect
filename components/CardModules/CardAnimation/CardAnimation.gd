@@ -8,11 +8,15 @@ var swayFactor : int = 10
 var cardSwayFactor : int = 20
 var lastPosition2D : Vector2 = Vector2(0,0)
 
+
+
 func _physics_process(delta: float) -> void:
 	if myCard.myStatus == myCard.cardStatus.CURRENTLY_SELECTED:
 		shrinkingAnimation()
 		artCameraLean()
 		lastPosition2D = unprojectPosition(self)
+		
+		
 
 
 func artCameraLean()->void:
@@ -26,13 +30,16 @@ func artCameraLean()->void:
 		Vector3(cardVelocity.y,cardVelocity.x,0),.05)
 	#myCard.my3DSprite.rotation_degrees = Vector3(90,90,0) 
 	
-
+#this will also modulate the color
 func shrinkingAnimation()->void:
 	var closestTile : Tile = getClosestTile(get_tree().get_nodes_in_group("tiles"))
 	var distanceToClosestTile : float = unprojectPosition(closestTile).distance_to(unprojectPosition(self))
 	var remapTarget : float = remap(distanceToClosestTile,0.1,animationDistanceThreshold+.1 ,0,1)
-	remapTarget = clampf(remapTarget,0.0,1.0)
-	myCard.scale = lerp(myCard.scale,Vector3(remapTarget,remapTarget,1),.9)
+	remapTarget = clampf(remapTarget,0.3,1.0)
+	myCard.scale = lerp(myCard.scale,Vector3(remapTarget,remapTarget,1),.1)
+	
+	myCard.my3DSprite.modulate.a = lerpf(myCard.my3DSprite.modulate.a,remapTarget,.1)
+	
 
 
 func getClosestTile(tiles : Array[Node])->Tile:

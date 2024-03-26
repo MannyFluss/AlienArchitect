@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dicb2nb1jcns3"]
+
+[ext_resource type="Script" path="res://components/CardModules/CardPlaceMentPreview/CardPlacementPreview.gd" id="1_1iyri"]
+
+[node name="CardPlacementPreview" type="Node3D"]
+script = ExtResource("1_1iyri")

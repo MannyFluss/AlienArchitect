@@ -21,7 +21,7 @@ var gameState : GameState
 @onready
 var myHand : PlayerHand = $PlayerHand as PlayerHand
 
-
+var currentTile : Tile = null
 
 
 func disableInteraction()->void:
@@ -33,6 +33,9 @@ func enableInteraction()->void:
 func _ready() -> void:
 	if gameState==null:push_error("gameState not configured. Will cause issues.")
 #shoots ray from camera to select first thing, basically mouse pick.
+
+
+
 
 func getSelectorCastFromScreen(location : Vector2,ignoreList:Array[RID]=[])->Dictionary:
 	var space_state : PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
@@ -61,18 +64,22 @@ func attemptToPlaceCard(mouseLocation: Vector2)->void:
 		else:
 			deselectCard()
 
-
-
-
 func _on_input_component_input_pressed(location: Vector2) -> void:
 	var intersection := getSelectorCastFromScreen(location)
 	if myState == InteractionState.ACTIVE and intersection:
 		var pickedCard : Card = intersection["collider"]  as Card
 		if pickedCard is Card:
 			selectCard(pickedCard)
+	
+	#for tile highlighted tracking
+	#clearCurrentHeldTile()
 
 func _on_input_component_input_released(location: Vector2, timeHeld: float) -> void:
 	attemptToPlaceCard(location)
+	#for tile highlighted tracking
+	
+	#clearCurrentHeldTile()
+	
 
 func selectCard(card : Card)->void:
 	if not cardSelected():card.SelectCard(%SelectedCard)
@@ -93,8 +100,39 @@ func cardPlayed()->void:
 func getSelectedCard()->Card:
 	return %SelectedCard.get_child(0)
 
+
+
 func _on_input_component_input_held(location: Vector2, delta: float) -> void:
 	var rayOrigin : Vector3 = $IsometricCamera.project_ray_origin(location)
 	var rayEnd : Vector3 = rayOrigin + $IsometricCamera.project_ray_normal(location) * distanceHeldFromCamera
 	%SelectedCard.global_position = rayEnd
-	pass # Replace with function body.
+	updateTile(location)
+	#force update raycast here
+	
+	
+#check the ray stuff
+func updateTile(location:Vector2)->void:
+	if cardSelected():
+		var intersects : Dictionary = getSelectorCastFromScreen(location,[getSelectedCard()])
+		#print(intersects)
+		var targetTile : Tile
+		if intersects.has("collider"): 
+			targetTile=intersects["collider"] as Tile
+
+	
+		if targetTile != currentTile:
+			if currentTile != null:
+				#print("unhighlighted "+ str(currentTile))
+				GlobalEventBus.emit_signal("tileUnhighlighted",currentTile)
+			if targetTile != null:
+				GlobalEventBus.emit_signal("tileHighlighted",currentTile)
+				#print("highlighted  "+ str(targetTile))
+				
+		currentTile = targetTile
+			
+		
+func clearCurrentHeldTile()->void:
+	if currentTile != null:
+		GlobalEventBus.emit_signal("tileUnhighlighted",currentTile)
+	currentTile = null
+	

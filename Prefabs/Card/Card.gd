@@ -35,6 +35,8 @@ func _ready() -> void:
 		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
 		myBuildingInstance.queue_free()
+		#in here we can also set the card preview animations
+		
 	else:
 		assert(false,"myBuildingScene is not set properly.")
 
@@ -53,6 +55,7 @@ func destroy()->void:
 	myStatus = cardStatus.DELETING
 	queue_free()
 
+#this will need to be changed
 func ableToBePlayed(_tile : Tile, _gameState : GameState)->bool:
 	if _tile.hasBuilding()==true: return false
 	if GameState!=null:
@@ -84,6 +87,7 @@ func unhighlight()->void:
 	myTween.set_parallel()
 	myTween.tween_property(self,"scale",Vector3(1.0,1.0,1.0),.05).set_ease(Tween.EASE_OUT)
 	myTween.tween_property($CardRender,"rotation_degrees",Vector3.ZERO,.05).set_ease(Tween.EASE_IN)
+	myTween.tween_property($CardRender,"modulate",Color.WHITE,.05)
 
 
 func SelectCard(selectorNode : Node3D)->void:
