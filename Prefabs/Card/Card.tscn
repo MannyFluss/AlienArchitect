@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5yxhsujeibu3"]
+[gd_scene load_steps=9 format=3 uid="uid://b5yxhsujeibu3"]
 
 [ext_resource type="Script" path="res://Prefabs/Card/Card.gd" id="1_20rij"]
 [ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_qxxl1"]
 [ext_resource type="Theme" uid="uid://bkq2pnxp0ut4o" path="res://Prefabs/Card/CardTheme.tres" id="3_5dngo"]
 [ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="4_yuo5t"]
 [ext_resource type="PackedScene" uid="uid://cwoive5hk3m53" path="res://components/CardModules/CardAnimation/CardAnimation.tscn" id="5_0deh8"]
-[ext_resource type="PackedScene" uid="uid://dicb2nb1jcns3" path="res://components/CardModules/CardPlaceMentPreview/CardPlacementPreview.tscn" id="6_c8gjy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n37pt"]
 size = Vector3(6, 12, 1)
@@ -16,11 +15,12 @@ viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewp
 [sub_resource type="ViewportTexture" id="ViewportTexture_6k4ni"]
 viewport_path = NodePath("cardArtRendering")
 
-[node name="Card" type="Area3D" node_paths=PackedStringArray("myArtCamera", "my3DSprite")]
+[node name="Card" type="Area3D" node_paths=PackedStringArray("myArtCamera", "my3DSprite", "moduleContainer")]
 script = ExtResource("1_20rij")
 myBuildingScene = ExtResource("2_qxxl1")
 myArtCamera = NodePath("cardArtRendering/CardArtScene/Node3D/ArtCamera")
 my3DSprite = NodePath("CardRender")
+moduleContainer = NodePath("Modules")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_n37pt")
@@ -231,8 +231,6 @@ transform = Transform3D(-0.531085, -0.795375, -0.292108, 0.486616, -0.568528, 0.
 [node name="Modules" type="Node3D" parent="."]
 
 [node name="CardAnimation" parent="Modules" instance=ExtResource("5_0deh8")]
-
-[node name="CardPlacementPreview" parent="Modules" instance=ExtResource("6_c8gjy")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

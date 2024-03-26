@@ -7,6 +7,9 @@ var myName :String = ""
 @export
 var myOptions : Dictionary = {}
 
+@export
+var autoRegister:bool = true
+
 var myCard : Card
 
 
@@ -17,7 +20,7 @@ func registerCard(_myCard : Card, opts:Dictionary={})->void:
 			myOptions[key] = opts[key]
 	
 func _enter_tree() -> void:
-	if myCard == null:
+	if myCard == null and autoRegister:
 		#automatically search for building
 		var currNode : Node = get_parent()
 		while currNode != get_tree().current_scene:

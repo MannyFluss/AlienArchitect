@@ -21,6 +21,8 @@ var my3DSprite : Sprite3D
 
 var myBuildingInformation : BuildingResource
 
+@export
+var moduleContainer : Node3D
 
 #goes off right before building is placed
 signal preBuildingPlaced(newBuilding : Building)
@@ -34,7 +36,11 @@ func _ready() -> void:
 	if myBuildingInstance is Building:
 		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
+		#error because it doesnt actually exist
+		myBuildingInstance.attatchPreviewModulesToCard(self)
+		
 		myBuildingInstance.queue_free()
+		
 		#in here we can also set the card preview animations
 		
 	else:
