@@ -126,7 +126,7 @@ func updateTile(location:Vector2)->void:
 				#print("unhighlighted "+ str(currentTile))
 				GlobalEventBus.emit_signal("tileUnhighlighted",currentTile)
 			if targetTile != null:
-				GlobalEventBus.emit_signal("tileHighlighted",currentTile)
+				GlobalEventBus.emit_signal("tileHighlighted",targetTile)
 				#print("highlighted  "+ str(targetTile))
 				
 		currentTile = targetTile
