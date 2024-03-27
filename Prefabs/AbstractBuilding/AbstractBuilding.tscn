@@ -8,6 +8,7 @@ script = ExtResource("2_tm6hc")
 name = "default name"
 description = "default description"
 bluePrintCost = 0
+myCardModules = Array[Resource("res://Scripts/CardModuleResource.gd")]([])
 
 [node name="AbstractBuilding" type="Node3D"]
 script = ExtResource("1_q0j8q")

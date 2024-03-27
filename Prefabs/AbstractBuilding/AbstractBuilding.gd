@@ -72,10 +72,7 @@ func loadModule(module : BuildingModuleResource)->void:
 	newModule.registerBuilding(self,options)
 	$Modules.add_child(newModule)
 	
-func attatchPreviewModulesToCard(card : Card)->void:
-	for module: CardModule in $CardPreviewModules.get_children():
-		module.reparent(card.moduleContainer,false)
-		module.registerCard(card)
+
 		
 		
 	

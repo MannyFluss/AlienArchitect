@@ -16,3 +16,6 @@ var Model : PackedScene
 
 @export
 var myModules : BuildingModuleContainer
+
+@export
+var myCardModules : Array[CardModuleResource]

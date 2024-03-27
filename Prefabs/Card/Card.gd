@@ -37,8 +37,9 @@ func _ready() -> void:
 		setCardGraphics(myBuildingInstance.myResource)
 		myBuildingInformation = myBuildingInstance.myResource.duplicate(true)
 		#error because it doesnt actually exist
-		myBuildingInstance.attatchPreviewModulesToCard(self)
-		
+		for module : CardModuleResource in myBuildingInformation.myCardModules:
+			var newMod : CardModule = CardModuleResource.regenerateCard(module)
+			$Modules.add_child(newMod)
 		myBuildingInstance.queue_free()
 		
 		#in here we can also set the card preview animations

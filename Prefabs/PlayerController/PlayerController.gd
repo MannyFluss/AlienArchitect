@@ -76,6 +76,7 @@ func _on_input_component_input_pressed(location: Vector2) -> void:
 
 func _on_input_component_input_released(location: Vector2, timeHeld: float) -> void:
 	attemptToPlaceCard(location)
+	clearCurrentHeldTile()
 	#for tile highlighted tracking
 	
 	#clearCurrentHeldTile()
