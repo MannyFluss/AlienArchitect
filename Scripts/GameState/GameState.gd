@@ -26,6 +26,8 @@ func _enter_tree() -> void:
 	
 
 func _ready() -> void:
+	add_to_group("gamestate")
+	
 	bluePrintCount = myGameStateResource.BluePrintCount
 	
 	GameStateUtility.connect("generatedScore",onGeneratedScore)

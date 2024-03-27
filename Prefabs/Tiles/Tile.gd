@@ -43,6 +43,16 @@ func checkSignalSafety(signalName : StringName)->bool:
 		return false
 	return true
 	
+func getAdjacentTiles(tiles : Array[Vector2])->Array[Tile]:
+	var toReturn : Array[Tile] = []
+	
+	
+	for coord in tiles:
+		var newTile : Tile = myParentBoard.getTile(myCoordinates+coord)
+		if newTile:
+			toReturn.append(newTile)
+			
+	return toReturn
 
 
 func _on_mouse_entered() -> void:

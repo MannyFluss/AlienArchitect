@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="BuildingResource" load_steps=3 format=3 uid="uid://2hw20cj0scct"]
+[gd_resource type="Resource" script_class="BuildingResource" load_steps=7 format=3 uid="uid://2hw20cj0scct"]
 
 [ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="1_chgi5"]
 [ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="1_pp6u7"]
+[ext_resource type="Script" path="res://Scripts/CardModuleResource.gd" id="2_g1101"]
+[ext_resource type="Resource" uid="uid://bqj30frxwu0nc" path="res://components/CardModules/AdjacentPlaceMentPreview/AdjacentDataDefault.tres" id="2_ot5km"]
+
+[sub_resource type="Resource" id="Resource_ynmpt"]
+script = ExtResource("2_g1101")
+moduleName = "Default"
+modulePath = "res://components/CardModules/AdjacentPlaceMentPreview/AdjacentPlacementPreview.tscn"
+options = {
+"data": ExtResource("2_ot5km")
+}
+
+[sub_resource type="Resource" id="Resource_6c1q5"]
+script = ExtResource("2_g1101")
+moduleName = "Default"
+modulePath = "res://components/CardModules/CardPlaceMentPreview/CardPlacementPreview.tscn"
+options = {}
 
 [resource]
 script = ExtResource("1_pp6u7")
@@ -9,3 +25,4 @@ name = "DestroyerBuilding"
 description = "Destroys adjacent buildings gain +1 point for each one destroyed"
 bluePrintCost = 2
 Model = ExtResource("1_chgi5")
+myCardModules = Array[ExtResource("2_g1101")]([SubResource("Resource_ynmpt"), SubResource("Resource_6c1q5")])

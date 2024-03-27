@@ -25,6 +25,11 @@ func getBuilding(target : Vector2)->Building:
 		return targetTile.getBuilding()
 	return null
 
+func getTile(target: Vector2)->Tile:
+	if myTiles.has(target):
+		return myTiles[target]
+	return null
+
 func generateBoard(tiles : Array[Vector2])->void:
 	for coordinate : Vector2 in tiles:
 		#no tiles on top of eachother

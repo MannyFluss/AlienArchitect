@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ccox7l8f1wj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmd3t"]
+transparency = 1
+albedo_color = Color(1, 0, 0.258824, 0.592157)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6px17"]
+material = SubResource("StandardMaterial3D_vmd3t")
+size = Vector3(2.7, 4.545, 2.7)
+
+[node name="WarningBlock" type="Node3D"]
+
+[node name="Tile" parent="." instance_placeholder="res://Prefabs/Tiles/Tile.tscn"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3653, 0)
+mesh = SubResource("BoxMesh_6px17")

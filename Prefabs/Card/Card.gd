@@ -63,9 +63,11 @@ func destroy()->void:
 	queue_free()
 
 #this will need to be changed
+#this is kinda bad whatever
 func ableToBePlayed(_tile : Tile, _gameState : GameState)->bool:
 	if _tile.hasBuilding()==true: return false
-	if GameState!=null:
+	_gameState = get_tree().get_first_node_in_group("gamestate")
+	if _gameState!=null:
 		return _gameState.checkCardPlayability(myBuildingInformation)
 	#add game state stuff here, basically take away money
 	return true
