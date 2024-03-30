@@ -115,7 +115,6 @@ func _on_input_component_input_held(location: Vector2, delta: float) -> void:
 func updateTile(location:Vector2)->void:
 	if cardSelected():
 		var intersects : Dictionary = getSelectorCastFromScreen(location,[getSelectedCard()])
-		#print(intersects)
 		var targetTile : Tile
 		if intersects.has("collider"): 
 			targetTile=intersects["collider"] as Tile

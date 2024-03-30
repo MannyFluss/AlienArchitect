@@ -22,10 +22,7 @@ func _ready() -> void:
 
 func onTileHighlighted(tile : Tile)->void:
 	if myCard.myStatus == myCard.cardStatus.CURRENTLY_SELECTED:
-		#var previewObject : Node3D = myCard.myBuildingInformation.Model
-		
 		var adjacentTiles : Array[Tile] = tile.getAdjacentTiles(myData.tiles)
-		print(adjacentTiles)
 		for target in adjacentTiles:
 			if myCard.ableToBePlayed(tile,null):
 				call_thread_safe("previewModel",target)

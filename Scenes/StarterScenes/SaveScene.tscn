@@ -10,6 +10,9 @@ script = ExtResource("4_76pf6")
 BluePrintCount = 5
 startingDrawCardCount = 7
 roundCount = 1
+currencyCount = 1
+tagShopCount = 3
+cardShopCount = 3
 
 [node name="SaveScene" instance=ExtResource("1_qxpfq")]
 script = ExtResource("2_qj2fg")

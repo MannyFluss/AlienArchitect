@@ -21,7 +21,13 @@ func _ready() -> void:
 	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
 	
 	setupEvent()
+	GlobalEventBus.connect("levelCompleted",onLevelCompleted)
 
+
+func onLevelCompleted()->void:
+	var endScreenLevel : EndScreen = load("res://Prefabs/EndScreen/EndScreen.tscn").instantiate() as EndScreen
+	endScreenLevel.registerScene(self)
+	add_child(endScreenLevel)
 
 func setupEvent()->void:
 	var newEvent : Event = Event.getRandomEvent(self)
@@ -30,6 +36,8 @@ func setupEvent()->void:
 	myPlayerController.disableInteraction()
 	await newEvent.tree_exited
 	endEvent()
+	
+
 	
 func endEvent()->void:
 	myPlayerController.enableInteraction()

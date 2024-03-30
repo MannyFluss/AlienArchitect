@@ -16,7 +16,14 @@ func _enter_tree() -> void:
 	setSaveData(currentSave)
 
 	
-	
+func gainCurrency(amount : int)->void:
+	myCurrentSave.myGameStateResource.currencyCount += amount
+
+func getCurrency()->int:
+	return myCurrentSave.myGameStateResource.currencyCount
+
+
+
 
 func writeChanges()->void:
 	SaveSystem.writeSave(myCurrentSave,SaveSystem.currentKey)

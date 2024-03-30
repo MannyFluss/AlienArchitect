@@ -12,7 +12,6 @@ func registerScene(_myScene : GamePlayScene)->void:
 #not working idk just doing it manually rn
 func _enter_tree() -> void:
 	if myScene == null:
-		#automatically search for building
 		var currNode : Node = get_parent()
 		while currNode != get_tree().current_scene:
 			if myScene is GamePlayScene:

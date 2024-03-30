@@ -47,7 +47,7 @@ func increaseScore(amount:int)->void:
 	emit_signal("newMunicipalityScore",currentMunicipalityScore)
 	if currentMunicipalityScore >= quota && levelCompleteFlag==false:
 		levelCompleteFlag=true
-		emit_signal("levelCompleted")
+		GlobalEventBus.emit_signal("levelCompleted")
 
 func checkCardPlayability(cardInformation:BuildingResource)->bool:
 	if cardInformation.bluePrintCost <= bluePrintCount: return true
