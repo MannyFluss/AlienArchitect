@@ -63,3 +63,22 @@ submit_console={
 [rendering]
 
 renderer/rendering_method="mobile"
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.0
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.0
+}
+outline_width={
+"type": "float",
+"value": 0.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
