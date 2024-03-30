@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://db4ixfwkkgpo5"]
+
+[ext_resource type="Shader" path="res://external/CelShader/src/outline.gdshader" id="1_dr57o"]
+[ext_resource type="Shader" path="res://external/CelShader/src/cel-shader-base.gdshader" id="1_sbaj4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r83wd"]
+render_priority = 0
+shader = ExtResource("1_dr57o")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1a38o"]
+frequency = 0.1107
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t4t6w"]
+noise = SubResource("FastNoiseLite_1a38o")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_r83wd")
+shader = ExtResource("1_sbaj4")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = SubResource("NoiseTexture2D_t4t6w")
+shader_parameter/color = Color(0.196078, 0.403922, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

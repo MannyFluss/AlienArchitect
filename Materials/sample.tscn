@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cncuvg16xbdl5"]
+
+[ext_resource type="Material" uid="uid://db4ixfwkkgpo5" path="res://Materials/testShaderMaterial/ShaderMat.tres" id="1_4onq0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nd2gv"]
+material = ExtResource("1_4onq0")
+
+[node name="Sample" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976739, 0.462572, 0)
+mesh = SubResource("BoxMesh_nd2gv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.859335, 0, 0.511413, 0, 1, 0, -0.511413, 0, 0.859335, 1.70758, 1.82272, 1.95624)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.61781, 0.509859, -0.598627, -0.758166, -0.184329, 0.625465, 0.208555, 0.840278, 0.500438, 0, 1.59302, 0)
