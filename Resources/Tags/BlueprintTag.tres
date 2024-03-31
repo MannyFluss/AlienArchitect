@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="tagResource" load_steps=3 format=3 uid="uid://d1qdji0w1nmgs"]
+
+[ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="1_hetf7"]
+[ext_resource type="Script" path="res://Prefabs/Tags/tagResource.gd" id="1_l7157"]
+
+[resource]
+script = ExtResource("1_l7157")
+name = "Blueprint Up"
+description = "Increase your blueprint count by 1"
+icon = ExtResource("1_hetf7")
+id = 1
