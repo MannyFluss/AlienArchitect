@@ -18,11 +18,15 @@ func _on_button_pressed() -> void:
 func _ready() -> void:
 	#setup goes here, event and such things
 	
-	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
+	GlobalEventBus.connect("eventFinished",onEventChosen)
 	
 	setupEvent()
 	GlobalEventBus.connect("levelCompleted",onLevelCompleted)
 
+func onEventChosen()->void:
+	
+	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
+	pass
 
 func onLevelCompleted()->void:
 	var endScreenLevel : EndScreen = load("res://Prefabs/EndScreen/EndScreen.tscn").instantiate() as EndScreen
@@ -35,12 +39,14 @@ func setupEvent()->void:
 	add_child(newEvent)
 	myPlayerController.disableInteraction()
 	await newEvent.tree_exited
+	
 	endEvent()
 	
 
 	
 func endEvent()->void:
 	myPlayerController.enableInteraction()
+	GlobalEventBus.emit_signal("eventFinished")
 	
 	
 func _enter_tree() -> void:

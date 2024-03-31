@@ -51,6 +51,7 @@ func drawCard()->Card:
 
 func drawCards(count : int)->void:
 	for i in range(count):
+		await get_tree().create_timer(.15).timeout
 		drawRandomCardToHand()
 	
 #this does too much for now will change later

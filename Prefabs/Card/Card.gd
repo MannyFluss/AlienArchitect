@@ -29,6 +29,8 @@ signal preBuildingPlaced(newBuilding : Building)
 
 signal postBuildingPlaced(newBuilding : Building)
 
+signal cardDrawn
+
 func _ready() -> void:
 	var myBuildingInstance : Building = myBuildingScene.instantiate() as Building
 	$cardArtRendering.own_world_3d = true
@@ -112,11 +114,14 @@ func SelectCard(selectorNode : Node3D)->void:
 func addToHand(hand : Hbox3D)->void:
 	if is_inside_tree():
 		reparent(hand)
+		position = hand.position + Vector3(0,-10,0)
 	else:
 		hand.add_child(self)
+		position = hand.position + Vector3(0,-10,0)
 		#hand.addCardToHand(self)
 	myStatus = cardStatus.IN_HAND
 	unhighlight()
+	emit_signal("cardDrawn")
 
 func loadModule(_module : CardModuleResource)->void:
 	var newModule : CardModule = load(_module.modulePath).instantiate() as CardModule
