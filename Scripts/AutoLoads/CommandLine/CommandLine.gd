@@ -83,11 +83,17 @@ func matchStringToFunction(commandName : String, parsedCommands : Array)->void:
 			forceEmitSignal(parsedCommands)
 		"skip":
 			skipLevel(parsedCommands)
+		"printDeck":
+			printDeck(parsedCommands)
 		_: 
 			outputMessage(commandName +" command is not implemented yet")
 			
 			
-			
+
+func printDeck(parsedCommands:Array)->void:
+	GlobalEventBus.emit_signal("printDeck")
+
+
 func skipLevel(parsedCommands:Array)->void:
 	if get_tree().current_scene is GamePlayScene:
 		outputMessage("skipping to shop")

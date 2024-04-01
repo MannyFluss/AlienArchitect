@@ -1,8 +1,9 @@
 extends Node
 
 
-var baseCard : PackedScene= preload("res://Prefabs/Card/Card.tscn")
+var baseCard : PackedScene = preload("res://Prefabs/Card/Card.tscn")
 
+var buildingThing : PackedScene = preload("res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn")
 #note card will be an orphan
 #add modules to cards based off buildingScene possible.
 #

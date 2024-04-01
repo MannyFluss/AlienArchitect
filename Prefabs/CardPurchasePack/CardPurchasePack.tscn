@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjijj2rejlw1m"]
+[gd_scene load_steps=9 format=3 uid="uid://cjijj2rejlw1m"]
 
 [ext_resource type="Script" path="res://Prefabs/CardPurchasePack/CardPurchasePack.gd" id="1_ct455"]
-[ext_resource type="PackedScene" uid="uid://b5yxhsujeibu3" path="res://Prefabs/Card/Card.tscn" id="2_736e1"]
+[ext_resource type="PackedScene" uid="uid://cpkfhoxxqggns" path="res://components/InputComponent/InputComponent.tscn" id="2_isr5m"]
+[ext_resource type="Script" path="res://Prefabs/CardPurchasePack/CardPurchaseResource.gd" id="2_syjoh"]
+
+[sub_resource type="Resource" id="Resource_k2s2q"]
+script = ExtResource("2_syjoh")
+cost = 1
+cardModules = Array[Resource("res://Scripts/CardModuleResource.gd")]([])
 
 [sub_resource type="Gradient" id="Gradient_h1s0n"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0340909, 0.0340909, 0.0340909, 1)
@@ -21,9 +27,7 @@ font_size = 127
 
 [node name="CardPurchasePack" type="Node3D"]
 script = ExtResource("1_ct455")
-
-[node name="Card" parent="." instance=ExtResource("2_736e1")]
-myStatus = 5
+myResource = SubResource("Resource_k2s2q")
 
 [node name="BackBoard" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49628, -0.784461)
@@ -32,3 +36,12 @@ texture = SubResource("GradientTexture2D_2s6bn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.05459, 0.186616)
 mesh = SubResource("TextMesh_1samb")
+
+[node name="CardContainer" type="Node3D" parent="."]
+
+[node name="Card" parent="CardContainer" instance_placeholder="res://Prefabs/Card/Card.tscn"]
+myStatus = 5
+
+[node name="InputComponent" parent="." instance=ExtResource("2_isr5m")]
+
+[connection signal="InputReleased" from="InputComponent" to="." method="_on_input_component_input_released"]

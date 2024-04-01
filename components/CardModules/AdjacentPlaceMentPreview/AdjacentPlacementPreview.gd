@@ -43,12 +43,12 @@ func previewModel(tile : Tile)->void:
 	get_tree().current_scene.add_child(modelDuplicate)
 	modelDuplicate.global_position = tile.global_position
 	modelDuplicate.scale = Vector3(0.01,0.01,0.01)
-	spawnTween.tween_property(modelDuplicate,"scale",Vector3.ONE,randf_range(.3,.4)).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	spawnTween.tween_property(modelDuplicate,"scale",Vector3.ONE,randf_range(.3,.4)).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	
 	await unhighlight
 	
 	var despawnTween : Tween = get_tree().create_tween()
-	despawnTween.tween_property(modelDuplicate,"scale",Vector3(0.01,0.01,0.01),.4).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	despawnTween.tween_property(modelDuplicate,"scale",Vector3(0.01,0.01,0.01),.4).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	
 	await despawnTween.finished
 	

@@ -13,16 +13,9 @@ var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBu
 #make a resource/json for large amounts of cards to save
 func _enter_tree() -> void:
 	add_to_group("Decks")
-
+	GlobalEventBus.connect("printDeck",printCards)
+	
 func _ready() -> void:
-	#addCardToDeck(generateCard(destroyBuilding))
-	#addCardToDeck(generateCard(destroyBuilding))
-	#addCardToDeck(generateCard(debugBuilding))
-	#addCardToDeck(generateCard(debugBuilding))
-	#addCardToDeck(generateCard(debugBuilding))
-	#addCardToDeck(generateCard(debugBuilding))
-	#
-	#SaveSystem.writeSave(createSaveResource(),"pee")
 	pass
 	
 	
@@ -70,6 +63,7 @@ func createCardSaveArray()->Array[CardSaveResource]:
 		if child is Card:
 			cardResourceArray.append(CardSaveResource.registerCard(child))
 	return cardResourceArray
+	
 func saveDeck(saveName:String)->void:
 	SaveSystem.writeSave(createSaveResource(),saveName)
 
@@ -98,8 +92,12 @@ func emptyDeck()->bool:
 	return $Cards.get_child_count()==0
 
 func addCardToDeck(toAdd : Card)->void:
-	$Cards.add_child(toAdd)
-
+	
+	if toAdd.is_inside_tree()==false:
+		$Cards.add_child(toAdd)
+	else:
+		toAdd.reparent($Cards)
+		
 func printCards()->void:
 	print($Cards.get_children())
 

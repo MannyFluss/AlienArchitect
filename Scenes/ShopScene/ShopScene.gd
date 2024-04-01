@@ -21,17 +21,21 @@ func interpretSave(_save : GeneralSaveResource)->void:
 	myDeck.createDeckFromSaveResource(_save)
 	#myBoard.regenerateModules(_save.myBoardModules)
 	
-
-func _ready() -> void:
+func _enter_tree() -> void:
+	super._enter_tree()
 	setGraphics()
 	interpretSave(myCurrentSave)
 	setTags()
+	setCards()
+	
+
+
+func _ready() -> void:
 	GlobalEventBus.connect("TagPurchased",onTagPurchased)
 	
 
 func _on_button_2_pressed() -> void:
 	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))
-	pass # Replace with function body.
 
 
 func _on_re_roll_pressed() -> void:
@@ -68,10 +72,17 @@ func getRandomEvent()->tagResource:
 	else:
 		return null
 
-func refreshTags()->void:
-	#%TagContainer.
+#card option count
+func setCards()->void:
 	
-	pass
+	var cardParent : Node3D = $CardOptions/Hbox3D
+	
+	
+	for i in range(3):
+		var newGuy : CardPurchasePack = CardPurchasePack.createRandomCardPack()
+		newGuy.registerShopScene(self)
+		
+		cardParent.add_child(newGuy)
 
 
 

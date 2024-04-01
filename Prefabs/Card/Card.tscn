@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5yxhsujeibu3"]
+[gd_scene load_steps=23 format=3 uid="uid://b5yxhsujeibu3"]
 
 [ext_resource type="Script" path="res://Prefabs/Card/Card.gd" id="1_20rij"]
 [ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_qxxl1"]
 [ext_resource type="Theme" uid="uid://bkq2pnxp0ut4o" path="res://Prefabs/Card/CardTheme.tres" id="3_5dngo"]
+[ext_resource type="Shader" path="res://Prefabs/Environments/WorldEnvironment.gdshader" id="4_jt8k8"]
 [ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="4_yuo5t"]
 [ext_resource type="PackedScene" uid="uid://cwoive5hk3m53" path="res://components/CardModules/CardAnimation/CardAnimation.tscn" id="5_0deh8"]
 [ext_resource type="PackedScene" uid="uid://m3r62w21tmo8" path="res://components/CardModules/DrawAudio/DrawAudio.tscn" id="6_f56lc"]
@@ -15,6 +16,63 @@ viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewp
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6k4ni"]
 viewport_path = NodePath("cardArtRendering")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wo3ig"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1xrq"]
+noise = SubResource("FastNoiseLite_wo3ig")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oqweu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjv15"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qtn1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_unx3l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jkutb"]
+noise = SubResource("FastNoiseLite_unx3l")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lrbso"]
+width = 1
+height = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slwat"]
+shader = ExtResource("4_jt8k8")
+shader_parameter/clouds_samples = 8
+shader_parameter/shadow_sample = 4
+shader_parameter/clouds_density = 0.0
+shader_parameter/clouds_scale = 0.5
+shader_parameter/clouds_smoothness = 0.01
+shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_shadow_intensity = 0.2
+shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_5qtn1")
+shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_mjv15")
+shader_parameter/cloud_curves = SubResource("NoiseTexture2D_oqweu")
+shader_parameter/high_clouds_density = 0.0
+shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_jkutb")
+shader_parameter/top_color = Color(0, 1, 1, 1)
+shader_parameter/bottom_color = Color(0.568627, 0.545098, 0.827451, 1)
+shader_parameter/sun_scatter = Color(0.454902, 0.745098, 0.278431, 1)
+shader_parameter/astro_tint = Color(0.592157, 0, 0, 1)
+shader_parameter/astro_scale = 10.0
+shader_parameter/astro_intensity = 1.1
+shader_parameter/astro_sampler = SubResource("NoiseTexture2D_g1xrq")
+shader_parameter/stars_intensity = 5.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = Color(1, 1, 1, 1)
+shader_parameter/shooting_star_sampler = SubResource("NoiseTexture2D_lrbso")
+
+[sub_resource type="Sky" id="Sky_o4t40"]
+sky_material = SubResource("ShaderMaterial_slwat")
+
+[sub_resource type="Environment" id="Environment_vvpep"]
+background_mode = 2
+sky = SubResource("Sky_o4t40")
+sky_rotation = Vector3(0.671952, -1.02276, -0.846485)
+
+[sub_resource type="World3D" id="World3D_tbh5c"]
+environment = SubResource("Environment_vvpep")
 
 [node name="Card" type="Area3D" node_paths=PackedStringArray("myArtCamera", "my3DSprite", "moduleContainer")]
 script = ExtResource("1_20rij")
@@ -206,6 +264,7 @@ text = "this is some text that is a test lalalalalala"
 transform = Transform3D(1, 0, 0, 0, 0.835107, 0.550087, 0, -0.550087, 0.835107, 0, 9.33272, 10.8202)
 
 [node name="cardArtRendering" type="SubViewport" parent="."]
+world_3d = SubResource("World3D_tbh5c")
 
 [node name="CardArtScene" type="Node3D" parent="cardArtRendering"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
@@ -219,6 +278,7 @@ size = 5.979
 
 [node name="Sprite3D" type="Sprite3D" parent="cardArtRendering/CardArtScene"]
 transform = Transform3D(14.8068, 0, 0, 0, 11.5689, 9.24127, 0, -9.24127, 11.5689, 0, 0.616852, -7.04991)
+visible = false
 texture = ExtResource("4_yuo5t")
 
 [node name="ModelMarker" type="Marker3D" parent="cardArtRendering/CardArtScene"]
@@ -230,6 +290,7 @@ gizmo_extents = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="cardArtRendering/CardArtScene"]
 transform = Transform3D(0.252754, 0.925436, -0.282283, -0.275389, 0.3485, 0.89594, 0.927511, -0.148714, 0.34294, -0.361168, 3.37347, 1.41314)
+visible = false
 
 [node name="Modules" type="Node3D" parent="."]
 

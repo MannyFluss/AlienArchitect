@@ -10,3 +10,5 @@ signal levelCompleted
 signal eventFinished
 
 signal TagPurchased(tag : TagPurchase)
+
+signal printDeck

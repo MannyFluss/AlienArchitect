@@ -16,7 +16,6 @@ signal buildingDestroyed
 func getNeighboringBuilding(target : Vector2)->Building:
 	var myBoard:Board = getMyBoard()
 	if myBoard:
-		pass
 		var myTile : Tile = getMyTile()
 		if myTile == null:
 			push_warning("building has no tile")

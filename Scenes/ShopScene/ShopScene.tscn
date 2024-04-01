@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7xx8uruq3hu1"]
+[gd_scene load_steps=8 format=3 uid="uid://b7xx8uruq3hu1"]
 
 [ext_resource type="Script" path="res://Scenes/ShopScene/ShopScene.gd" id="1_ss3b6"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="2_1bfir"]
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="3_m8jmp"]
 [ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="3_u6e3p"]
-[ext_resource type="PackedScene" uid="uid://cjijj2rejlw1m" path="res://Prefabs/CardPurchasePack/CardPurchasePack.tscn" id="3_v8sm7"]
 [ext_resource type="Script" path="res://Scenes/ShopScene/HandleUpgrades.gd" id="4_4nj8i"]
 [ext_resource type="PackedScene" uid="uid://be7br7hav765e" path="res://Prefabs/Tags/Tag.tscn" id="4_gqju6"]
 [ext_resource type="Script" path="res://components/3DHbox/3DHbox.gd" id="7_eju46"]
@@ -22,15 +21,6 @@ script = ExtResource("7_eju46")
 spacing = Vector3(8.145, 0, 0.01)
 center_align = true
 rotation_angle = 0.0
-
-[node name="CardPurchasePack" parent="CardOptions/Hbox3D" instance=ExtResource("3_v8sm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.145, 0, -0.01)
-
-[node name="CardPurchasePack2" parent="CardOptions/Hbox3D" instance=ExtResource("3_v8sm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4013e-45, 0, 1.4013e-45)
-
-[node name="CardPurchasePack3" parent="CardOptions/Hbox3D" instance=ExtResource("3_v8sm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.145, 0, 0.01)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 

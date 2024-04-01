@@ -7,7 +7,7 @@ enum cardStatus{
 	CURRENTLY_SELECTED,
 	DELETING,
 	IN_DECK,
-	IN_SHOP,
+	IN_SHOP
 }
 @export
 var myStatus : cardStatus = cardStatus.UNKNOWN

@@ -37,9 +37,7 @@ func shrinkingAnimation()->void:
 	var remapTarget : float = remap(distanceToClosestTile,0.1,animationDistanceThreshold+.1 ,0,1)
 	remapTarget = clampf(remapTarget,0.3,1.0)
 	myCard.scale = lerp(myCard.scale,Vector3(remapTarget,remapTarget,1),.1)
-	
-	myCard.my3DSprite.modulate.a = lerpf(myCard.my3DSprite.modulate.a,remapTarget,.1)
-	
+	myCard.my3DSprite.modulate.a = lerpf(myCard.my3DSprite.modulate.a ,remapTarget -.3 ,.1)
 
 
 func getClosestTile(tiles : Array[Node])->Tile:

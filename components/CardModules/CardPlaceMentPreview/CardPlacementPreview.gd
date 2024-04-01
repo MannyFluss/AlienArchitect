@@ -14,9 +14,6 @@ func onTileHighlighted(tile : Tile)->void:
 		call_thread_safe("previewModel",tile)
 		
 
-		
-		
-
 func onTileUnhighlighted(tile : Tile)->void:
 	if myCard.myStatus == myCard.cardStatus.CURRENTLY_SELECTED:
 		emit_signal("unhighlight")
@@ -31,12 +28,12 @@ func previewModel(tile : Tile)->void:
 	get_tree().current_scene.add_child(modelDuplicate)
 	modelDuplicate.global_position = tile.global_position
 	modelDuplicate.scale = Vector3(0.01,0.01,0.01)
-	spawnTween.tween_property(modelDuplicate,"scale",Vector3.ONE,.4).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	spawnTween.tween_property(modelDuplicate,"scale",Vector3.ONE,.4).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	
 	await unhighlight
 	
 	var despawnTween : Tween = get_tree().create_tween()
-	despawnTween.tween_property(modelDuplicate,"scale",Vector3(0.01,0.01,0.01),.4).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	despawnTween.tween_property(modelDuplicate,"scale",Vector3(0.01,0.01,0.01),.4).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	
 	await despawnTween.finished
 	
