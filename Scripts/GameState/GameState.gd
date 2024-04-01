@@ -10,6 +10,7 @@ signal quotaSet(amount:int)
 signal newMunicipalityScore(amount:int)
 signal bluePrintCountSet(amount:int)
 
+
 @export
 var myGameStateResource : GameStateResource
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	add_to_group("gamestate")
 	
 	bluePrintCount = myGameStateResource.BluePrintCount
+	quota = myGameStateResource.roundCount * 5
 	
 	GameStateUtility.connect("generatedScore",onGeneratedScore)
 	connect("cardPlayed",onCardPlayed)
@@ -54,6 +56,9 @@ func checkCardPlayability(cardInformation:BuildingResource)->bool:
 	return false
 
 
+func gameSetup()->void:
+	
+	pass
 
 func cardPlayedUpdate(cardInformation:BuildingResource)->void:
 	bluePrintCount -= cardInformation.bluePrintCost

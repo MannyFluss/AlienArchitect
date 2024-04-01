@@ -10,12 +10,14 @@ var myBoard : Board
 var preloadedTagScene : PackedScene = preload("res://Prefabs/Tags/Tag.tscn")
 
 
+
 func _on_button_pressed() -> void:
 	
 	finishShop()
 
 
 func interpretSave(_save : GeneralSaveResource)->void:
+	
 	myDeck.createDeckFromSaveResource(_save)
 	#myBoard.regenerateModules(_save.myBoardModules)
 	
@@ -24,6 +26,7 @@ func _ready() -> void:
 	setGraphics()
 	interpretSave(myCurrentSave)
 	setTags()
+	GlobalEventBus.connect("TagPurchased",onTagPurchased)
 	
 
 func _on_button_2_pressed() -> void:
@@ -72,11 +75,20 @@ func refreshTags()->void:
 
 
 
+func onTagPurchased(tag : TagPurchase)->void:
+	var upgrader : upgradeHandler  = $HandleUpgrades
+	
+	upgrader.handleUpgrade(tag)
+	setGraphics()
+
+
 
 func _on_next_round_pressed() -> void:
 	finishShop()
 
 func finishShop()->void:
+	
+	
 	myCurrentSave.myCards = myDeck.createCardSaveArray() 
 	#myCurrentSave.myBoardModules = myBoard.serializeModules()
 	goToNextScene("res://Scenes/GamePlayScene/main.tscn")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvxthmv8kkhoj"]
+
+[ext_resource type="Shader" path="res://Prefabs/Environments/WorldEnvironment.gdshader" id="1_aimij"]
+[ext_resource type="Script" path="res://Prefabs/Environments/WorldEnvironment.gd" id="2_e76lr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wo3ig"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1xrq"]
+noise = SubResource("FastNoiseLite_wo3ig")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oqweu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjv15"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qtn1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_unx3l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jkutb"]
+noise = SubResource("FastNoiseLite_unx3l")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lrbso"]
+width = 1
+height = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvs12"]
+shader = ExtResource("1_aimij")
+shader_parameter/clouds_samples = 8
+shader_parameter/shadow_sample = 4
+shader_parameter/clouds_density = 0.0
+shader_parameter/clouds_scale = 0.5
+shader_parameter/clouds_smoothness = 0.01
+shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_shadow_intensity = 0.2
+shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_5qtn1")
+shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_mjv15")
+shader_parameter/cloud_curves = SubResource("NoiseTexture2D_oqweu")
+shader_parameter/high_clouds_density = 0.0
+shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_jkutb")
+shader_parameter/top_color = Color(0, 1, 1, 1)
+shader_parameter/bottom_color = Color(0.568627, 0.545098, 0.827451, 1)
+shader_parameter/sun_scatter = Color(0.454902, 0.745098, 0.278431, 1)
+shader_parameter/astro_tint = Color(0.592157, 0, 0, 1)
+shader_parameter/astro_scale = 10.0
+shader_parameter/astro_intensity = 1.1
+shader_parameter/astro_sampler = SubResource("NoiseTexture2D_g1xrq")
+shader_parameter/stars_intensity = 5.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = Color(1, 1, 1, 1)
+shader_parameter/shooting_star_sampler = SubResource("NoiseTexture2D_lrbso")
+
+[sub_resource type="Sky" id="Sky_j4tkv"]
+sky_material = SubResource("ShaderMaterial_pvs12")
+
+[sub_resource type="Environment" id="Environment_vcoj1"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_j4tkv")
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_vcoj1")
+script = ExtResource("2_e76lr")

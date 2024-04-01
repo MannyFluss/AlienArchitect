@@ -56,3 +56,5 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 text = "Purchase"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Purchase" to="." method="_on_purchase_pressed"]

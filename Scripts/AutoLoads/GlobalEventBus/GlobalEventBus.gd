@@ -8,3 +8,5 @@ signal tileUnhighlighted(tile : Tile)
 signal levelCompleted
 
 signal eventFinished
+
+signal TagPurchased(tag : TagPurchase)

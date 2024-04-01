@@ -19,3 +19,4 @@ var tagShopCount : int = 3
 
 @export
 var cardShopCount : int = 3
+

@@ -81,9 +81,22 @@ func matchStringToFunction(commandName : String, parsedCommands : Array)->void:
 			saveDeck(parsedCommands)
 		"signal":
 			forceEmitSignal(parsedCommands)
+		"skip":
+			skipLevel(parsedCommands)
 		_: 
 			outputMessage(commandName +" command is not implemented yet")
 			
+			
+			
+func skipLevel(parsedCommands:Array)->void:
+	if get_tree().current_scene is GamePlayScene:
+		outputMessage("skipping to shop")
+		GlobalEventBus.emit_signal("levelCompleted")
+	else:
+		outputMessage("you are not in gameplayscene")
+		
+		
+
 func saveDeck(parsedCommands : Array)->void:
 	if parsedCommands.size()<2:
 		outputMessage("saveDeck command requires save path as second argument")

@@ -3,7 +3,7 @@ extends CardModule
 @export
 var animationDistanceThreshold : float = 100
 @export
-var swayFactor : int = 10
+var cameraSwayFactor : int = 1
 @export
 var cardSwayFactor : int = 20
 var lastPosition2D : Vector2 = Vector2(0,0)
@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 
 func artCameraLean()->void:
-	var cardVelocity : Vector2 = (unprojectPosition(self) - lastPosition2D).normalized() * swayFactor
+	var cardVelocity : Vector2 = (unprojectPosition(self) - lastPosition2D).normalized() * cameraSwayFactor
 	myCard.myArtCamera.rotation_degrees = lerp(myCard.myArtCamera.rotation_degrees,
 		Vector3(cardVelocity.y,cardVelocity.x,0),.1)
 		

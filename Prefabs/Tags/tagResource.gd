@@ -12,4 +12,7 @@ var description : String = ""
 var icon : Texture
 
 @export
+var cost : int = 1
+
+@export
 var internal_id : int = -1

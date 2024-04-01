@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjijj2rejlw1m"]
+
+[ext_resource type="Script" path="res://Prefabs/CardPurchasePack/CardPurchasePack.gd" id="1_ct455"]
+[ext_resource type="PackedScene" uid="uid://b5yxhsujeibu3" path="res://Prefabs/Card/Card.tscn" id="2_736e1"]
+
+[sub_resource type="Gradient" id="Gradient_h1s0n"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0340909, 0.0340909, 0.0340909, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2s6bn"]
+gradient = SubResource("Gradient_h1s0n")
+width = 900
+height = 1800
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnaf7"]
+shading_mode = 0
+
+[sub_resource type="TextMesh" id="TextMesh_1samb"]
+material = SubResource("StandardMaterial3D_lnaf7")
+text = "5 Credits"
+font_size = 127
+
+[node name="CardPurchasePack" type="Node3D"]
+script = ExtResource("1_ct455")
+
+[node name="Card" parent="." instance=ExtResource("2_736e1")]
+myStatus = 5
+
+[node name="BackBoard" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49628, -0.784461)
+texture = SubResource("GradientTexture2D_2s6bn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.05459, 0.186616)
+mesh = SubResource("TextMesh_1samb")

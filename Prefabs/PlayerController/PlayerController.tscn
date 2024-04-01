@@ -25,9 +25,6 @@ transform = Transform3D(1, 0, -2.98023e-08, -2.98023e-08, 1, 2.98023e-08, -2.980
 [node name="PlayerHand" parent="." instance=ExtResource("2_6mrj6")]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, -5, 10)
 
-[node name="Spacer" parent="PlayerHand" index="0"]
-rotation_angle = null
-
 [connection signal="InputHeld" from="InputComponent" to="." method="_on_input_component_input_held"]
 [connection signal="InputPressed" from="InputComponent" to="." method="_on_input_component_input_pressed"]
 [connection signal="InputReleased" from="InputComponent" to="." method="_on_input_component_input_released"]

@@ -8,4 +8,5 @@ script = ExtResource("1_l7157")
 name = "Blueprint Up"
 description = "Increase your blueprint count by 1"
 icon = ExtResource("1_hetf7")
-id = 1
+cost = 1
+internal_id = 1

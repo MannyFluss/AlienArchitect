@@ -31,4 +31,12 @@ func setBasedOnResource(_res : tagResource)->void:
 	%Title.text = "[center]"+ _res.name
 	%TextureRect.texture = _res.icon
 	%Descriptor.text = _res.description
+	%Purchase.text = "purchase " + str(_res.cost) + " credits"
 	
+func _on_purchase_pressed() -> void:
+	if myScene.myCurrentSave.myGameStateResource.currencyCount >= myResource.cost:
+		myScene.myCurrentSave.myGameStateResource.currencyCount -= myResource.cost
+		GlobalEventBus.emit_signal("TagPurchased",self)
+		queue_free()
+	else:
+		pass

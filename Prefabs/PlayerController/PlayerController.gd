@@ -8,8 +8,6 @@ enum InteractionState  {
 }
 
 
-
-
 @onready
 var distanceHeldFromCamera :float=25
 
@@ -33,9 +31,6 @@ func enableInteraction()->void:
 func _ready() -> void:
 	if gameState==null:push_error("gameState not configured. Will cause issues.")
 #shoots ray from camera to select first thing, basically mouse pick.
-
-
-
 
 func getSelectorCastFromScreen(location : Vector2,ignoreList:Array[RID]=[])->Dictionary:
 	var space_state : PhysicsDirectSpaceState3D = get_world_3d().direct_space_state

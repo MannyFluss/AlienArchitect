@@ -7,8 +7,9 @@ enum cardStatus{
 	CURRENTLY_SELECTED,
 	DELETING,
 	IN_DECK,
+	IN_SHOP,
 }
-
+@export
 var myStatus : cardStatus = cardStatus.UNKNOWN
 
 #this contains all of the information we need to create this card dynamically
@@ -131,9 +132,9 @@ func loadModule(_module : CardModuleResource)->void:
 
 
 func _on_mouse_entered() -> void:
-	if myStatus == cardStatus.IN_HAND:
+	if myStatus == cardStatus.IN_HAND or myStatus == cardStatus.IN_SHOP:
 		highlight()
 
 func _on_mouse_exited() -> void:
-	if myStatus == cardStatus.IN_HAND:
+	if myStatus == cardStatus.IN_HAND or myStatus == cardStatus.IN_SHOP:
 		unhighlight()

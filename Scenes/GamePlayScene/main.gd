@@ -63,5 +63,7 @@ func interpretSaveData()->void:
 
 func endRound()->void:
 	myCurrentSave.myGameStateResource.roundCount += 1
+	
+	
 	goToNextScene("res://Scenes/ShopScene/ShopScene.tscn")
 	
