@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=10 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
 [ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
 [ext_resource type="Script" path="res://Scripts/GameState/GameStateResource.gd" id="5_vegi4"]
-[ext_resource type="PackedScene" uid="uid://cvxthmv8kkhoj" path="res://Prefabs/Environments/WorldEnvironment.tscn" id="8_xebi4"]
-[ext_resource type="Shader" path="res://Prefabs/Environments/WorldEnvironment.gdshader" id="9_ehgjv"]
+[ext_resource type="PackedScene" uid="uid://3m7ixwegc43x" path="res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.tscn" id="8_8ugut"]
 
 [sub_resource type="Resource" id="Resource_yftu7"]
 script = ExtResource("5_vegi4")
@@ -19,60 +18,6 @@ currencyCount = 1
 tagShopCount = 3
 cardShopCount = 3
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wo3ig"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1xrq"]
-noise = SubResource("FastNoiseLite_wo3ig")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oqweu"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjv15"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qtn1"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_unx3l"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jkutb"]
-noise = SubResource("FastNoiseLite_unx3l")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lrbso"]
-width = 1
-height = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvs12"]
-shader = ExtResource("9_ehgjv")
-shader_parameter/clouds_samples = 8
-shader_parameter/shadow_sample = 4
-shader_parameter/clouds_density = 0.0
-shader_parameter/clouds_scale = 0.5
-shader_parameter/clouds_smoothness = 0.01
-shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
-shader_parameter/clouds_shadow_intensity = 0.2
-shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_5qtn1")
-shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_mjv15")
-shader_parameter/cloud_curves = SubResource("NoiseTexture2D_oqweu")
-shader_parameter/high_clouds_density = 0.0
-shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_jkutb")
-shader_parameter/top_color = Color(0, 1, 1, 1)
-shader_parameter/bottom_color = Color(0.568627, 0.545098, 0.827451, 1)
-shader_parameter/sun_scatter = Color(0.454902, 0.745098, 0.278431, 1)
-shader_parameter/astro_tint = Color(0.592157, 0, 0, 1)
-shader_parameter/astro_scale = 10.0
-shader_parameter/astro_intensity = 1.1
-shader_parameter/astro_sampler = SubResource("NoiseTexture2D_g1xrq")
-shader_parameter/stars_intensity = 5.0
-shader_parameter/shooting_stars_intensity = 0.0
-shader_parameter/shooting_star_tint = Color(1, 1, 1, 1)
-shader_parameter/shooting_star_sampler = SubResource("NoiseTexture2D_lrbso")
-
-[sub_resource type="Sky" id="Sky_j4tkv"]
-sky_material = SubResource("ShaderMaterial_pvs12")
-
-[sub_resource type="Environment" id="Environment_ot334"]
-background_mode = 2
-background_energy_multiplier = 0.3
-sky = SubResource("Sky_j4tkv")
-
 [node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard", "myGameState", "myPlayerController")]
 script = ExtResource("1_qlp48")
 myDeck = NodePath("Deck")
@@ -81,7 +26,7 @@ myGameState = NodePath("GameState")
 myPlayerController = NodePath("PlayerController")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.271418, 0.650315, -0.709523, -0.0960498, 0.751817, 0.652338, 0.957657, -0.108907, 0.26652, 9.5351, 3.38961, 0)
+transform = Transform3D(-0.0523322, -0.658276, 0.750956, -0.0960498, 0.751818, 0.652338, -0.994, -0.0379909, -0.102572, 9.5351, 3.38961, 0)
 
 [node name="Board" parent="." instance=ExtResource("1_5u771")]
 
@@ -89,6 +34,7 @@ transform = Transform3D(0.271418, 0.650315, -0.709523, -0.0960498, 0.751817, 0.6
 gameState = NodePath("../GameState")
 
 [node name="IsometricCamera" parent="PlayerController" index="0"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -30.256, 33.7268, 21.8391)
 current = true
 
 [node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
@@ -105,8 +51,7 @@ myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" parent="." instance=ExtResource("5_blp7f")]
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("8_xebi4")]
-environment = SubResource("Environment_ot334")
+[node name="GlobalShaderUtility" parent="." instance=ExtResource("8_8ugut")]
 
 [connection signal="bluePrintCountSet" from="GameState" to="LevelUI" method="_on_game_state_blue_print_count_set"]
 [connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]
@@ -114,4 +59,4 @@ environment = SubResource("Environment_ot334")
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]
-[editable path="WorldEnvironment"]
+[editable path="GlobalShaderUtility"]

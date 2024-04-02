@@ -26,4 +26,3 @@ myGameStateResource = SubResource("Resource_jj1mi")
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]
 [editable path="Deck"]
-[editable path="WorldEnvironment"]

@@ -21,7 +21,6 @@ initial_velocity_max = 1.41
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_l5atq"]
-material = ExtResource("1_jdtrj")
 radius = 0.125
 height = 0.25
 

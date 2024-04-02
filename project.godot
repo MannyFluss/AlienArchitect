@@ -22,6 +22,7 @@ GameStateUtility="*res://Scripts/AutoLoads/GameStateUtility/GameStateUtility.tsc
 SaveSystem="*res://Scripts/AutoLoads/SaveSystem/SaveSystem.tscn"
 CommandLine="*res://Scripts/AutoLoads/CommandLine/CommandLine.tscn"
 GlobalEventBus="*res://Scripts/AutoLoads/GlobalEventBus/GlobalEventBus.tscn"
+GlobalShaderUtility="*res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.tscn"
 
 [debug]
 
@@ -59,10 +60,6 @@ submit_console={
 [layer_names]
 
 3d_physics/layer_4="TileLayer"
-
-[rendering]
-
-renderer/rendering_method="mobile"
 
 [shader_globals]
 

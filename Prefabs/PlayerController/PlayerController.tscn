@@ -1,8 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmi76x3hc2fqj"]
+[gd_scene load_steps=10 format=3 uid="uid://dmi76x3hc2fqj"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerController/PlayerController.gd" id="1_7nk14"]
 [ext_resource type="PackedScene" uid="uid://cpkfhoxxqggns" path="res://components/InputComponent/InputComponent.tscn" id="2_6g0i7"]
 [ext_resource type="PackedScene" uid="uid://brs5wo4pjx4ae" path="res://Prefabs/PlayerHand/PlayerHand.tscn" id="2_6mrj6"]
+[ext_resource type="Shader" path="res://Scripts/AutoLoads/GlobalShaderUtility/Shader/handDrawn.gdshader" id="2_ibh3h"]
+[ext_resource type="Texture2D" uid="uid://ckimq3v44k27x" path="res://Scripts/AutoLoads/GlobalShaderUtility/Shader/LottesGrain5.png" id="3_5lg1i"]
+[ext_resource type="Texture2D" uid="uid://bft8h5pi3qb0s" path="res://Scripts/AutoLoads/GlobalShaderUtility/Shader/lines.png" id="4_llyny"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4s35l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06ook"]
+render_priority = 0
+shader = ExtResource("2_ibh3h")
+shader_parameter/color_passthrough = true
+shader_parameter/depth_check = true
+shader_parameter/normal_check = true
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/depth_line_strength = 1.0
+shader_parameter/normal_line_strength = 1.0
+shader_parameter/noise_offset_multiplier = 0.5
+shader_parameter/red_weight = 0.5
+shader_parameter/green_weight = 0.5
+shader_parameter/blue_weight = 0.5
+shader_parameter/black_threshold = 0.001
+shader_parameter/white_threshold = 2.0
+shader_parameter/grain_amount = 0.2
+shader_parameter/line_size = 1.0
+shader_parameter/lines_texture_scale = 5.0
+shader_parameter/grain_texture_scale = 10.0
+shader_parameter/texture_noise = SubResource("NoiseTexture2D_4s35l")
+shader_parameter/texture_lines = ExtResource("4_llyny")
+shader_parameter/texture_grain = ExtResource("3_5lg1i")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hanss"]
+material = SubResource("ShaderMaterial_06ook")
+size = Vector2(100, 100)
 
 [node name="PlayerController" type="Node3D"]
 script = ExtResource("1_7nk14")
@@ -11,6 +44,11 @@ script = ExtResource("1_7nk14")
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -20, 30, 20)
 projection = 1
 size = 40.0
+
+[node name="ShaderBlock" type="MeshInstance3D" parent="IsometricCamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -8.9407e-08, 1, 0, 0, -0.1)
+mesh = SubResource("QuadMesh_hanss")
 
 [node name="SelectorCast" type="RayCast3D" parent="."]
 collision_mask = 9

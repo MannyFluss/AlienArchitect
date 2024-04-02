@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://3m7ixwegc43x"]
+
+[ext_resource type="Script" path="res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.gd" id="1_p2e2p"]
+
+[sub_resource type="Environment" id="Environment_2bxoq"]
+background_mode = 1
+background_color = Color(0.27451, 0.776471, 0.929412, 1)
+
+[node name="GlobalShaderUtility" type="Node"]
+script = ExtResource("1_p2e2p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2bxoq")
