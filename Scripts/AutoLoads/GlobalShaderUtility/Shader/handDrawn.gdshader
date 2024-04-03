@@ -109,7 +109,7 @@ void fragment() {
 		final = vec3(0.0);
 	// Make it completely white when screen texture is above a threshold.
 	}else if(length(screen_tex.rgb) > white_threshold){
-		final = vec3(1.0);
+		//final = vec3(1.0);
 		final = original_color;
 		
 	// If color pass through is enabled then replace the output color with the screen texture color.

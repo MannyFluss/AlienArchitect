@@ -58,7 +58,7 @@ func attemptToPlaceCard(mouseLocation: Vector2)->void:
 			pass
 		else:
 			deselectCard()
-
+			
 func _on_input_component_input_pressed(location: Vector2) -> void:
 	var intersection := getSelectorCastFromScreen(location)
 	if myState == InteractionState.ACTIVE and intersection:
@@ -66,17 +66,10 @@ func _on_input_component_input_pressed(location: Vector2) -> void:
 		if pickedCard is Card:
 			selectCard(pickedCard)
 	
-	#for tile highlighted tracking
-	#clearCurrentHeldTile()
-
 func _on_input_component_input_released(location: Vector2, timeHeld: float) -> void:
 	clearCurrentHeldTile()
 	attemptToPlaceCard(location)
 	#for tile highlighted tracking
-	
-	#clearCurrentHeldTile()
-	
-
 func selectCard(card : Card)->void:
 	if not cardSelected():card.SelectCard(%SelectedCard)
 
@@ -91,13 +84,9 @@ func cardPlayed()->void:
 	gameState.emit_signal("cardPlayed",toDiscard)
 	toDiscard.destroy()
 	
-	
-
 func getSelectedCard()->Card:
 	return %SelectedCard.get_child(0)
-
-
-
+	
 func _on_input_component_input_held(location: Vector2, delta: float) -> void:
 	var rayOrigin : Vector3 = $IsometricCamera.project_ray_origin(location)
 	var rayEnd : Vector3 = rayOrigin + $IsometricCamera.project_ray_normal(location) * distanceHeldFromCamera

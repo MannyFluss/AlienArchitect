@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5yxhsujeibu3"]
+[gd_scene load_steps=12 format=3 uid="uid://b5yxhsujeibu3"]
 
 [ext_resource type="Script" path="res://Prefabs/Card/Card.gd" id="1_20rij"]
 [ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_qxxl1"]
@@ -10,8 +10,19 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_n37pt"]
 size = Vector3(6, 12, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_00inl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7rnld"]
 viewport_path = NodePath("CanvasLayer/CardGraphics/SubViewportContainer/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db33b"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_7rnld")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_13wqf"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_db33b")
+size = Vector3(6.5, 11.5, 0.125)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6k4ni"]
 viewport_path = NodePath("cardArtRendering")
@@ -24,10 +35,15 @@ my3DSprite = NodePath("CardRender")
 moduleContainer = NodePath("Modules")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("BoxShape3D_n37pt")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.374739)
+mesh = SubResource("BoxMesh_13wqf")
+
 [node name="CardRender" type="Sprite3D" parent="."]
-texture = SubResource("ViewportTexture_00inl")
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(5000, 0)

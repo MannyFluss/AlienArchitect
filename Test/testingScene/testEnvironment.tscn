@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://1jn47abaylds"]
+
+[ext_resource type="PackedScene" uid="uid://c80j3tdawdmeb" path="res://Temp/shader_block.tscn" id="1_kuaco"]
+[ext_resource type="PackedScene" uid="uid://bqfwf1r5xq6kx" path="res://Prefabs/Tiles/Tile.tscn" id="2_7of22"]
+[ext_resource type="Shader" path="res://Scripts/AutoLoads/GlobalShaderUtility/Shader/handDrawn.gdshader" id="2_g8xyc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_spxec"]
+load_path = "res://.godot/imported/LottesGrain5.png-b99693a28eec31d710b8d261dd8c7487.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a04nd"]
+load_path = "res://.godot/imported/lines.png-d2e185d6e26d65526e5d5f7a5bff3b56.s3tc.ctex"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_am4c1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61c6m"]
+render_priority = 0
+shader = ExtResource("2_g8xyc")
+shader_parameter/color_passthrough = true
+shader_parameter/depth_check = true
+shader_parameter/normal_check = true
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/depth_line_strength = 1.0
+shader_parameter/normal_line_strength = 1.0
+shader_parameter/noise_offset_multiplier = 0.5
+shader_parameter/red_weight = 0.5
+shader_parameter/green_weight = 0.5
+shader_parameter/blue_weight = 0.5
+shader_parameter/black_threshold = 0.001
+shader_parameter/white_threshold = 2.0
+shader_parameter/grain_amount = 0.2
+shader_parameter/line_size = 2.0
+shader_parameter/lines_texture_scale = 5.398
+shader_parameter/grain_texture_scale = 10.0
+shader_parameter/texture_noise = SubResource("NoiseTexture2D_am4c1")
+shader_parameter/texture_lines = SubResource("CompressedTexture2D_a04nd")
+shader_parameter/texture_grain = SubResource("CompressedTexture2D_spxec")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cs8tv"]
+material = SubResource("ShaderMaterial_61c6m")
+size = Vector2(100, 100)
+
+[node name="TestEnvironment" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 1.72046, 5.46155, 3.06554)
+projection = 1
+size = 12.0
+
+[node name="ShaderBlock" parent="Camera3D" instance=ExtResource("1_kuaco")]
+mesh = SubResource("QuadMesh_cs8tv")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Tile" parent="Node3D" instance=ExtResource("2_7of22")]
+
+[editable path="Camera3D/ShaderBlock"]

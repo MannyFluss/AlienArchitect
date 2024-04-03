@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://clmdradjcp8lh"]
+[gd_scene load_steps=8 format=3 uid="uid://clmdradjcp8lh"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_gkpmw"]
 [ext_resource type="Texture2D" uid="uid://c3ni86xvc1n1p" path="res://icon.svg" id="1_sx4px"]
 [ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="1_tj8jm"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/BuildingConveyor.gd" id="2_0xq4u"]
+[ext_resource type="PackedScene" uid="uid://c80j3tdawdmeb" path="res://Temp/shader_block.tscn" id="3_3umrh"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5air"]
 viewport_path = NodePath("BackGround/SubViewport")
 
 [sub_resource type="Environment" id="Environment_fftdn"]
 background_mode = 1
-background_color = Color(0.670588, 0.780392, 1, 1)
+background_color = Color(0.670588, 0.207843, 1, 1)
+ambient_light_energy = 1.2
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -122,6 +124,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09456, 0)
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 3.82, 3)
 projection = 1
 size = 5.839
+
+[node name="ShaderBlock" parent="BackGround/SubViewport/Node3D/Camera3D" instance=ExtResource("3_3umrh")]
 
 [node name="Animator" type="Node3D" parent="BackGround/SubViewport/Node3D"]
 script = ExtResource("2_0xq4u")

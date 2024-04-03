@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0ml1b3sof4po"]
+[gd_scene load_steps=8 format=3 uid="uid://d0ml1b3sof4po"]
 
+[ext_resource type="Material" uid="uid://btibfeasurak1" path="res://Temp/white.tres" id="1_f8rxa"]
 [ext_resource type="Material" uid="uid://5jcdcds350if" path="res://Temp/defaultBuildingMaterial.tres" id="1_jdtrj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bmyar"]
+material = ExtResource("1_f8rxa")
 size = Vector3(1, 0.3, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pv74w"]
@@ -21,6 +23,7 @@ initial_velocity_max = 1.41
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_l5atq"]
+material = ExtResource("1_f8rxa")
 radius = 0.125
 height = 0.25
 
@@ -30,18 +33,21 @@ height = 0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 
 [node name="Base1" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, -0.000560259, 0.000318539, 0.000560435, 1, -0.000588292, -0.00031823, 0.000588459, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_bmyar")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("1_jdtrj")
+surface_material_override/0 = ExtResource("1_f8rxa")
 
 [node name="Base3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = ExtResource("1_f8rxa")
 mesh = SubResource("BoxMesh_pv74w")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_jdtrj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.630671, 0)
+material_override = ExtResource("1_f8rxa")
 mesh = SubResource("CylinderMesh_n7t06")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_jdtrj")

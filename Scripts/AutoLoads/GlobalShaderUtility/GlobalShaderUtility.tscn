@@ -4,7 +4,9 @@
 
 [sub_resource type="Environment" id="Environment_2bxoq"]
 background_mode = 1
-background_color = Color(0.27451, 0.776471, 0.929412, 1)
+background_color = Color(1, 0.776471, 0.929412, 1)
+background_energy_multiplier = 1.2
+ambient_light_energy = 1.2
 
 [node name="GlobalShaderUtility" type="Node"]
 script = ExtResource("1_p2e2p")
