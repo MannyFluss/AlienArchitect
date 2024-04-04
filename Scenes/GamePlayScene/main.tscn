@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=9 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
 [ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
 [ext_resource type="Script" path="res://Scripts/GameState/GameStateResource.gd" id="5_vegi4"]
-[ext_resource type="PackedScene" uid="uid://3m7ixwegc43x" path="res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.tscn" id="8_8ugut"]
 
 [sub_resource type="Resource" id="Resource_yftu7"]
 script = ExtResource("5_vegi4")
@@ -29,6 +28,7 @@ myPlayerController = NodePath("PlayerController")
 transform = Transform3D(-0.0523322, -0.658276, 0.750956, -0.0960498, 0.751818, 0.652338, -0.994, -0.0379909, -0.102572, 9.5351, 3.38961, 0)
 
 [node name="Board" parent="." instance=ExtResource("1_5u771")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12316, 0, -2.3488)
 
 [node name="PlayerController" parent="." node_paths=PackedStringArray("gameState") instance=ExtResource("2_sifjh")]
 gameState = NodePath("../GameState")
@@ -36,10 +36,30 @@ gameState = NodePath("../GameState")
 [node name="IsometricCamera" parent="PlayerController" index="0"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -30.256, 33.7268, 21.8391)
 current = true
+size = 24.058
+
+[node name="PlayerHand" parent="PlayerController" index="4"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -27.6359, 13.0445, 17.8687)
 
 [node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.612045, 2.42217, -2.42217)
 spacing = Vector3(3.225, 0, -1.57)
 rotation_angle = -1.0
+
+[node name="PLACEHOLDER_CARD" parent="PlayerController/PlayerHand/Spacer" index="0" instance_placeholder="res://Prefabs/Card/Card.tscn"]
+transform = Transform3D(0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 0, 0, 1, -3.225, 0, 1.57)
+
+[node name="PLACEHOLDER_CARD2" parent="PlayerController/PlayerHand/Spacer" index="1" node_paths=PackedStringArray("myArtCamera", "my3DSprite", "moduleContainer") instance_placeholder="res://Prefabs/Card/Card.tscn"]
+transform = Transform3D(1, 1.4013e-45, 0, -1.4013e-45, 1, 0, 0, 0, 1, 1.4013e-45, 0, -1.4013e-45)
+myArtCamera = NodePath("../PLACEHOLDER_CARD/cardArtRendering/CardArtScene/Node3D/ArtCamera")
+my3DSprite = NodePath("../PLACEHOLDER_CARD/MeshInstance3D3")
+moduleContainer = NodePath("../PLACEHOLDER_CARD/Modules")
+
+[node name="PLACEHOLDER_CARD3" parent="PlayerController/PlayerHand/Spacer" index="2" node_paths=PackedStringArray("myArtCamera", "my3DSprite", "moduleContainer") instance_placeholder="res://Prefabs/Card/Card.tscn"]
+transform = Transform3D(0.999848, 0.0174524, 0, -0.0174524, 0.999848, 0, 0, 0, 1, 3.225, 0, -1.57)
+myArtCamera = NodePath("../PLACEHOLDER_CARD/cardArtRendering/CardArtScene/Node3D/ArtCamera")
+my3DSprite = NodePath("../PLACEHOLDER_CARD/MeshInstance3D3")
+moduleContainer = NodePath("../PLACEHOLDER_CARD/Modules")
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("3_wi52g")
@@ -51,12 +71,9 @@ myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" parent="." instance=ExtResource("5_blp7f")]
 
-[node name="GlobalShaderUtility" parent="." instance=ExtResource("8_8ugut")]
-
 [connection signal="bluePrintCountSet" from="GameState" to="LevelUI" method="_on_game_state_blue_print_count_set"]
 [connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]
 [connection signal="quotaSet" from="GameState" to="LevelUI" method="_on_game_state_quota_set"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]
-[editable path="GlobalShaderUtility"]

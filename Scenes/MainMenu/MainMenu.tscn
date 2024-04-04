@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu/BuildingConveyor.gd" id="2_0xq4u"]
 [ext_resource type="PackedScene" uid="uid://c80j3tdawdmeb" path="res://Temp/shader_block.tscn" id="3_3umrh"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s5air"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fus0k"]
 viewport_path = NodePath("BackGround/SubViewport")
 
 [sub_resource type="Environment" id="Environment_fftdn"]
@@ -38,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_s5air")
+texture = SubResource("ViewportTexture_fus0k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
