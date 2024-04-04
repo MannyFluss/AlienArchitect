@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ccox7l8f1wj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmd3t"]
-transparency = 1
 albedo_color = Color(1, 0, 0.258824, 0.592157)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6px17"]

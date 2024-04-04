@@ -61,11 +61,11 @@ void fragment() {
 	float depth_diff = 0.0;
 	float neg_depth_diff = 0.5;
 	if(depth_check){
-		float depth = getDepth(SCREEN_UV+noise_offset.xy, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float du = getDepth(SCREEN_UV+noise_offset.xy+vec2(0., -1.) * pixel_size, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dr = getDepth(SCREEN_UV+noise_offset.xy+vec2(1., 0.) * pixel_size, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dd = getDepth(SCREEN_UV+noise_offset.xy+vec2(0., 1.) * pixel_size, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dl = getDepth(SCREEN_UV+noise_offset.xy+vec2(-1., 0.) * pixel_size, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
+		float depth = getDepth(SCREEN_UV+noise_offset.xy, DEPTH_TEXTURE, PROJECTION_MATRIX);
+		float du = getDepth(SCREEN_UV+noise_offset.xy+vec2(0., -1.) * pixel_size, DEPTH_TEXTURE, PROJECTION_MATRIX);
+		float dr = getDepth(SCREEN_UV+noise_offset.xy+vec2(1., 0.) * pixel_size, DEPTH_TEXTURE, PROJECTION_MATRIX);
+		float dd = getDepth(SCREEN_UV+noise_offset.xy+vec2(0., 1.) * pixel_size, DEPTH_TEXTURE, PROJECTION_MATRIX);
+		float dl = getDepth(SCREEN_UV+noise_offset.xy+vec2(-1., 0.) * pixel_size, DEPTH_TEXTURE, PROJECTION_MATRIX);
 		depth_diff += clamp(du - depth, 0., 1.);
 		depth_diff += clamp(dd - depth, 0., 1.);
 		depth_diff += clamp(dr - depth, 0., 1.);

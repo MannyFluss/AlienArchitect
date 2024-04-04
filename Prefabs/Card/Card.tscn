@@ -31,11 +31,10 @@ viewport_path = NodePath("cardArtRendering")
 script = ExtResource("1_20rij")
 myBuildingScene = ExtResource("2_qxxl1")
 myArtCamera = NodePath("cardArtRendering/CardArtScene/Node3D/ArtCamera")
-my3DSprite = NodePath("CardRender")
+my3DSprite = NodePath("MeshInstance3D3")
 moduleContainer = NodePath("Modules")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("BoxShape3D_n37pt")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
@@ -43,7 +42,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.374739)
 mesh = SubResource("BoxMesh_13wqf")
 
 [node name="CardRender" type="Sprite3D" parent="."]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(5000, 0)

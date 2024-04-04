@@ -35,10 +35,10 @@ func shrinkingAnimation()->void:
 	var closestTile : Tile = getClosestTile(get_tree().get_nodes_in_group("tiles"))
 	var distanceToClosestTile : float = unprojectPosition(closestTile).distance_to(unprojectPosition(self))
 	var remapTarget : float = remap(distanceToClosestTile,0.1,animationDistanceThreshold+.1 ,0,1)
-	remapTarget = clampf(remapTarget,0.3,1.0)
+	remapTarget = clampf(remapTarget,0.01,1.0)
 	myCard.scale = lerp(myCard.scale,Vector3(remapTarget,remapTarget,1),.1)
-	myCard.my3DSprite.modulate.a = lerpf(myCard.my3DSprite.modulate.a ,remapTarget -.3 ,.1)
-
+	#myCard.my3DSprite.modulate.a = lerpf(myCard.my3DSprite.modulate.a ,remapTarget -.3 ,.1)
+	
 
 func getClosestTile(tiles : Array[Node])->Tile:
 	var camera : Camera3D = get_viewport().get_camera_3d()

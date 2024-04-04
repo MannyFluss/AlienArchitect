@@ -18,7 +18,8 @@ var myBuildingScene : PackedScene
 @export
 var myArtCamera : Camera3D
 @export
-var my3DSprite : Sprite3D
+var my3DSprite : MeshInstance3D
+
 
 var myBuildingInformation : BuildingResource
 

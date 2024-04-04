@@ -126,6 +126,7 @@ projection = 1
 size = 5.839
 
 [node name="ShaderBlock" parent="BackGround/SubViewport/Node3D/Camera3D" instance=ExtResource("3_3umrh")]
+visible = false
 
 [node name="Animator" type="Node3D" parent="BackGround/SubViewport/Node3D"]
 script = ExtResource("2_0xq4u")

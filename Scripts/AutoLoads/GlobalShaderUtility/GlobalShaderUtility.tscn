@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://3m7ixwegc43x"]
+[gd_scene load_steps=4 format=3 uid="uid://3m7ixwegc43x"]
 
 [ext_resource type="Script" path="res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.gd" id="1_p2e2p"]
+[ext_resource type="PackedScene" uid="uid://c80j3tdawdmeb" path="res://Temp/shader_block.tscn" id="2_h8bvm"]
 
 [sub_resource type="Environment" id="Environment_2bxoq"]
 background_mode = 1
@@ -13,3 +14,5 @@ script = ExtResource("1_p2e2p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2bxoq")
+
+[node name="ShaderBlock" parent="." instance=ExtResource("2_h8bvm")]
