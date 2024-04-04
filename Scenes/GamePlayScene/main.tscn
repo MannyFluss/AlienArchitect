@@ -1,52 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=10 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
 [ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
 [ext_resource type="PackedScene" uid="uid://dmi76x3hc2fqj" path="res://Prefabs/PlayerController/PlayerController.tscn" id="2_sifjh"]
 [ext_resource type="Script" path="res://Scripts/GameState/GameState.gd" id="3_wi52g"]
-[ext_resource type="Shader" path="res://Scripts/AutoLoads/GlobalShaderUtility/Shader/handDrawn.gdshader" id="4_8li7s"]
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
 [ext_resource type="Script" path="res://Scripts/GameState/GameStateResource.gd" id="5_vegi4"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ucgt1"]
-load_path = "res://.godot/imported/LottesGrain5.png-b99693a28eec31d710b8d261dd8c7487.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mi8c7"]
-load_path = "res://.godot/imported/lines.png-d2e185d6e26d65526e5d5f7a5bff3b56.s3tc.ctex"
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wdol7"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oieeu"]
-noise = SubResource("FastNoiseLite_wdol7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h36ln"]
-render_priority = 0
-shader = ExtResource("4_8li7s")
-shader_parameter/color_passthrough = true
-shader_parameter/depth_check = true
-shader_parameter/normal_check = true
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/depth_line_strength = 1.0
-shader_parameter/normal_line_strength = 1.0
-shader_parameter/noise_offset_multiplier = 0.5
-shader_parameter/red_weight = 0.5
-shader_parameter/green_weight = 0.5
-shader_parameter/blue_weight = 0.5
-shader_parameter/black_threshold = 0.001
-shader_parameter/white_threshold = 0.0
-shader_parameter/grain_amount = 0.2
-shader_parameter/line_size = 2.0
-shader_parameter/lines_texture_scale = 5.398
-shader_parameter/grain_texture_scale = 10.0
-shader_parameter/texture_noise = SubResource("NoiseTexture2D_oieeu")
-shader_parameter/texture_lines = SubResource("CompressedTexture2D_mi8c7")
-shader_parameter/texture_grain = SubResource("CompressedTexture2D_ucgt1")
-
-[sub_resource type="QuadMesh" id="QuadMesh_77npc"]
-material = SubResource("ShaderMaterial_h36ln")
-size = Vector2(100, 100)
+[ext_resource type="PackedScene" uid="uid://3m7ixwegc43x" path="res://Scripts/AutoLoads/GlobalShaderUtility/GlobalShaderUtility.tscn" id="8_8ugut"]
 
 [sub_resource type="Resource" id="Resource_yftu7"]
 script = ExtResource("5_vegi4")
@@ -57,8 +18,6 @@ currencyCount = 1
 tagShopCount = 3
 cardShopCount = 3
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xmuyr"]
-
 [node name="Main" type="Node3D" node_paths=PackedStringArray("myDeck", "myBoard", "myGameState", "myPlayerController")]
 script = ExtResource("1_qlp48")
 myDeck = NodePath("Deck")
@@ -67,40 +26,23 @@ myGameState = NodePath("GameState")
 myPlayerController = NodePath("PlayerController")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.497684, 0.60384, -0.622645, -0.0960498, 0.751818, 0.652338, 0.862024, -0.264853, 0.432166, 9.5351, 3.38961, 0)
+transform = Transform3D(-0.0523322, -0.658276, 0.750956, -0.0960498, 0.751818, 0.652338, -0.994, -0.0379909, -0.102572, 9.5351, 3.38961, 0)
 
 [node name="Board" parent="." instance=ExtResource("1_5u771")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="PlayerController" parent="." node_paths=PackedStringArray("gameState") instance=ExtResource("2_sifjh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07051, 1.3763, 0.92437)
 gameState = NodePath("../GameState")
 
 [node name="IsometricCamera" parent="PlayerController" index="0"]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -2.776, 4.057, 2.944)
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -30.256, 33.7268, 21.8391)
 current = true
-size = 1.0
 
 [node name="ShaderBlock" parent="PlayerController/IsometricCamera" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.19209e-07, 1, -1.90735e-06, 0, -0.100002)
-mesh = SubResource("QuadMesh_77npc")
-
-[node name="PlayerHand" parent="PlayerController" index="4"]
-transform = Transform3D(0.0601041, 0.0425, -0.0425, 0, 0.0601041, 0.0601041, 0.0601041, -0.0425, 0.0425, 1.44477, -5, -1.74239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.19209e-07, 1, -9.53674e-07, 0, -0.100002)
 
 [node name="Spacer" parent="PlayerController/PlayerHand" index="0"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, -2.98023e-08, 0, -2.08616e-07, 1, 2.92993, 15.5203, 62.1067)
 spacing = Vector3(3.225, 0, -1.57)
 rotation_angle = -1.0
-
-[node name="Card" parent="PlayerController/PlayerHand/Spacer" index="0" instance_placeholder="res://Prefabs/Card/Card.tscn"]
-transform = Transform3D(0.999962, -0.00872653, 0, 0.00872653, 0.999962, 0, 0, 0, 1, -1.6125, 0, 0.785)
-
-[node name="Card2" parent="PlayerController/PlayerHand/Spacer" index="1" node_paths=PackedStringArray("myArtCamera", "my3DSprite", "moduleContainer") instance_placeholder="res://Prefabs/Card/Card.tscn"]
-transform = Transform3D(0.999962, 0.00872653, 0, -0.00872653, 0.999962, 0, 0, 0, 1, 1.6125, 0, -0.785)
-myArtCamera = NodePath("../Card/cardArtRendering/CardArtScene/Node3D/ArtCamera")
-my3DSprite = NodePath("../Card/CardRender")
-moduleContainer = NodePath("../Card/Modules")
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("3_wi52g")
@@ -112,14 +54,12 @@ myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" parent="." instance=ExtResource("5_blp7f")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.140467, 0.58125, 0.999388)
-mesh = SubResource("CapsuleMesh_xmuyr")
+[node name="GlobalShaderUtility" parent="." instance=ExtResource("8_8ugut")]
 
 [connection signal="bluePrintCountSet" from="GameState" to="LevelUI" method="_on_game_state_blue_print_count_set"]
 [connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]
 [connection signal="quotaSet" from="GameState" to="LevelUI" method="_on_game_state_quota_set"]
 
-[editable path="Board"]
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]
+[editable path="GlobalShaderUtility"]
