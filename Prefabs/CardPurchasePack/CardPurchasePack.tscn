@@ -9,13 +9,12 @@ script = ExtResource("2_syjoh")
 cost = 1
 cardModules = Array[Resource("res://Scripts/CardModuleResource.gd")]([])
 
-[sub_resource type="Gradient" id="Gradient_h1s0n"]
-colors = PackedColorArray(0, 0, 0, 1, 0.0340909, 0.0340909, 0.0340909, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tc2s"]
+albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2s6bn"]
-gradient = SubResource("Gradient_h1s0n")
-width = 900
-height = 1800
+[sub_resource type="QuadMesh" id="QuadMesh_a0wgd"]
+material = SubResource("StandardMaterial3D_6tc2s")
+size = Vector2(11, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnaf7"]
 shading_mode = 0
@@ -29,9 +28,9 @@ font_size = 127
 script = ExtResource("1_ct455")
 myResource = SubResource("Resource_k2s2q")
 
-[node name="BackBoard" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49628, -0.784461)
-texture = SubResource("GradientTexture2D_2s6bn")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.63448, -1.15446)
+mesh = SubResource("QuadMesh_a0wgd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.05459, 0.186616)

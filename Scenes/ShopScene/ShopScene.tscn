@@ -23,9 +23,11 @@ center_align = true
 rotation_angle = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
+projection = 1
+size = 49.405
 
 [node name="Deck" parent="." instance=ExtResource("2_1bfir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.156, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1634, 0, 0)
 
 [node name="Cards" parent="Deck" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37589, 0, -4.15142)

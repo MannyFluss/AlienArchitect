@@ -39,7 +39,9 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_re_roll_pressed() -> void:
-	pass # Replace with function body.
+	setTags()
+	setCards()
+	
 
 func setGraphics()->void:
 	%MoneyCount.text = "Money Count: "+str(myCurrentSave.myGameStateResource.currencyCount)
@@ -55,6 +57,8 @@ func setTags()->void:
 		tag.registerScene(self)
 		tag.setBasedOnResource(getRandomEvent())
 		%TagContainer.add_child(tag)
+	setGraphics()
+
 	
 func getRandomEvent()->tagResource:
 	const basePath : String = "res://Resources/Tags/"
@@ -74,9 +78,9 @@ func getRandomEvent()->tagResource:
 
 #card option count
 func setCards()->void:
-	
 	var cardParent : Node3D = $CardOptions/Hbox3D
-	
+	for card in cardParent.get_children():
+		card.queue_free()
 	
 	for i in range(3):
 		var newGuy : CardPurchasePack = CardPurchasePack.createRandomCardPack()
