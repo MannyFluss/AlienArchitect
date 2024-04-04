@@ -34,7 +34,7 @@ float getDepth(vec2 screen_uv, sampler2D depth_texture, mat4 inv_projection_matr
 //	Credit: https://godotshaders.com/shader/depth-modulated-pixel-outline-in-screen-space/
 	float raw_depth = texture(depth_texture, screen_uv)[0];
 	vec3 normalized_device_coordinates = vec3(screen_uv * 2.0 - 1.0, raw_depth);
-    vec4 view_space = inv_projection_matrix * vec4(normalized_device_coordinates, 1.0);	
+    vec4 view_space = inv_projection_matrix * vec4(normalized_device_coordinates, 1);	
 	view_space.xyz /= view_space.w;	
 	return -view_space.z;
 }
@@ -111,7 +111,6 @@ void fragment() {
 	}else if(length(screen_tex.rgb) > white_threshold){
 		//final = vec3(1.0);
 		final = original_color;
-		
 	// If color pass through is enabled then replace the output color with the screen texture color.
 	}else if(color_passthrough){
 		final = original_color;
