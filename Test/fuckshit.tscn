@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crox8i6l2v52g"]
+[gd_scene load_steps=10 format=3 uid="uid://crox8i6l2v52g"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerController/PlayerController.gd" id="1_qgf07"]
 [ext_resource type="PackedScene" uid="uid://bqfwf1r5xq6kx" path="res://Prefabs/Tiles/Tile.tscn" id="2_l38o1"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d0ml1b3sof4po" path="res://Temp/Building.tscn" id="3_8wdff"]
 [ext_resource type="PackedScene" uid="uid://cpkfhoxxqggns" path="res://components/InputComponent/InputComponent.tscn" id="4_wv3qb"]
 [ext_resource type="PackedScene" uid="uid://brs5wo4pjx4ae" path="res://Prefabs/PlayerHand/PlayerHand.tscn" id="5_asu2v"]
+[ext_resource type="Script" path="res://Scripts/CustomNodes/EventQueue.gd" id="7_gebxs"]
+[ext_resource type="Script" path="res://Test/SampleEventer.gd" id="8_gniht"]
 
 [sub_resource type="Environment" id="Environment_5vyg2"]
 background_mode = 1
@@ -46,6 +48,15 @@ projection = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
 environment = SubResource("Environment_5vyg2")
+
+[node name="EventQueue" type="Node" parent="."]
+script = ExtResource("7_gebxs")
+debugEnabled = true
+
+[node name="SampleEventer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("8_gniht")
 
 [connection signal="InputHeld" from="PlayerController/InputComponent" to="PlayerController" method="_on_input_component_input_held"]
 [connection signal="InputPressed" from="PlayerController/InputComponent" to="PlayerController" method="_on_input_component_input_pressed"]
