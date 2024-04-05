@@ -18,6 +18,9 @@ cardShopCount = 3
 script = ExtResource("2_qj2fg")
 
 [node name="PlaceTilesModule" parent="Board/Modules" index="0" instance=ExtResource("3_pi4rx")]
+myOptions = {
+"tiles": PackedVector2Array(0, 0, 1, 0, 0, 1, 1, 1, 2, 0, 2, 1, 2, 2, 0, 2, 1, 2)
+}
 
 [node name="GameState" parent="." index="3"]
 myGameStateResource = SubResource("Resource_jj1mi")
@@ -26,4 +29,3 @@ myGameStateResource = SubResource("Resource_jj1mi")
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerHand"]
 [editable path="Deck"]
-[editable path="GlobalShaderUtility"]

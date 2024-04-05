@@ -9,8 +9,10 @@ var myHand : PlayerHand
 
 var debugBuilding : PackedScene = preload("res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn")
 var destroyBuilding : PackedScene = preload("res://Prefabs/Buildings/DestroyerBuilding/DestroyerBuilding.tscn")
+var gardenBuilding : PackedScene = preload("res://Prefabs/Buildings/GardenBuilding/GardenBuilding.tscn")
 
 #make a resource/json for large amounts of cards to save
+
 func _enter_tree() -> void:
 	add_to_group("Decks")
 	GlobalEventBus.connect("printDeck",printCards)

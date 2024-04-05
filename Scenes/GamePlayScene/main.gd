@@ -17,14 +17,11 @@ func _on_button_pressed() -> void:
 	
 func _ready() -> void:
 	#setup goes here, event and such things
-	
 	GlobalEventBus.connect("eventFinished",onEventChosen)
-	
 	setupEvent()
 	GlobalEventBus.connect("levelCompleted",onLevelCompleted)
 
 func onEventChosen()->void:
-	
 	myDeck.drawCards(myGameState.myGameStateResource.startingDrawCardCount)
 	pass
 

@@ -37,6 +37,7 @@ func placeMe(newParent:Node3D)->void:
 	position=Vector3.ZERO
 	newParent.add_child(self)
 	emit_signal("buildingPlaced")
+	GlobalEventBus.emit_signal("buildingPlaced",self)
 	
 func getMyTile()->Tile:
 	var curr :Node = get_parent()

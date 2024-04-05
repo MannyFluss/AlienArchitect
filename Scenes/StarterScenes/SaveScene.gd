@@ -13,6 +13,9 @@ var myGameState : GameState
 
 func createSaveData()->void:
 	
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.gardenBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.gardenBuilding))
+	myDeck.addCardToDeck(myDeck.generateCard(myDeck.gardenBuilding))
 	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))
 	myDeck.addCardToDeck(myDeck.generateCard(myDeck.destroyBuilding))
 	myDeck.addCardToDeck(myDeck.generateCard(myDeck.debugBuilding))

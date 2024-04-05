@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://b38u7tt6wu7bs"]
+
+[ext_resource type="PackedScene" uid="uid://dyil3yiwnphow" path="res://Prefabs/AbstractBuilding/AbstractBuilding.tscn" id="1_r46dr"]
+[ext_resource type="PackedScene" uid="uid://bn5a5cek0cgqp" path="res://Prefabs/Buildings/DefaultBuilding/DefaultBuilding.tscn" id="2_vvcot"]
+[ext_resource type="PackedScene" uid="uid://dicb2nb1jcns3" path="res://components/CardModules/CardPlaceMentPreview/CardPlacementPreview.tscn" id="2_ynyvu"]
+[ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="3_dybru"]
+[ext_resource type="PackedScene" uid="uid://xhta0hw50p0u" path="res://components/BuildingModules/OnOtherBuildingPlacePoints/OnOtherBuildingPlacePoints.tscn" id="4_167ve"]
+
+[sub_resource type="Resource" id="Resource_aqudn"]
+script = ExtResource("3_dybru")
+name = "Garden"
+description = "When another building is placed, gain points"
+bluePrintCost = 1
+Model = ExtResource("2_vvcot")
+myCardModules = Array[Resource("res://Scripts/CardModuleResource.gd")]([])
+
+[node name="AbstractBuilding" instance=ExtResource("1_r46dr")]
+myResource = SubResource("Resource_aqudn")
+
+[node name="OnOtherBuildingPlacePoints" parent="Modules" index="0" instance=ExtResource("4_167ve")]
+
+[node name="CardPlacementPreview" parent="CardPreviewModules" index="0" instance=ExtResource("2_ynyvu")]

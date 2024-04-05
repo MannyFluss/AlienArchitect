@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxhmnt6o3jvqy"]
+[gd_scene load_steps=10 format=3 uid="uid://dxhmnt6o3jvqy"]
 
 [ext_resource type="PackedScene" uid="uid://bqmmvuexkrbkr" path="res://Prefabs/Board/Board.tscn" id="1_5u771"]
 [ext_resource type="Script" path="res://Scenes/GamePlayScene/main.gd" id="1_qlp48"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://n8elk0lcudtf" path="res://Prefabs/Deck/Deck.tscn" id="4_i8gmw"]
 [ext_resource type="PackedScene" uid="uid://ct6gri3mghmjo" path="res://Prefabs/LevelUI/LevelUI.tscn" id="5_blp7f"]
 [ext_resource type="Script" path="res://Scripts/GameState/GameStateResource.gd" id="5_vegi4"]
+[ext_resource type="Script" path="res://Scripts/CustomNodes/EventQueue.gd" id="8_ee4so"]
 
 [sub_resource type="Resource" id="Resource_yftu7"]
 script = ExtResource("5_vegi4")
@@ -55,6 +56,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3255, 24.6964, 82.0176)
 myHand = NodePath("../PlayerController/PlayerHand")
 
 [node name="LevelUI" parent="." instance=ExtResource("5_blp7f")]
+
+[node name="EventQueue" type="Node" parent="."]
+script = ExtResource("8_ee4so")
+debugEnabled = true
 
 [connection signal="bluePrintCountSet" from="GameState" to="LevelUI" method="_on_game_state_blue_print_count_set"]
 [connection signal="newMunicipalityScore" from="GameState" to="LevelUI" method="_on_game_state_new_municipality_score"]

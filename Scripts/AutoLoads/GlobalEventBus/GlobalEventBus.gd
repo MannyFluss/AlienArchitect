@@ -11,4 +11,6 @@ signal eventFinished
 
 signal TagPurchased(tag : TagPurchase)
 
+signal buildingPlaced(building : Building)
+
 signal printDeck
