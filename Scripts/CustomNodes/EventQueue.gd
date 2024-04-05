@@ -31,12 +31,13 @@ func pushEventFront(_event : QueueEvent)->void:
 		executeQueue()
 	else:
 		myEventQueue.push_front(_event)
+		
 func executeQueue()->void:
 	if active==true:
 		push_error("queue is already active")
 		return
+		
 	active = true
-	
 	while(myEventQueue.is_empty()==false):
 		var currentEvent:QueueEvent = myEventQueue[0]
 		if debugEnabled:
