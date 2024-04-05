@@ -45,11 +45,15 @@ func executeQueue()->void:
 		
 		
 		var currentEvent:QueueEvent = myEventQueue[0]
+		myEventQueue.pop_front()
 		if debugEnabled:
 			print("current event is: " + str(currentEvent))
+		if currentEvent.caller == null:
+			continue
+			#caller has been destroyed, continue
 			
 		currentEvent.callerFunction.call()
-		myEventQueue.pop_front()
+		
 		
 		await currentEvent.eventFinished
 	
