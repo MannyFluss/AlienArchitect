@@ -28,7 +28,7 @@ func onTileHighlighted(tile : Tile)->void:
 				call_thread_safe("previewModel",target)
 		
 		
-func onTileUnhighlighted(tile : Tile)->void:
+func onTileUnhighlighted(_tile : Tile)->void:
 	if myCard.myStatus == myCard.cardStatus.CURRENTLY_SELECTED:
 		emit_signal("unhighlight")
 

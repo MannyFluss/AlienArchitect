@@ -72,20 +72,16 @@ func loadModule(module : BuildingModuleResource)->void:
 	newModule.registerBuilding(self,options)
 	$Modules.add_child(newModule)
 	
-
-		
-		
-	
-	pass
-
 func attemptDestroy()->bool:
 	destroy()
 	return true
 
 func destroy()->void:
+	#make this an event queue thing
 	emit_signal("buildingDestroyed")
+	
 	queue_free()
-	pass
+
 	
 func getMyBoard()->Board:
 	var curr : Node = get_parent()

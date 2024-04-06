@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx5njjd21e28b"]
+
+[ext_resource type="Script" path="res://components/BuildingModules/DestructionAnimation/DestructionAnimation.gd" id="1_28x1k"]
+[ext_resource type="Texture2D" uid="uid://qml0brd6ogk5" path="res://components/BuildingModules/DestructionAnimation/ExplosionAnim.tres" id="2_kt6xq"]
+[ext_resource type="Script" path="res://components/BuildingModules/DestructionAnimation/DestructionParticle.gd" id="3_bfk88"]
+
+[sub_resource type="Curve" id="Curve_6thrk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0695793, 1), 0.0, 0.0, 0, 0, Vector2(0.914239, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jmoav"]
+curve = SubResource("Curve_6thrk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_he2pa"]
+emission_shape = 1
+emission_sphere_radius = 2.98
+gravity = Vector3(0, 0, 0)
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jmoav")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3doq3"]
+albedo_texture = ExtResource("2_kt6xq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6hqfm"]
+material = SubResource("StandardMaterial3D_3doq3")
+
+[node name="DestructionAnimation" type="Node3D"]
+script = ExtResource("1_28x1k")
+
+[node name="DestructionParticle" type="GPUParticles3D" parent="."]
+visible = false
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_he2pa")
+draw_pass_1 = SubResource("QuadMesh_6hqfm")
+script = ExtResource("3_bfk88")

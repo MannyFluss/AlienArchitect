@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyil3yiwnphow"]
+[gd_scene load_steps=5 format=3 uid="uid://dyil3yiwnphow"]
 
 [ext_resource type="Script" path="res://Prefabs/AbstractBuilding/AbstractBuilding.gd" id="1_q0j8q"]
 [ext_resource type="Script" path="res://Scripts/BuildingResource.gd" id="2_tm6hc"]
+[ext_resource type="PackedScene" uid="uid://dx5njjd21e28b" path="res://components/BuildingModules/DestructionAnimation/DestructionAnimation.tscn" id="3_q4a4v"]
 
 [sub_resource type="Resource" id="Resource_3loj2"]
 script = ExtResource("2_tm6hc")
@@ -19,5 +20,7 @@ myResource = SubResource("Resource_3loj2")
 [node name="PlaceHolders" type="Node3D" parent="."]
 
 [node name="Modules" type="Node3D" parent="."]
+
+[node name="DestructionAnimation" parent="Modules" instance=ExtResource("3_q4a4v")]
 
 [node name="CardPreviewModules" type="Node3D" parent="."]

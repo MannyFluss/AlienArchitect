@@ -23,12 +23,12 @@ func _ready()->void:
 	#myEventQueue.append(newEvent3)
 	#
 	#executeQueue()
-	#
 
 func pushEventFront(_event : QueueEvent)->void:
 	
-	print("event pushed " + str(_event))
 	if myEventQueue.is_empty():
+		if debugEnabled:
+			print("starting queue")
 		myEventQueue.push_front(_event)
 		executeQueue()
 	else:
@@ -36,7 +36,7 @@ func pushEventFront(_event : QueueEvent)->void:
 		
 func executeQueue()->void:
 	
-	if active==true:
+	if active==true and debugEnabled:
 		push_warning("queue is already active")
 		return
 	active = true
@@ -49,14 +49,13 @@ func executeQueue()->void:
 		if debugEnabled:
 			print("current event is: " + str(currentEvent))
 		if currentEvent.caller == null:
+			#myEventQueue.pop_front()
 			continue
 			#caller has been destroyed, continue
-			
 		currentEvent.callerFunction.call()
-		
-		
 		await currentEvent.eventFinished
-	
+		
+		
 	active = false
 
 

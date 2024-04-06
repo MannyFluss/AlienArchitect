@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var targetCamera : Camera3D = get_viewport().get_camera_3d()
 	if targetCamera==null:
 		return
