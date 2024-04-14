@@ -24,9 +24,6 @@ func registerBoardModules(_boardModules : Array[BoardModuleSaveResource])->void:
 func registerGameStateResource(_res : GameStateResource)->void:
 	myGameStateResource = _res.duplicate(true)
 
-func getRandomSeedPlusRound()->int:
-	return int(rand_from_seed(randomSeed)[0] + myGameStateResource.roundCount)
-
 
 func printCards()->void:
 	for card : CardSaveResource in myCards:

@@ -35,7 +35,6 @@ func pushEventFront(_event : QueueEvent)->void:
 		myEventQueue.push_front(_event)
 		
 func executeQueue()->void:
-	
 	if active==true and debugEnabled:
 		push_warning("queue is already active")
 		return

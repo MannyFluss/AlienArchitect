@@ -19,6 +19,7 @@ func loadSave(saveName:String)->GeneralSaveResource:
 	if ResourceLoader.exists(getPathFromSaveName(saveName)):
 		var SaveResource  := ResourceLoader.load(getPathFromSaveName(saveName),"GeneralSaveResource")
 		if SaveResource is GeneralSaveResource:
+			seed(SaveResource.randomSeed)
 			print_debug("successfully loaded file at " + getPathFromSaveName(saveName))
 
 			return SaveResource

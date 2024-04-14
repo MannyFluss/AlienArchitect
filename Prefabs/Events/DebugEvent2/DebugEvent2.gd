@@ -3,7 +3,7 @@ extends Event
 
 
 func _ready() -> void:
-	%EventText.text = "seed result is " + str(myScene.myCurrentSave.getRandomSeedPlusRound()) + "
+	%EventText.text = "seed result is " + str(myScene.myCurrentSave.randomSeed) + "
 		\n" + "this is event 2"
 		 
 

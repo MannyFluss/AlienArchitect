@@ -24,6 +24,7 @@ func createSaveData()->void:
 	myDeck.addCardToDeck(myDeck.generateCard(myDeck.destroyBuilding))
 	
 	var newSaveData : GeneralSaveResource = GeneralSaveResource.new()
+	randomize()
 	newSaveData.randomSeed = randf()
 	newSaveData.registerBoardModules(myBoard.serializeModules())
 	
